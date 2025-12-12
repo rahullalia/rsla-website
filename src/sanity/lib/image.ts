@@ -1,11 +1,12 @@
-import imageUrlBuilder from '@sanity/image-url'
+import { createImageUrlBuilder } from '@sanity/image-url'
 import { dataset, projectId } from './client'
 
-const imageBuilder = imageUrlBuilder({
-    projectId: projectId || '',
-    dataset: dataset || '',
+const imageBuilder = createImageUrlBuilder({
+    projectId: projectId || '36wenybq',
+    dataset: dataset || 'production',
 })
 
 export const urlForImage = (source: any) => {
+    if (!source) return null
     return imageBuilder.image(source)
 }
