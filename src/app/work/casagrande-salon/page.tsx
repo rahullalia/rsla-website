@@ -25,19 +25,19 @@ export default function Page() {
                 Laiz, owner of Casagrande Salon in Manhattan, had a problem common to brick-and-mortar: <strong>idle inventory</strong>. Two stylist suites sat empty for nearly two years. In NYC real estate terms, that is bleeding cash.
             </p>
             <p>
-                Manual efforts failed. Posting on Instagram and word-of-mouth wasn't scalable. She needed a system that could identify qualified stylists, pitch them the space, and lease it—without her having to play leasing agent.
+                Manual efforts failed. Posting on Instagram and word-of-mouth wasn&apos;t scalable. She needed a system that could identify qualified stylists, pitch them the space, and lease it—without her having to play leasing agent.
             </p>
 
             <div className="my-12 p-8 bg-brand-blue/10 border border-brand-blue/20 rounded-2xl">
                 <h3 className="text-brand-blue mt-0">The Audit</h3>
                 <p className="mb-0">
-                    The issue wasn't the space; it was the <strong>pipeline</strong>. There was no mechanism to capture interest or nurture leads. The "follow-up" lived in Laiz's head, which meant it didn't happen.
+                    The issue wasn&apos;t the space; it was the <strong>pipeline</strong>. There was no mechanism to capture interest or nurture leads. The &quot;follow-up&quot; lived in Laiz&apos;s head, which meant it didn&apos;t happen.
                 </p>
             </div>
 
             <h2>The Engineering: A Closed-Loop System</h2>
             <p>
-                We didn't just run ads. We built a leasing machine.
+                We didn&apos;t just run ads. We built a leasing machine.
             </p>
 
             <h3>1. Hyper-Targeted Acquisition</h3>
@@ -45,9 +45,9 @@ export default function Page() {
                 We deployed Meta Ads specifically targeting beauty professionals within a tight radius of the salon. Creative focused on the specific pain points of renting: freedom, profit, and location.
             </p>
 
-            <h3>2. The "RSL Connect" CRM Core</h3>
+            <h3>2. The &quot;RSL Connect&quot; CRM Core</h3>
             <p>
-                Leads didn't go to an inbox to die. They went into our automated CRM architecture.
+                Leads didn&apos;t go to an inbox to die. They went into our automated CRM architecture.
             </p>
             <ul>
                 <li><strong>Instant Response:</strong> Leads received an SMS within 30 seconds.</li>
@@ -87,7 +87,7 @@ export default function Page() {
             </div>
 
             <p>
-                Laiz moved from stress to surplus. The system didn't just fill the room; it bought back her time.
+                Laiz moved from stress to surplus. The system didn&apos;t just fill the room; it bought back her time.
             </p>
         </CaseStudyLayout>
     );

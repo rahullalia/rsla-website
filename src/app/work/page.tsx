@@ -15,7 +15,7 @@ export default function WorkPage() {
                         Proven <br /> <span className="text-gradient">Performance.</span>
                     </h1>
                     <p className="text-xl text-gray-400 max-w-2xl">
-                        We don't sell promises. We sell engineered outcomes. Here is the proof.
+                        We don&apos;t sell promises. We sell engineered outcomes. Here is the proof.
                     </p>
                 </div>
             </section>
