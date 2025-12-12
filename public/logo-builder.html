@@ -616,7 +616,24 @@
         // Calculate positions
         const iconSize = state.iconSize * s;
         const iconY = (h - iconSize) / 2;
-        const iconX = 20 * s;
+        const fontSize = state.fontSize * s;
+
+        // Set font early to measure text
+        tctx.font = `900 ${fontSize}px Satoshi, system-ui, sans-serif`;
+
+        // Calculate total logo width for centering
+        const rslText = 'RSL';
+        let textWidth = 0;
+        for (let i = 0; i < rslText.length; i++) {
+            textWidth += tctx.measureText(rslText[i]).width + (state.tracking * fontSize);
+        }
+        textWidth -= (state.tracking * fontSize); // Remove trailing tracking
+
+        const aWidth = tctx.measureText('A').width;
+        const totalLogoWidth = iconSize + state.gap * s + textWidth + state.lSlashGap * s + state.textSlashWidth * s + 2 * s + state.slashAGap * s + aWidth;
+
+        // Center the logo
+        const iconX = (w - totalLogoWidth) / 2;
 
         // Draw icon square
         tctx.fillStyle = state.colorIconBg;
@@ -630,15 +647,10 @@
 
         // Text positioning
         const textX = iconX + iconSize + state.gap * s;
-        const fontSize = state.fontSize * s;
         const textY = h / 2 + fontSize * 0.35;
-
-        // Set font
-        tctx.font = `900 ${fontSize}px Satoshi, system-ui, sans-serif`;
 
         // Draw RSL
         tctx.fillStyle = state.colorRSL;
-        const rslText = 'RSL';
         let currentX = textX;
 
         // Apply tracking by drawing each letter
