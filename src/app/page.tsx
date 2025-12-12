@@ -74,22 +74,22 @@ export default function Home() {
 
   const caseStudies = [
     {
-      tag: 'PAID ADS + CRM',
-      title: 'Casagrande Salon',
-      description: '$600 ad spend turned into $36,000/year in rental revenue. 60X ROAS in 90 days.',
-      href: '/work/casagrande-salon'
+      tag: 'PYTHON AUTOMATION & AWS',
+      title: 'Market Research Automation',
+      description: 'Distributed web scraping and OCR platform saving $136K annually with 87.5% time reduction.',
+      href: '/work/market-research-automation'
     },
     {
-      tag: 'AI AUTOMATION',
-      title: 'Dental Practice Revenue System',
-      description: 'AI-powered lead nurturing system that increased appointment bookings by 340%.',
-      href: '/work'
+      tag: 'AI AUTOMATION & COLD EMAIL',
+      title: 'Cold Email Personalization',
+      description: 'AI-powered LinkedIn-enriched icebreakers saving 325 hours and $43K annually.',
+      href: '/work/email-ice-breaker-automation'
     },
     {
-      tag: 'CRM INFRASTRUCTURE',
-      title: 'Real Estate Pipeline Automation',
-      description: 'Automated follow-up sequences that recovered $2.3M in previously lost deals.',
-      href: '/work'
+      tag: 'NONPROFIT CRM',
+      title: 'United Sikhs',
+      description: 'Automated volunteer onboarding for 2,000+ volunteers, saving $40K annually.',
+      href: '/work/united-sikhs'
     }
   ];
 
@@ -359,8 +359,8 @@ function Footer() {
             <div className="flex flex-col md:flex-row gap-16 md:justify-end">
               <div className="flex flex-col gap-4">
                 <h5 className="font-bold text-white">Company</h5>
-                <Link href="/services" className="text-gray-400 hover:text-brand-blue transition-colors">Services</Link>
                 <Link href="/work" className="text-gray-400 hover:text-brand-blue transition-colors">Work</Link>
+                <Link href="/about" className="text-gray-400 hover:text-brand-blue transition-colors">About</Link>
                 <Link href="/blog" className="text-gray-400 hover:text-brand-blue transition-colors">Blog</Link>
                 <Link href="/#contact" className="text-gray-400 hover:text-brand-blue transition-colors">Contact</Link>
               </div>
@@ -376,7 +376,7 @@ function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/5">
           <div className="text-gray-600 text-sm">
-            &copy; {new Date().getFullYear()} RSL Media Hub, LLC. All rights reserved.
+            &copy; {new Date().getFullYear()} RSL/A. All rights reserved.
           </div>
           <div className="flex gap-6 text-sm">
             <Link href="/privacy-policy" className="text-gray-500 hover:text-brand-blue transition-colors">
