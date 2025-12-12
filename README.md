@@ -35,14 +35,15 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 src/
 ├── app/                    # Next.js App Router pages
 │   ├── page.tsx           # Homepage
-│   ├── services/          # Services page
-│   ├── work/              # Case studies
+│   ├── work/              # 11 case study pages
 │   ├── blog/              # Blog (Sanity-powered)
 │   ├── about/             # About page
 │   ├── privacy-policy/    # Privacy policy
-│   └── terms/             # Terms of service
+│   ├── terms/             # Terms of service
+│   └── insider/           # Newsletter insider page
 ├── components/            # React components
-│   ├── Navigation.tsx     # Main navigation
+│   ├── Navigation.tsx     # Main navigation (Home/Work/Blog)
+│   ├── Footer.tsx         # Footer with newsletter signup
 │   ├── CaseStudyLayout.tsx # Case study template
 │   ├── FadeIn.tsx         # Animation wrapper
 │   └── FadeInStagger.tsx  # Staggered animations

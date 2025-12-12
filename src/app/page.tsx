@@ -75,23 +75,35 @@ export default function Home() {
 
   const caseStudies = [
     {
-      tag: 'PYTHON AUTOMATION & AWS',
-      title: 'Market Research Automation',
-      description: 'Distributed web scraping and OCR platform saving $136K annually with 87.5% time reduction.',
-      href: '/work/market-research-automation'
+      tag: 'Digital Marketing & Lead Nurture',
+      title: '$600 in Meta Ads Drove $36K in Rental Income',
+      description: 'Helped a Manhattan salon owner fill vacant suites, turning unused space into a reliable, passive revenue stream with a 60X return on ad spend.',
+      href: '/work/casagrande-salon',
+      metrics: [
+        { value: '+60X', label: 'Return on Ad Spend' },
+        { value: '$36K', label: 'Annual Income' },
+      ],
     },
     {
-      tag: 'AI AUTOMATION & COLD EMAIL',
-      title: 'Cold Email Personalization',
-      description: 'AI-powered LinkedIn-enriched icebreakers saving 325 hours and $43K annually.',
-      href: '/work/email-ice-breaker-automation'
+      tag: 'AI Automation & Cold Email',
+      title: 'AI Cold Email Personalization Saves 325 Hours Annually',
+      description: 'Automated cold email personalization with AI, reducing research and writing time from 8 minutes to 30 seconds per email using LinkedIn enrichment data.',
+      href: '/work/email-ice-breaker-automation',
+      metrics: [
+        { value: '94%', label: 'Time Reduction' },
+        { value: '$43K+', label: 'Annual Savings' },
+      ],
     },
     {
-      tag: 'NONPROFIT CRM',
-      title: 'United Sikhs',
-      description: 'Automated volunteer onboarding for 2,000+ volunteers, saving $40K annually.',
-      href: '/work/united-sikhs'
-    }
+      tag: 'AI Automation & Workflow',
+      title: 'AI Proposal Generator Saves $22K Annually',
+      description: 'Automated proposal creation with AI, reducing production time from 2 hours to 10 minutes and recovering 165 hours annually.',
+      href: '/work/proposal-generator-automation',
+      metrics: [
+        { value: '92%', label: 'Time Reduction' },
+        { value: '$22K+', label: 'Annual Savings' },
+      ],
+    },
   ];
 
   return (
@@ -241,15 +253,31 @@ export default function Home() {
               <Link
                 key={index}
                 href={study.href}
-                className="glass-card p-10 rounded-2xl flex flex-col justify-start min-h-[280px] group hover:border-brand-blue/50 transition-all hover:-translate-y-1"
+                className="glass-card p-8 rounded-[20px] flex flex-col justify-between group hover:border-brand-blue hover:-translate-y-[5px] hover:shadow-[0_10px_30px_rgba(0,112,243,0.15)] transition-all duration-300"
               >
-                <span className="text-xs text-brand-blue uppercase tracking-widest mb-3 font-bold">
-                  {study.tag}
-                </span>
-                <h4 className="text-2xl font-bold mb-3 group-hover:text-brand-blue transition-colors">{study.title}</h4>
-                <p className="text-gray-400 leading-relaxed mt-auto">
-                  {study.description}
-                </p>
+                <div>
+                  <span className="text-[0.8rem] text-brand-blue uppercase tracking-[1.5px] mb-4 block font-bold">
+                    {study.tag}
+                  </span>
+                  <h4 className="text-[1.8rem] leading-[1.2] text-white mb-3">{study.title}</h4>
+                  <p className="text-base text-gray-400 mb-8">
+                    {study.description}
+                  </p>
+                </div>
+
+                {/* Results */}
+                <div className="mt-5 pt-4 border-t border-white/10 flex justify-between gap-4">
+                  {study.metrics.map((metric, idx) => (
+                    <div key={idx} className="text-center flex-1">
+                      <strong className="block text-[1.6rem] text-white leading-[1.1]">
+                        {metric.value}
+                      </strong>
+                      <span className="block text-[0.75rem] text-brand-blue uppercase mt-1">
+                        {metric.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </Link>
             ))}
           </FadeInStagger>
