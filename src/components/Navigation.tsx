@@ -9,9 +9,7 @@ import clsx from "clsx";
 const navLinks = [
     { name: "Services", href: "/services" },
     { name: "Work", href: "/work" },
-    { name: "About", href: "/about" },
-    // { name: "Intelligence", href: "/blog" },
-    { name: "Contact", href: "/contact" },
+    { name: "Blog", href: "/blog" },
 ];
 
 export default function Navigation() {
@@ -42,8 +40,8 @@ export default function Navigation() {
                     RSL/A
                 </Link>
 
-                {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-8">
+                {/* Desktop Menu - Center */}
+                <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
@@ -53,8 +51,17 @@ export default function Navigation() {
                             {link.name}
                         </Link>
                     ))}
+                </div>
+
+                {/* Right side: Login + Start a Project */}
+                <div className="hidden md:flex items-center gap-4">
+                    <button
+                        className="px-5 py-2.5 text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                    >
+                        Login
+                    </button>
                     <Link
-                        href="/contact"
+                        href="/#contact"
                         className="px-5 py-2.5 bg-white text-black text-sm font-semibold rounded-full hover:bg-brand-blue hover:text-white transition-all"
                     >
                         Start a Project
@@ -89,7 +96,7 @@ export default function Navigation() {
                                 </Link>
                             ))}
                             <Link
-                                href="/contact"
+                                href="/#contact"
                                 onClick={() => setIsOpen(false)}
                                 className="mt-4 px-8 py-3 bg-white text-black text-lg font-bold rounded-full"
                             >

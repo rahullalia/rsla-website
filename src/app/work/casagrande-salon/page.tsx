@@ -16,6 +16,7 @@ export default function Page() {
 
     return (
         <CaseStudyLayout
+            tag="Paid Ads + CRM"
             title="Automating Rental Revenue."
             subtitle="Turning vacant real estate into a passive income engine using targeted Meta Ads and rigorous CRM automation."
             stats={stats}

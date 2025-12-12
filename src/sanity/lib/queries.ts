@@ -1,0 +1,84 @@
+import { groq } from 'next-sanity';
+
+// Get all blog posts (with pagination support)
+export const blogPostsQuery = groq`
+  *[_type == "blogPost"] | order(publishedAt desc) [$start...$end] {
+    _id,
+    title,
+    slug,
+    excerpt,
+    publishedAt,
+    featuredImage {
+      asset->,
+      alt
+    },
+    author->{
+      name,
+      slug,
+      role,
+      image {
+        asset->,
+        alt
+      }
+    },
+    categories[]->{
+      name,
+      slug
+    }
+  }
+`;
+
+// Get single blog post by slug
+export const blogPostBySlugQuery = groq`
+  *[_type == "blogPost" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    excerpt,
+    publishedAt,
+    featuredImage {
+      asset->,
+      alt
+    },
+    author->{
+      name,
+      slug,
+      role,
+      image {
+        asset->,
+        alt
+      },
+      bio
+    },
+    categories[]->{
+      name,
+      slug
+    },
+    body,
+    seo
+  }
+`;
+
+// Get all blog post slugs (for static generation)
+export const blogPostSlugsQuery = groq`
+  *[_type == "blogPost" && defined(slug.current)][].slug.current
+`;
+
+// Get total count of blog posts
+export const blogPostsCountQuery = groq`
+  count(*[_type == "blogPost"])
+`;
+
+// Get recent blog posts (for sidebar or related posts)
+export const recentBlogPostsQuery = groq`
+  *[_type == "blogPost"] | order(publishedAt desc) [0...5] {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    featuredImage {
+      asset->,
+      alt
+    }
+  }
+`;

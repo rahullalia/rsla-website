@@ -39,9 +39,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero-heading {
-    font-size: clamp(3rem, 10vw, 8rem);
-    line-height: 0.95;
-    letter-spacing: -0.03em;
+    font-size: clamp(4rem, 15vw, 12rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
   }
 }
 
