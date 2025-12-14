@@ -46,7 +46,7 @@ export default function Navigation() {
                         <img
                             src="/lockup.png"
                             alt="RSL/A"
-                            className="h-12 md:h-16 lg:h-20 w-auto transition-all duration-300"
+                            className="h-14 sm:h-16 md:h-16 lg:h-20 w-auto transition-all duration-300"
                         />
                     </Link>
 
@@ -248,7 +248,7 @@ export default function Navigation() {
                         <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" />
 
                         {/* Footer info */}
-                        <div className="flex items-center justify-between">
+                        <div className="flex flex-col items-center gap-5">
                             <a
                                 href="mailto:hello@rsla.io"
                                 className="text-gray-500 hover:text-white transition-colors text-sm font-medium"
