@@ -65,7 +65,7 @@ export default function Footer() {
             <div className="max-w-[1200px] mx-auto px-[5%]">
                 {/* Logo */}
                 {/* Logo - using img tag to avoid next/image iOS crash */}
-                <div className="mb-16 md:mb-20 flex justify-center md:justify-start md:-ml-6">
+                <div className="mb-16 md:mb-20 -ml-2 md:-ml-6">
                     <Link href="/" className="inline-block">
                         <img
                             src="/lockup.png"
@@ -77,7 +77,7 @@ export default function Footer() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
                 {/* Contact Section */}
-                <div className="text-center md:text-left">
+                <div className="text-left">
                     <h4 className="text-gray-500 text-[0.9rem] font-medium uppercase tracking-wider mb-4">
                         Write to us
                     </h4>
@@ -90,11 +90,11 @@ export default function Footer() {
                 </div>
 
                 {/* Social Section */}
-                <div className="text-center md:text-right">
+                <div className="text-left md:text-right">
                     <h4 className="text-gray-500 text-[0.9rem] font-medium uppercase tracking-wider mb-4">
                         Follow us
                     </h4>
-                    <div className="flex gap-4 justify-center md:justify-end">
+                    <div className="flex gap-4 justify-start md:justify-end">
                         {/* Instagram */}
                         <a
                             href="https://www.instagram.com/rahul.lalia/"
