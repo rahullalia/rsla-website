@@ -178,8 +178,19 @@ export function TextScramble({ text, className = "" }: { text: string; className
   );
 }
 
-// 4. MORPHING BLOB
+// 4. MORPHING BLOB - Desktop only
 export function MorphingBlob({ className = "" }: { className?: string }) {
+  const isMobile = useIsMobile();
+
+  // On mobile, render static blob
+  if (isMobile) {
+    return (
+      <div
+        className={`absolute bg-gradient-to-r from-[#0070f3] to-[#00c6ff] opacity-30 blur-3xl rounded-full ${className}`}
+      />
+    );
+  }
+
   return (
     <motion.div
       className={`absolute bg-gradient-to-r from-[#0070f3] to-[#00c6ff] opacity-30 blur-3xl ${className}`}
@@ -546,8 +557,19 @@ function FloatingGridDesktop() {
   );
 }
 
-// 11. LIQUID MORPH TEXT - Text that morphs with liquid effect
+// 11. LIQUID MORPH TEXT - Text that morphs with liquid effect (desktop only)
 export function LiquidText({ text, className = "" }: { text: string; className?: string }) {
+  const isMobile = useIsMobile();
+
+  // On mobile, just render static text
+  if (isMobile) {
+    return <span className={`inline-block ${className}`}>{text}</span>;
+  }
+
+  return <LiquidTextDesktop text={text} className={className} />;
+}
+
+function LiquidTextDesktop({ text, className = "" }: { text: string; className?: string }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -643,8 +665,19 @@ export function AuroraBackground() {
   );
 }
 
-// 13. GLITCH TEXT - Cyberpunk glitch effect
+// 13. GLITCH TEXT - Cyberpunk glitch effect (desktop only)
 export function GlitchText({ text, className = "" }: { text: string; className?: string }) {
+  const isMobile = useIsMobile();
+
+  // On mobile, just render static text
+  if (isMobile) {
+    return <span className={`inline-block ${className}`}>{text}</span>;
+  }
+
+  return <GlitchTextDesktop text={text} className={className} />;
+}
+
+function GlitchTextDesktop({ text, className = "" }: { text: string; className?: string }) {
   const [isGlitching, setIsGlitching] = useState(false);
 
   useEffect(() => {
@@ -682,8 +715,15 @@ export function GlitchText({ text, className = "" }: { text: string; className?:
   );
 }
 
-// 14. REVEAL ON SCROLL - Dramatic text reveal
+// 14. REVEAL ON SCROLL - Dramatic text reveal (desktop only)
 export function RevealText({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const isMobile = useIsMobile();
+
+  // On mobile, just render children
+  if (isMobile) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <div className={`overflow-hidden ${className}`}>
       <motion.div
@@ -698,7 +738,7 @@ export function RevealText({ children, className = "" }: { children: React.React
   );
 }
 
-// 15. INFINITE MARQUEE - Smooth scrolling text
+// 15. INFINITE MARQUEE - Smooth scrolling text (desktop only)
 export function InfiniteMarquee({
   children,
   speed = 20,
@@ -708,6 +748,17 @@ export function InfiniteMarquee({
   speed?: number;
   direction?: "left" | "right"
 }) {
+  const isMobile = useIsMobile();
+
+  // On mobile, just render static content once
+  if (isMobile) {
+    return (
+      <div className="overflow-hidden whitespace-nowrap">
+        <span className="inline-flex items-center">{children}</span>
+      </div>
+    );
+  }
+
   return (
     <div className="overflow-hidden whitespace-nowrap">
       <motion.div
@@ -770,8 +821,29 @@ function SpotlightCardDesktop({ children, className = "" }: { children: React.Re
   );
 }
 
-// 17. TYPEWRITER EFFECT
+// 17. TYPEWRITER EFFECT (desktop only)
 export function TypewriterText({
+  text,
+  className = "",
+  speed = 50,
+  delay = 0
+}: {
+  text: string;
+  className?: string;
+  speed?: number;
+  delay?: number;
+}) {
+  const isMobile = useIsMobile();
+
+  // On mobile, just render static text
+  if (isMobile) {
+    return <span className={className}>{text}</span>;
+  }
+
+  return <TypewriterTextDesktop text={text} className={className} speed={speed} delay={delay} />;
+}
+
+function TypewriterTextDesktop({
   text,
   className = "",
   speed = 50,
@@ -816,8 +888,19 @@ export function TypewriterText({
   );
 }
 
-// 18. EXPLODING PARTICLES ON CLICK
+// 18. EXPLODING PARTICLES ON CLICK (desktop only)
 export function ExplodeOnClick({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const isMobile = useIsMobile();
+
+  // On mobile, just render children without particle effect
+  if (isMobile) {
+    return <div className={`relative ${className}`}>{children}</div>;
+  }
+
+  return <ExplodeOnClickDesktop className={className}>{children}</ExplodeOnClickDesktop>;
+}
+
+function ExplodeOnClickDesktop({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; angle: number }>>([]);
 
   const handleClick = (e: React.MouseEvent) => {
@@ -898,8 +981,37 @@ function PerspectiveSectionDesktop({ children, className = "" }: { children: Rea
   );
 }
 
-// 20. NEON GLOW BUTTON
+// 20. NEON GLOW BUTTON (desktop only)
 export function NeonButton({
+  children,
+  className = "",
+  href
+}: {
+  children: React.ReactNode;
+  className?: string;
+  href?: string;
+}) {
+  const isMobile = useIsMobile();
+
+  // On mobile, render static button
+  if (isMobile) {
+    const content = (
+      <div
+        className={`relative px-8 py-4 rounded-full font-bold cursor-pointer border-2 border-brand-blue text-brand-blue ${className}`}
+      >
+        {children}
+      </div>
+    );
+    if (href) {
+      return <a href={href}>{content}</a>;
+    }
+    return content;
+  }
+
+  return <NeonButtonDesktop className={className} href={href}>{children}</NeonButtonDesktop>;
+}
+
+function NeonButtonDesktop({
   children,
   className = "",
   href
