@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import { AuroraBackground } from '@/components/animations';
 
@@ -12,20 +11,11 @@ export default function PrivacyContent() {
       <AuroraBackground />
 
       <div className="max-w-4xl mx-auto py-24 md:py-32 px-6 md:px-12 relative z-10">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
-          className="text-4xl md:text-5xl font-display font-bold mb-10 text-white"
-        >
+        <h1 className="text-4xl md:text-5xl font-display font-bold mb-10 text-white">
           Privacy Policy
-        </motion.h1>
+        </h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+        <div>
           <p className="text-lg leading-relaxed text-white/60 mb-6">
             <strong className="text-white">Effective Date:</strong> December 2025
           </p>
@@ -114,7 +104,7 @@ export default function PrivacyContent() {
           <p className="mt-16 text-lg text-white/40 italic">
             Last updated: December 2025
           </p>
-        </motion.div>
+        </div>
       </div>
 
       {/* Footer */}

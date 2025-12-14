@@ -5,7 +5,6 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
 import FadeIn from "@/components/FadeIn";
 import FadeInStagger from "@/components/FadeInStagger";
 import {
@@ -15,7 +14,6 @@ import {
   TextScramble,
   AuroraBackground,
   SpotlightCard,
-  ParallaxBackground,
 } from "@/components/animations";
 
 type CaseStudy = {
@@ -227,22 +225,12 @@ export default function WorkPage() {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-blue/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="container mx-auto max-w-5xl relative z-10">
           <FadeIn>
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
-              className="text-5xl md:text-7xl font-display font-bold mb-6"
-            >
+            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">
               Proven <br /> <span className="text-gradient"><TextScramble text="Performance." /></span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-xl text-gray-400 max-w-2xl"
-            >
+            </h1>
+            <p className="text-xl text-gray-400 max-w-2xl">
               We don&apos;t sell promises. We sell engineered outcomes. Here is the proof.
-            </motion.p>
+            </p>
           </FadeIn>
         </div>
       </section>
@@ -252,24 +240,14 @@ export default function WorkPage() {
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start md:items-center justify-between">
             {/* Category Filter */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-wrap gap-3"
-            >
-              {categories.map((category, index) => (
-                <motion.button
+            <div className="flex flex-wrap gap-3">
+              {categories.map((category) => (
+                <button
                   key={category}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.1 * index }}
                   onClick={() => setSelectedCategory(category)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
                   className={`
                     px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider
-                    transition-all duration-300
+                    transition-all duration-300 hover:scale-105 active:scale-95
                     ${selectedCategory === category
                       ? "bg-brand-blue text-white"
                       : "bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-brand-blue"
@@ -277,17 +255,12 @@ export default function WorkPage() {
                   `}
                 >
                   {category}
-                </motion.button>
+                </button>
               ))}
-            </motion.div>
+            </div>
 
             {/* Sort Dropdown */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex items-center gap-3"
-            >
+            <div className="flex items-center gap-3">
               <span className="text-gray-500 text-sm uppercase tracking-wider">Sort by:</span>
               <div className="relative">
                 <select
@@ -310,18 +283,13 @@ export default function WorkPage() {
                   </svg>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Results Count */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="text-gray-500 text-center mt-6"
-          >
+          <p className="text-gray-500 text-center mt-6">
             Showing <span className="text-brand-blue font-semibold">{filteredAndSortedStudies.length}</span> case {filteredAndSortedStudies.length === 1 ? "study" : "studies"}
-          </motion.p>
+          </p>
         </div>
       </section>
 
@@ -340,15 +308,11 @@ export default function WorkPage() {
                     <div>
                       {/* Featured Badge */}
                       {study.featured && (
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          className="inline-block mb-3"
-                        >
+                        <div className="inline-block mb-3">
                           <span className="text-[0.65rem] bg-brand-blue/20 text-brand-blue border border-brand-blue/30 px-2 py-1 rounded-full uppercase tracking-wider font-bold">
                             Featured
                           </span>
-                        </motion.div>
+                        </div>
                       )}
 
                       <span className="text-[0.8rem] text-brand-blue uppercase tracking-[1.5px] mb-4 block font-bold">

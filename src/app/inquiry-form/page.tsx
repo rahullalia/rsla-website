@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
-import { motion } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import { AuroraBackground } from '@/components/animations';
 
@@ -137,22 +136,12 @@ export default function InquiryForm() {
         <AuroraBackground />
 
         <div className="pt-45 pb-25 px-[5%] max-w-175 mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
-            className="text-center mb-10"
-          >
+          <div className="text-center mb-10">
             <h1 className="text-5xl font-bold text-white mb-4 font-display">Get in Touch</h1>
             <p className="text-lg text-gray-400">Fill out the form below and our team will get back to you shortly.</p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
-            className="bg-white/5 border border-white/10 rounded-[20px] p-10 backdrop-blur-md"
-          >
+          <div className="bg-white/5 border border-white/10 rounded-[20px] p-10 backdrop-blur-md">
             <form ref={formRef} onSubmit={handleSubmit} id="lead-form">
               {/* Honeypot Field */}
               <div className="hidden">
@@ -258,15 +247,13 @@ export default function InquiryForm() {
 
               {/* Submit Button */}
               <div className="mb-5">
-                <motion.button
+                <button
                   type="submit"
                   disabled={isSubmitting}
-                  whileHover={{ scale: isSubmitting ? 1 : 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
                   className="w-full inline-block bg-brand-blue text-white px-10 py-4 rounded-full text-lg font-semibold shadow-[0_0_20px_rgba(0,112,243,0.4)] border-none cursor-pointer transition-all duration-400 hover:shadow-[0_0_30px_rgba(0,112,243,0.6)] disabled:bg-gray-600 disabled:text-gray-400 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
                 >
                   {isSubmitting ? 'Submitting...' : 'Submit'}
-                </motion.button>
+                </button>
               </div>
 
               {/* Form Message */}
@@ -280,7 +267,7 @@ export default function InquiryForm() {
                 </div>
               )}
             </form>
-          </motion.div>
+          </div>
         </div>
       </main>
 

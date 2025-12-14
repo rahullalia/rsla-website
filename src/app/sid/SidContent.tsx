@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { AuroraBackground } from '@/components/animations';
 
 export default function SidContent() {
@@ -17,165 +16,67 @@ export default function SidContent() {
     vcardUrl: '/contacts/siddharth-rodrigues.vcf',
   };
 
-  const smsMessage = encodeURIComponent(
-    "Hi Sid, I'd like to connect with you."
-  );
+  const smsMessage = encodeURIComponent("Hi Sid, I'd like to connect with you.");
   const smsLink = `sms:${contactInfo.phone}?body=${smsMessage}`;
 
   return (
     <main className="min-h-screen bg-[#050505] flex items-center justify-center px-4 py-8 relative overflow-hidden">
       <AuroraBackground />
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
-        className="max-w-md w-full relative z-10"
-      >
+      <div className="max-w-md w-full relative z-10">
         <div className="bg-white/5 border border-white/10 rounded-[24px] p-8 text-center backdrop-blur-md">
-          {/* Profile Photo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-6"
-          >
+          <div className="mb-6">
             <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-brand-blue/20">
-              <Image
-                src={contactInfo.photo}
-                alt="Siddharth Rodrigues, Co-Founder & CTO of RSL/A"
-                width={128}
-                height={128}
-                className="w-full h-full object-cover"
-                priority
-              />
+              <Image src={contactInfo.photo} alt="Siddharth Rodrigues, Co-Founder & CTO of RSL/A" width={128} height={128} className="w-full h-full object-cover" priority />
             </div>
-          </motion.div>
+          </div>
 
-          {/* Name & Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-[2rem] font-bold text-white mb-2 leading-tight font-display"
-          >
-            {contactInfo.name}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-[1.1rem] text-brand-blue font-semibold mb-2"
-          >
-            {contactInfo.title}
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.45 }}
-            className="text-gray-400 text-sm mb-8"
-          >
-            Software Development & AI Systems Expert
-          </motion.p>
+          <h1 className="text-[2rem] font-bold text-white mb-2 leading-tight font-display">{contactInfo.name}</h1>
+          <p className="text-[1.1rem] text-brand-blue font-semibold mb-2">{contactInfo.title}</p>
+          <p className="text-gray-400 text-sm mb-8">Software Development & AI Systems Expert</p>
 
-          {/* Primary Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="space-y-4 mb-8"
-          >
-            <motion.a
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              href={contactInfo.vcardUrl}
-              download="Siddharth-Rodrigues.vcf"
-              className="block w-full bg-brand-blue text-white px-6 py-4 rounded-full text-[1.05rem] font-semibold shadow-[0_0_20px_rgba(0,112,243,0.4)] hover:shadow-[0_0_30px_rgba(0,112,243,0.6)] transition-all duration-400 flex items-center justify-center gap-3"
-            >
+          <div className="space-y-4 mb-8">
+            <a href={contactInfo.vcardUrl} download="Siddharth-Rodrigues.vcf" className="block w-full bg-brand-blue text-white px-6 py-4 rounded-full text-[1.05rem] font-semibold shadow-[0_0_20px_rgba(0,112,243,0.4)] hover:shadow-[0_0_30px_rgba(0,112,243,0.6)] transition-all duration-400 flex items-center justify-center gap-3">
               <span className="text-xl">📱</span>
               <span>Save My Info</span>
-            </motion.a>
+            </a>
 
-            <motion.a
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              href={`tel:${contactInfo.phone}`}
-              className="block w-full bg-transparent border-2 border-brand-blue text-white px-6 py-4 rounded-full text-[1.05rem] font-semibold hover:bg-brand-blue transition-all duration-400 flex items-center justify-center gap-3"
-            >
+            <a href={`tel:${contactInfo.phone}`} className="block w-full bg-transparent border-2 border-brand-blue text-white px-6 py-4 rounded-full text-[1.05rem] font-semibold hover:bg-brand-blue transition-all duration-400 flex items-center justify-center gap-3">
               <span className="text-xl">📞</span>
               <span>Let&apos;s Talk</span>
-            </motion.a>
+            </a>
 
-            <motion.a
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              href={smsLink}
-              className="block w-full bg-transparent border-2 border-brand-blue text-white px-6 py-4 rounded-full text-[1.05rem] font-semibold hover:bg-brand-blue transition-all duration-400 flex items-center justify-center gap-3"
-            >
+            <a href={smsLink} className="block w-full bg-transparent border-2 border-brand-blue text-white px-6 py-4 rounded-full text-[1.05rem] font-semibold hover:bg-brand-blue transition-all duration-400 flex items-center justify-center gap-3">
               <span className="text-xl">💬</span>
               <span>Text Me</span>
-            </motion.a>
+            </a>
 
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-              <Link
-                href={contactInfo.website}
-                className="block w-full bg-transparent border-2 border-white/10 text-white px-6 py-4 rounded-full text-[1.05rem] font-semibold hover:border-brand-blue hover:bg-white/5 transition-all duration-400 flex items-center justify-center gap-3"
-              >
-                <span className="text-xl">🌐</span>
-                <span>Visit Website</span>
-              </Link>
-            </motion.div>
-          </motion.div>
+            <Link href={contactInfo.website} className="block w-full bg-transparent border-2 border-white/10 text-white px-6 py-4 rounded-full text-[1.05rem] font-semibold hover:border-brand-blue hover:bg-white/5 transition-all duration-400 flex items-center justify-center gap-3">
+              <span className="text-xl">🌐</span>
+              <span>Visit Website</span>
+            </Link>
+          </div>
 
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="pt-6 border-t border-white/10 space-y-3"
-          >
-            <a
-              href={`mailto:${contactInfo.email}`}
-              className="flex items-center justify-center gap-2 text-gray-400 hover:text-white transition-colors duration-300"
-            >
+          <div className="pt-6 border-t border-white/10 space-y-3">
+            <a href={`mailto:${contactInfo.email}`} className="flex items-center justify-center gap-2 text-gray-400 hover:text-white transition-colors duration-300">
               <span className="text-sm">📧</span>
               <span className="text-sm">{contactInfo.email}</span>
             </a>
 
-            {/* Social Links */}
             <div className="flex items-center justify-center gap-6 pt-4">
-              <motion.a
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                href={contactInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-brand-blue transition-colors duration-300"
-                aria-label="LinkedIn"
-              >
+              <a href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-blue transition-colors duration-300" aria-label="LinkedIn">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
-              </motion.a>
+              </a>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Powered by RSL/A */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-8 pt-6 border-t border-white/10"
-          >
-            <Link
-              href="/"
-              className="text-xs text-gray-400 hover:text-brand-blue transition-colors duration-300"
-            >
-              Powered by RSL/A
-            </Link>
-          </motion.div>
+          <div className="mt-8 pt-6 border-t border-white/10">
+            <Link href="/" className="text-xs text-gray-400 hover:text-brand-blue transition-colors duration-300">Powered by RSL/A</Link>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </main>
   );
 }

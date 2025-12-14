@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 
 export default function Footer() {
     const [email, setEmail] = useState('');
@@ -84,13 +83,7 @@ export default function Footer() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
                 {/* Contact Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="text-left"
-                >
+                <div className="text-left">
                     <h4 className="text-gray-500 text-[0.9rem] font-medium uppercase tracking-wider mb-4">
                         Write to us
                     </h4>
@@ -100,16 +93,10 @@ export default function Footer() {
                     >
                         hello@rsla.io
                     </a>
-                </motion.div>
+                </div>
 
                 {/* Social Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className="text-left md:text-right"
-                >
+                <div className="text-left md:text-right">
                     <h4 className="text-gray-500 text-[0.9rem] font-medium uppercase tracking-wider mb-4">
                         Follow us
                     </h4>
@@ -153,17 +140,11 @@ export default function Footer() {
                             </svg>
                         </a>
                     </div>
-                </motion.div>
+                </div>
                 </div>
 
                 {/* Newsletter Signup Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="max-w-[600px] mx-auto mb-12 pb-12 border-b border-white/5"
-                >
+                <div className="max-w-[600px] mx-auto mb-12 pb-12 border-b border-white/5">
                 <div className="text-center mb-6">
                     <h3 className="text-white text-[1.5rem] md:text-[1.8rem] font-semibold mb-2">
                         Get weekly automation tips
@@ -236,7 +217,7 @@ export default function Footer() {
                         Visit our insider page
                     </Link>
                 </p>
-                </motion.div>
+                </div>
 
                 {/* Footer Bottom */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/5">

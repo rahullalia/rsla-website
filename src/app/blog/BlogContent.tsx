@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { urlForImage } from '@/sanity/lib/image';
 import FadeIn from '@/components/FadeIn';
 import FadeInStagger from '@/components/FadeInStagger';
@@ -11,7 +10,6 @@ import {
   TextScramble,
   AuroraBackground,
   SpotlightCard,
-  ParallaxBackground,
 } from '@/components/animations';
 
 interface BlogPost {
@@ -50,53 +48,32 @@ export default function BlogContent({ posts, currentPage, totalPages }: BlogCont
     <div className="relative overflow-hidden">
       <AuroraBackground />
 
-      {/* Hero Section */}
       <section className="pt-32 pb-16 px-6 md:px-12 relative z-10">
         <div className="max-w-7xl mx-auto">
           <FadeIn>
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
-              className="text-5xl md:text-6xl font-display font-bold mb-6"
-            >
+            <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">
               <TextScramble text="Blog" />
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-xl text-white/50 max-w-2xl"
-            >
+            </h1>
+            <p className="text-xl text-white/50 max-w-2xl">
               Insights on marketing automation, AI systems, local SEO, and strategies to scale your business.
-            </motion.p>
+            </p>
           </FadeIn>
         </div>
       </section>
 
-      {/* Blog Grid */}
       <section className="pb-24 px-6 md:px-12 relative z-10">
         <div className="max-w-7xl mx-auto">
           {posts.length === 0 ? (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-20"
-            >
+            <div className="text-center py-20">
               <p className="text-white/50 text-lg">No blog posts yet. Check back soon!</p>
-            </motion.div>
+            </div>
           ) : (
             <>
               <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {posts.map((post, index) => (
+                {posts.map((post) => (
                   <Card3D key={post._id} className="h-full">
                     <SpotlightCard className="h-full">
-                      <motion.article
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-brand-blue/30 transition-all h-full"
-                      >
+                      <article className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-brand-blue/30 transition-all h-full">
                         <Link href={`/blog/${post.slug.current}`} className="flex flex-col h-full">
                           {post.featuredImage?.asset && (
                             <div className="relative aspect-video overflow-hidden">
@@ -139,55 +116,44 @@ export default function BlogContent({ posts, currentPage, totalPages }: BlogCont
                             </div>
                           </div>
                         </Link>
-                      </motion.article>
+                      </article>
                     </SpotlightCard>
                   </Card3D>
                 ))}
               </FadeInStagger>
 
-              {/* Pagination */}
               {totalPages > 1 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                  className="flex justify-center gap-2 mt-16"
-                >
+                <div className="flex justify-center gap-2 mt-16">
                   {currentPage > 1 && (
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Link
-                        href={`/blog?page=${currentPage - 1}`}
-                        className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-brand-blue/30 transition-colors block"
-                      >
-                        Previous
-                      </Link>
-                    </motion.div>
+                    <Link
+                      href={`/blog?page=${currentPage - 1}`}
+                      className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-brand-blue/30 transition-colors block"
+                    >
+                      Previous
+                    </Link>
                   )}
                   {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                    <motion.div key={page} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Link
-                        href={`/blog?page=${page}`}
-                        className={`px-4 py-2 rounded-lg transition-colors block ${
-                          page === currentPage
-                            ? 'bg-brand-blue text-white'
-                            : 'bg-white/5 border border-white/10 hover:border-brand-blue/30'
-                        }`}
-                      >
-                        {page}
-                      </Link>
-                    </motion.div>
+                    <Link
+                      key={page}
+                      href={`/blog?page=${page}`}
+                      className={`px-4 py-2 rounded-lg transition-colors block ${
+                        page === currentPage
+                          ? 'bg-brand-blue text-white'
+                          : 'bg-white/5 border border-white/10 hover:border-brand-blue/30'
+                      }`}
+                    >
+                      {page}
+                    </Link>
                   ))}
                   {currentPage < totalPages && (
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Link
-                        href={`/blog?page=${currentPage + 1}`}
-                        className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-brand-blue/30 transition-colors block"
-                      >
-                        Next
-                      </Link>
-                    </motion.div>
+                    <Link
+                      href={`/blog?page=${currentPage + 1}`}
+                      className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-brand-blue/30 transition-colors block"
+                    >
+                      Next
+                    </Link>
                   )}
-                </motion.div>
+                </div>
               )}
             </>
           )}
