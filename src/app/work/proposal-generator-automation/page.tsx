@@ -1,6 +1,5 @@
 import CaseStudyLayout from '@/components/CaseStudyLayout';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -67,11 +66,9 @@ export default function ProposalGeneratorAutomationPage() {
           rel="noopener noreferrer"
           className="block cursor-zoom-in hover:opacity-90 transition-opacity"
         >
-          <Image
+          <img
             src="/images/case-studies/proposal-generator-automation/workflow-screenshot.png"
             alt="AI Proposal Generator Make.com Workflow"
-            width={700}
-            height={467}
             className="rounded-lg border border-white/10 w-full h-auto"
           />
         </a>

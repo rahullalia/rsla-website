@@ -1,7 +1,6 @@
 "use client";
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { urlForImage } from '@/sanity/lib/image';
 import FadeIn from '@/components/FadeIn';
 import FadeInStagger from '@/components/FadeInStagger';
@@ -77,11 +76,10 @@ export default function BlogContent({ posts, currentPage, totalPages }: BlogCont
                         <Link href={`/blog/${post.slug.current}`} className="flex flex-col h-full">
                           {post.featuredImage?.asset && (
                             <div className="relative aspect-video overflow-hidden">
-                              <Image
+                              <img
                                 src={urlForImage(post.featuredImage.asset)?.width(600).height(340).url() || ''}
                                 alt={post.featuredImage.alt || post.title}
-                                fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                               />
                             </div>
                           )}

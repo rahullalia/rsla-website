@@ -1,6 +1,5 @@
 import CaseStudyLayout from '@/components/CaseStudyLayout';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -87,11 +86,9 @@ export default function EmailIceBreakerAutomationPage() {
           rel="noopener noreferrer"
           className="block cursor-zoom-in hover:opacity-90 transition-opacity"
         >
-          <Image
+          <img
             src="/images/case-studies/email-ice-breaker/workflow-screenshot.png"
             alt="AI Email Ice-Breaker Make.com Workflow"
-            width={1200}
-            height={400}
             className="rounded-lg border border-white/10 w-full h-auto"
           />
         </a>

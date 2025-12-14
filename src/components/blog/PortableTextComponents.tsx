@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { PortableTextComponents as PortableTextComponentsType } from '@portabletext/react';
 import { urlForImage } from '@/sanity/lib/image';
@@ -22,11 +21,9 @@ export const PortableTextComponents: PortableTextComponentsType = {
       }
       return (
         <figure className="my-8">
-          <Image
+          <img
             src={urlForImage(value.asset)?.width(1200).height(675).url() || ''}
             alt={value.alt || 'Blog image'}
-            width={1200}
-            height={675}
             className="rounded-xl w-full"
           />
           {value.caption && (

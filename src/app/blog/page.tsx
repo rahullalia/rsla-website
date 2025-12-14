@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
 import { client } from '@/sanity/lib/client';
 import { blogPostsQuery, blogPostsCountQuery } from '@/sanity/lib/queries';
-import { urlForImage } from '@/sanity/lib/image';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import BlogContent from './BlogContent';

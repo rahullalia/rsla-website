@@ -1,6 +1,5 @@
 import CaseStudyLayout from '@/components/CaseStudyLayout';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -90,11 +89,9 @@ export default function SpiceOnASlicePage() {
           rel="noopener noreferrer"
           className="block cursor-zoom-in hover:opacity-90 transition-opacity"
         >
-          <Image
+          <img
             src="/images/case-studies/spice-on-a-slice/before-after-reviews.png"
             alt="Spice on a Slice Google reviews growth: 14 to 132 reviews"
-            width={600}
-            height={400}
             className="rounded-lg border border-white/10 w-full h-auto"
           />
         </a>

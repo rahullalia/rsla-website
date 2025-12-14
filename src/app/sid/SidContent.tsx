@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { AuroraBackground } from '@/components/animations';
 
@@ -27,7 +26,7 @@ export default function SidContent() {
         <div className="bg-white/5 border border-white/10 rounded-[24px] p-8 text-center backdrop-blur-md">
           <div className="mb-6">
             <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-brand-blue/20">
-              <Image src={contactInfo.photo} alt="Siddharth Rodrigues, Co-Founder & CTO of RSL/A" width={128} height={128} className="w-full h-full object-cover" priority />
+              <img src={contactInfo.photo} alt="Siddharth Rodrigues, Co-Founder & CTO of RSL/A" className="w-full h-full object-cover" />
             </div>
           </div>
 

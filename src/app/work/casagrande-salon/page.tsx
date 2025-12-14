@@ -1,5 +1,4 @@
 import CaseStudyLayout from "@/components/CaseStudyLayout";
-import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -57,11 +56,9 @@ export default function Page() {
             </ul>
 
             <figure>
-                <Image
+                <img
                     src="/images/case-studies/casagrande-salon/ghl-workflow-example.png"
                     alt="GoHighLevel Workflow"
-                    width={800}
-                    height={500}
                     className="rounded-lg border border-white/10"
                 />
                 <figcaption className="text-center text-gray-500 text-sm mt-2">The automated nervous system behind the leasing process.</figcaption>

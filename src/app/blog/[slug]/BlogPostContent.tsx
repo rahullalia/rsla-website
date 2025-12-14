@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { PortableText, PortableTextBlock } from '@portabletext/react';
 import { PortableTextComponents } from '@/components/blog/PortableTextComponents';
@@ -81,7 +80,7 @@ export default function BlogPostContent({ post, recentPosts }: BlogPostContentPr
 
             {post.featuredImage?.url && (
               <div className="relative aspect-video my-12 rounded-2xl overflow-hidden">
-                <Image src={post.featuredImage.url} alt={post.featuredImage.alt} fill className="object-cover" priority />
+                <img src={post.featuredImage.url} alt={post.featuredImage.alt} className="absolute inset-0 w-full h-full object-cover" />
               </div>
             )}
 
@@ -94,7 +93,7 @@ export default function BlogPostContent({ post, recentPosts }: BlogPostContentPr
                 <h3 className="text-xl text-white mb-4">About the Author</h3>
                 <div className="flex items-start gap-5">
                   {post.author.image?.url && (
-                    <Image src={post.author.image.url} alt={post.author.image.alt} width={80} height={80} className="rounded-full shrink-0" />
+                    <img src={post.author.image.url} alt={post.author.image.alt} className="rounded-full shrink-0" />
                   )}
                   <div>
                     <p className="text-lg text-white font-semibold mb-1">{post.author.name}</p>

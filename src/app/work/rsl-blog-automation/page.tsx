@@ -1,6 +1,5 @@
 import CaseStudyLayout from '@/components/CaseStudyLayout';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -72,11 +71,9 @@ export default function RSLBlogAutomationPage() {
           rel="noopener noreferrer"
           className="block cursor-zoom-in hover:opacity-90 transition-opacity"
         >
-          <Image
+          <img
             src="/images/case-studies/rsl-blog-automation/typeform-screenshot.png"
             alt="Typeform interface for blog topic input"
-            width={500}
-            height={375}
             className="rounded-lg border border-white/10 w-full h-auto"
           />
         </a>
@@ -95,11 +92,9 @@ export default function RSLBlogAutomationPage() {
           rel="noopener noreferrer"
           className="block cursor-zoom-in hover:opacity-90 transition-opacity"
         >
-          <Image
+          <img
             src="/images/case-studies/rsl-blog-automation/automation-screenshot.png"
             alt="Make.com automation workflow for blog publishing"
-            width={600}
-            height={400}
             className="rounded-lg border border-white/10 w-full h-auto"
           />
         </a>
