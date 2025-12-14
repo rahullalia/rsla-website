@@ -2,17 +2,13 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 
 export default function Footer() {
     const [email, setEmail] = useState('');
     const [honeypot, setHoneypot] = useState('');
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-    const formLoadTime = useRef<number>(Date.now());
-
-    useEffect(() => {
-        formLoadTime.current = Date.now();
-    }, []);
+    const [formLoadTime] = useState<number>(() => Date.now());
 
     const handleNewsletterSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -27,7 +23,7 @@ export default function Footer() {
         }
 
         // Bot Protection: Time-based
-        const timeSinceLoad = Date.now() - formLoadTime.current;
+        const timeSinceLoad = Date.now() - formLoadTime;
         if (timeSinceLoad < 2000) {
             setStatus('success');
             setEmail('');

@@ -21,66 +21,12 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Cpu, Globe, Rocket, Terminal } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
 
 /**
- * Homepage - Uses ClientOnly pattern throughout to prevent hydration mismatches
- * that cause crashes on iOS Safari with React 19 + Next.js 15+.
- *
- * All animated elements wait until after hydration before rendering.
+ * Homepage - Pure static rendering, no client-side state
+ * All useEffect hooks removed to prevent hydration issues on iOS Safari
  */
 export default function Home() {
-  const [hasMounted, setHasMounted] = useState(false);
-  const cursorGlowRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const glow = cursorGlowRef.current;
-    if (!glow) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      glow.style.left = e.clientX + "px";
-      glow.style.top = e.clientY + "px";
-    };
-
-    const handleMouseLeave = () => {
-      glow.style.opacity = "0";
-    };
-
-    const handleMouseEnter = () => {
-      glow.style.opacity = "1";
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseleave", handleMouseLeave);
-    document.addEventListener("mouseenter", handleMouseEnter);
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      document.removeEventListener("mouseenter", handleMouseEnter);
-    };
-  }, []);
-
-  // Load LeadConnector calendar script
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://link.msgsndr.com/js/form_embed.js';
-    script.type = 'text/javascript';
-    script.async = true;
-    script.setAttribute('data-leadconnector-embed', 'true');
-    document.body.appendChild(script);
-
-    return () => {
-      const scriptToRemove = document.querySelector('script[data-leadconnector-embed="true"]');
-      if (scriptToRemove && document.body.contains(scriptToRemove)) {
-        document.body.removeChild(scriptToRemove);
-      }
-    };
-  }, []);
 
   const team = [
     {
@@ -133,7 +79,6 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-brand-black text-white selection:bg-brand-blue selection:text-white">
       <div className="gradient-overlay" />
-      <div ref={cursorGlowRef} className="cursor-glow" />
 
       <Navigation />
 
