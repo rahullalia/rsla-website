@@ -1,25 +1,36 @@
 "use client";
 
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useScroll } from "framer-motion";
 
-// Mobile detection hook - runs once on mount
+// Mobile detection - SSR-safe, defaults to true (mobile) to prevent heavy animations on first render
 function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false);
+  // Default to true (mobile) so we don't run heavy animations during SSR/hydration
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+      return window.innerWidth < 768 || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     };
-    checkMobile();
-    // Don't add resize listener to avoid re-renders
+    setIsMobile(checkMobile());
   }, []);
 
   return isMobile;
 }
 
-// 1. 3D CARD TILT COMPONENT
+// 1. 3D CARD TILT COMPONENT - Desktop only, static on mobile
 export function Card3D({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const isMobile = useIsMobile();
+
+  // On mobile, just render children without any transforms
+  if (isMobile) {
+    return <div className={`relative ${className}`}>{children}</div>;
+  }
+
+  return <Card3DDesktop className={className}>{children}</Card3DDesktop>;
+}
+
+function Card3DDesktop({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -54,8 +65,31 @@ export function Card3D({ children, className = "" }: { children: React.ReactNode
   );
 }
 
-// 2. MAGNETIC BUTTON COMPONENT
+// 2. MAGNETIC BUTTON COMPONENT - Desktop only, static on mobile
 export function MagneticButton({
+  children,
+  className = "",
+  href
+}: {
+  children: React.ReactNode;
+  className?: string;
+  href?: string;
+}) {
+  const isMobile = useIsMobile();
+
+  // On mobile, render static button
+  if (isMobile) {
+    const content = <div className={className}>{children}</div>;
+    if (href) {
+      return <a href={href}>{content}</a>;
+    }
+    return content;
+  }
+
+  return <MagneticButtonDesktop className={className} href={href}>{children}</MagneticButtonDesktop>;
+}
+
+function MagneticButtonDesktop({
   children,
   className = "",
   href
@@ -204,8 +238,27 @@ export function NumberCounter({ value, suffix = "", prefix = "" }: { value: numb
   );
 }
 
-// 6. PARALLAX SECTION
+// 6. PARALLAX SECTION - Desktop only
 export function ParallaxLayer({
+  children,
+  speed = 0.5,
+  className = ""
+}: {
+  children: React.ReactNode;
+  speed?: number;
+  className?: string;
+}) {
+  const isMobile = useIsMobile();
+
+  // On mobile, just render children without parallax
+  if (isMobile) {
+    return <div className={`relative ${className}`}>{children}</div>;
+  }
+
+  return <ParallaxLayerDesktop speed={speed} className={className}>{children}</ParallaxLayerDesktop>;
+}
+
+function ParallaxLayerDesktop({
   children,
   speed = 0.5,
   className = ""
@@ -231,8 +284,24 @@ export function ParallaxLayer({
   );
 }
 
-// 7. PARALLAX BACKGROUND WITH FLOATING ELEMENTS
+// 7. PARALLAX BACKGROUND WITH FLOATING ELEMENTS - Desktop only
 export function ParallaxBackground() {
+  const isMobile = useIsMobile();
+
+  // On mobile, render static blobs
+  if (isMobile) {
+    return (
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-32 -right-32 w-[400px] h-[400px] rounded-full bg-[#0070f3]/10 blur-3xl opacity-30" />
+        <div className="absolute top-1/2 -left-32 w-[300px] h-[300px] rounded-full bg-[#00c6ff]/10 blur-3xl opacity-30" />
+      </div>
+    );
+  }
+
+  return <ParallaxBackgroundDesktop />;
+}
+
+function ParallaxBackgroundDesktop() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -267,8 +336,24 @@ export function ParallaxBackground() {
   );
 }
 
-// 8. HORIZONTAL PARALLAX DIVIDER
+// 8. HORIZONTAL PARALLAX DIVIDER - Desktop only
 export function ParallaxDivider() {
+  const isMobile = useIsMobile();
+
+  // On mobile, render static divider
+  if (isMobile) {
+    return (
+      <div className="relative h-32 overflow-hidden">
+        <div className="absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-blue/50 to-transparent" />
+        <div className="absolute bottom-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      </div>
+    );
+  }
+
+  return <ParallaxDividerDesktop />;
+}
+
+function ParallaxDividerDesktop() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -417,8 +502,19 @@ function HeroParallaxDesktop({ children }: { children: React.ReactNode }) {
   );
 }
 
-// 10. FLOATING GRID - Animated grid background
+// 10. FLOATING GRID - Animated grid background (desktop only)
 export function FloatingGrid() {
+  const isMobile = useIsMobile();
+
+  // On mobile, render nothing (too heavy)
+  if (isMobile) {
+    return null;
+  }
+
+  return <FloatingGridDesktop />;
+}
+
+function FloatingGridDesktop() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -626,8 +722,19 @@ export function InfiniteMarquee({
   );
 }
 
-// 16. SPOTLIGHT EFFECT - Follows cursor with dramatic lighting
+// 16. SPOTLIGHT EFFECT - Follows cursor with dramatic lighting (desktop only)
 export function SpotlightCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const isMobile = useIsMobile();
+
+  // On mobile, just render children without spotlight effect
+  if (isMobile) {
+    return <div className={`relative overflow-hidden ${className}`}>{children}</div>;
+  }
+
+  return <SpotlightCardDesktop className={className}>{children}</SpotlightCardDesktop>;
+}
+
+function SpotlightCardDesktop({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -757,8 +864,19 @@ export function ExplodeOnClick({ children, className = "" }: { children: React.R
   );
 }
 
-// 19. PERSPECTIVE TILT SECTION
+// 19. PERSPECTIVE TILT SECTION - Desktop only
 export function PerspectiveSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const isMobile = useIsMobile();
+
+  // On mobile, render children without perspective transforms
+  if (isMobile) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return <PerspectiveSectionDesktop className={className}>{children}</PerspectiveSectionDesktop>;
+}
+
+function PerspectiveSectionDesktop({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
