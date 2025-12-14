@@ -19,7 +19,6 @@ import {
   LiquidText
 } from "@/components/animations";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, Cpu, Globe, Rocket, Terminal } from "lucide-react";
 
 /**
@@ -279,11 +278,10 @@ export default function Home() {
                 className="glass-card rounded-2xl overflow-hidden group hover:border-brand-blue/50 transition-all"
               >
                 <div className="aspect-[4/5] overflow-hidden bg-[#1a1a1a]">
-                  <Image
+                  {/* Using img tag to avoid next/image iOS crash */}
+                  <img
                     src={member.image}
                     alt={`${member.name}, ${member.title} of RSL/A`}
-                    width={400}
-                    height={500}
                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                   />
                 </div>

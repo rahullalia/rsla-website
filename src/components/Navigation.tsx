@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -17,15 +16,12 @@ export default function Navigation() {
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-black/80 backdrop-blur-md border-b border-white/10 py-4">
             <div className="container mx-auto px-6 flex items-center justify-between">
-                {/* Logo */}
+                {/* Logo - using img tag to avoid next/image iOS crash */}
                 <Link href="/" className="z-50">
-                    <Image
+                    <img
                         src="/lockup.png"
                         alt="RSL/A"
-                        width={350}
-                        height={93}
                         className="h-16 md:h-20 lg:h-24 w-auto"
-                        priority
                     />
                 </Link>
 
