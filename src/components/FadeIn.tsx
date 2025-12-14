@@ -1,16 +1,7 @@
 'use client';
 
-import { ReactNode, useRef, useState, useEffect } from 'react';
+import { ReactNode, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-
-// Mobile detection - defaults to true to prevent animations during SSR
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(true);
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window || navigator.maxTouchPoints > 0);
-  }, []);
-  return isMobile;
-}
 
 interface FadeInProps {
   children: ReactNode;
@@ -22,26 +13,11 @@ interface FadeInProps {
   once?: boolean;
 }
 
+/**
+ * Simple FadeIn wrapper - uses framer-motion's built-in viewport detection
+ * No custom hooks, no hydration issues
+ */
 export default function FadeIn({
-  children,
-  delay = 0,
-  duration = 0.6,
-  yOffset = 30,
-  xOffset = 0,
-  className = '',
-  once = true,
-}: FadeInProps) {
-  const isMobile = useIsMobile();
-
-  // On mobile, just render children without any animation
-  if (isMobile) {
-    return <div className={className}>{children}</div>;
-  }
-
-  return <FadeInDesktop delay={delay} duration={duration} yOffset={yOffset} xOffset={xOffset} className={className} once={once}>{children}</FadeInDesktop>;
-}
-
-function FadeInDesktop({
   children,
   delay = 0,
   duration = 0.6,

@@ -1,16 +1,7 @@
 'use client';
 
-import { ReactNode, useRef, Children, isValidElement, cloneElement, ReactElement, CSSProperties, useState, useEffect } from 'react';
+import { ReactNode, useRef, Children, isValidElement, cloneElement, ReactElement, CSSProperties } from 'react';
 import { motion, useInView, Variants } from 'framer-motion';
-
-// Mobile detection - defaults to true to prevent animations during SSR
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(true);
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window || navigator.maxTouchPoints > 0);
-  }, []);
-  return isMobile;
-}
 
 interface FadeInStaggerProps {
   children: ReactNode;
@@ -20,24 +11,11 @@ interface FadeInStaggerProps {
   style?: CSSProperties;
 }
 
+/**
+ * Simple staggered fade-in wrapper - uses framer-motion's built-in viewport detection
+ * No custom hooks, no hydration issues
+ */
 export default function FadeInStagger({
-  children,
-  staggerDelay = 0.1,
-  className = '',
-  once = true,
-  style,
-}: FadeInStaggerProps) {
-  const isMobile = useIsMobile();
-
-  // On mobile, just render children without any animation
-  if (isMobile) {
-    return <div className={className} style={style}>{children}</div>;
-  }
-
-  return <FadeInStaggerDesktop staggerDelay={staggerDelay} className={className} once={once} style={style}>{children}</FadeInStaggerDesktop>;
-}
-
-function FadeInStaggerDesktop({
   children,
   staggerDelay = 0.1,
   className = '',
