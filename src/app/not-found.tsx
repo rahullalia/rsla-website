@@ -34,7 +34,7 @@ export default function NotFound() {
               Privacy Policy
             </Link>
             <Link href="/terms" className="text-white/40 hover:text-brand-blue transition-colors">
-              Terms
+              Terms & Conditions
             </Link>
           </div>
         </div>

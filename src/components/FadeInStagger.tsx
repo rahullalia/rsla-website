@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useRef, Children, isValidElement, cloneElement, ReactElement } from 'react';
+import { ReactNode, useRef, Children, isValidElement, cloneElement, ReactElement, CSSProperties } from 'react';
 import { motion, useInView, Variants } from 'framer-motion';
 
 interface FadeInStaggerProps {
@@ -8,6 +8,7 @@ interface FadeInStaggerProps {
   staggerDelay?: number;
   className?: string;
   once?: boolean;
+  style?: CSSProperties;
 }
 
 export default function FadeInStagger({
@@ -15,6 +16,7 @@ export default function FadeInStagger({
   staggerDelay = 0.1,
   className = '',
   once = true,
+  style,
 }: FadeInStaggerProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once, margin: '-50px' });
@@ -44,6 +46,7 @@ export default function FadeInStagger({
     <motion.div
       ref={ref}
       className={className}
+      style={style}
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}

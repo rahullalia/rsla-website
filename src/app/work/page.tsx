@@ -5,6 +5,18 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import FadeIn from "@/components/FadeIn";
+import FadeInStagger from "@/components/FadeInStagger";
+import {
+  Card3D,
+  NumberCounter,
+  MagneticButton,
+  TextScramble,
+  AuroraBackground,
+  SpotlightCard,
+  ParallaxBackground,
+} from "@/components/animations";
 
 type CaseStudy = {
   slug: string;
@@ -206,32 +218,55 @@ export default function WorkPage() {
     });
 
   return (
-    <main className="min-h-screen bg-brand-black text-white selection:bg-brand-blue selection:text-white">
+    <main className="min-h-screen bg-brand-black text-white selection:bg-brand-blue selection:text-white relative overflow-hidden">
       <Navigation />
+      <AuroraBackground />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 px-6 border-b border-white/10 relative overflow-hidden">
+      <section className="pt-32 pb-20 px-6 border-b border-white/10 relative z-10">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-blue/10 rounded-full blur-[100px] pointer-events-none" />
-        <div className="container mx-auto max-w-5xl">
-          <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">
-            Proven <br /> <span className="text-gradient">Performance.</span>
-          </h1>
-          <p className="text-xl text-gray-400 max-w-2xl">
-            We don&apos;t sell promises. We sell engineered outcomes. Here is the proof.
-          </p>
+        <div className="container mx-auto max-w-5xl relative z-10">
+          <FadeIn>
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+              className="text-5xl md:text-7xl font-display font-bold mb-6"
+            >
+              Proven <br /> <span className="text-gradient"><TextScramble text="Performance." /></span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-xl text-gray-400 max-w-2xl"
+            >
+              We don&apos;t sell promises. We sell engineered outcomes. Here is the proof.
+            </motion.p>
+          </FadeIn>
         </div>
       </section>
 
       {/* Filters & Sorting */}
-      <section className="py-8 px-6 border-b border-white/5">
+      <section className="py-8 px-6 border-b border-white/5 relative z-10">
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start md:items-center justify-between">
             {/* Category Filter */}
-            <div className="flex flex-wrap gap-3">
-              {categories.map((category) => (
-                <button
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-wrap gap-3"
+            >
+              {categories.map((category, index) => (
+                <motion.button
                   key={category}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: 0.1 * index }}
                   onClick={() => setSelectedCategory(category)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   className={`
                     px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider
                     transition-all duration-300
@@ -242,12 +277,17 @@ export default function WorkPage() {
                   `}
                 >
                   {category}
-                </button>
+                </motion.button>
               ))}
-            </div>
+            </motion.div>
 
             {/* Sort Dropdown */}
-            <div className="flex items-center gap-3">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex items-center gap-3"
+            >
               <span className="text-gray-500 text-sm uppercase tracking-wider">Sort by:</span>
               <div className="relative">
                 <select
@@ -264,89 +304,110 @@ export default function WorkPage() {
                   <option value="priority">Featured First</option>
                   <option value="savings">Highest ROI</option>
                 </select>
-                {/* Custom Arrow */}
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Results Count */}
-          <p className="text-gray-500 text-center mt-6">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="text-gray-500 text-center mt-6"
+          >
             Showing <span className="text-brand-blue font-semibold">{filteredAndSortedStudies.length}</span> case {filteredAndSortedStudies.length === 1 ? "study" : "studies"}
-          </p>
+          </motion.p>
         </div>
       </section>
 
       {/* Case Studies Grid */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 relative z-10">
         <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {filteredAndSortedStudies.map((study) => (
-              <Link
-                key={study.slug}
-                href={`/work/${study.slug}`}
-                className="group flex flex-col justify-between rounded-[20px] overflow-hidden border border-white/10 bg-white/5 p-8 transition-all duration-300 hover:border-brand-blue hover:-translate-y-[5px] hover:shadow-[0_10px_30px_rgba(0,112,243,0.15)]"
-              >
-                {/* Content */}
-                <div>
-                  {/* Featured Badge */}
-                  {study.featured && (
-                    <div className="inline-block mb-3">
-                      <span className="text-[0.65rem] bg-brand-blue/20 text-brand-blue border border-brand-blue/30 px-2 py-1 rounded-full uppercase tracking-wider font-bold">
-                        Featured
-                      </span>
-                    </div>
-                  )}
+              <Card3D key={study.slug} className="h-full">
+                <SpotlightCard className="h-full">
+                  <Link
+                    href={`/work/${study.slug}`}
+                    className="group flex flex-col justify-between rounded-[20px] overflow-hidden border border-white/10 bg-white/5 p-8 transition-all duration-300 hover:border-brand-blue hover:shadow-[0_10px_30px_rgba(0,112,243,0.15)] h-full"
+                  >
+                    {/* Content */}
+                    <div>
+                      {/* Featured Badge */}
+                      {study.featured && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          className="inline-block mb-3"
+                        >
+                          <span className="text-[0.65rem] bg-brand-blue/20 text-brand-blue border border-brand-blue/30 px-2 py-1 rounded-full uppercase tracking-wider font-bold">
+                            Featured
+                          </span>
+                        </motion.div>
+                      )}
 
-                  <span className="text-[0.8rem] text-brand-blue uppercase tracking-[1.5px] mb-4 block font-bold">
-                    {study.tag}
-                  </span>
-                  <h3 className="text-[1.8rem] leading-[1.2] text-white mb-3">
-                    {study.title}
-                  </h3>
-                  <p className="text-base text-gray-400 mb-8">
-                    {study.description}
-                  </p>
-                </div>
-
-                {/* Results */}
-                <div className="mt-5 pt-4 border-t border-white/10 flex justify-between gap-4">
-                  {study.metrics.map((metric, idx) => (
-                    <div key={idx} className="text-center flex-1">
-                      <strong className="block text-[1.6rem] text-white leading-[1.1]">
-                        {metric.value}
-                      </strong>
-                      <span className="block text-[0.75rem] text-brand-blue uppercase mt-1">
-                        {metric.label}
+                      <span className="text-[0.8rem] text-brand-blue uppercase tracking-[1.5px] mb-4 block font-bold">
+                        {study.tag}
                       </span>
+                      <h3 className="text-[1.8rem] leading-[1.2] text-white mb-3 group-hover:text-brand-blue transition-colors line-clamp-3">
+                        {study.title}
+                      </h3>
+                      <p className="text-base text-gray-400 mb-8 line-clamp-3">
+                        {study.description}
+                      </p>
                     </div>
-                  ))}
-                </div>
-              </Link>
+
+                    {/* Results with Number Counter */}
+                    <div className="mt-5 pt-4 border-t border-white/10 flex justify-between gap-4">
+                      {study.metrics.map((metric, idx) => (
+                        <div key={idx} className="text-center flex-1">
+                          <strong className="block text-[1.6rem] text-white leading-[1.1]">
+                            {metric.value.startsWith('+') ? (
+                              <><span>+</span><NumberCounter value={parseInt(metric.value.replace(/[^0-9]/g, ''))} suffix="X" /></>
+                            ) : metric.value.startsWith('$') ? (
+                              <NumberCounter value={parseInt(metric.value.replace(/[^0-9]/g, ''))} prefix="$" suffix={metric.value.includes('K') ? 'K' : ''} />
+                            ) : metric.value.endsWith('%') ? (
+                              <NumberCounter value={parseFloat(metric.value.replace(/[^0-9.]/g, ''))} suffix="%" />
+                            ) : (
+                              metric.value
+                            )}
+                          </strong>
+                          <span className="block text-[0.75rem] text-brand-blue uppercase mt-1">
+                            {metric.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </Link>
+                </SpotlightCard>
+              </Card3D>
             ))}
-          </div>
+          </FadeInStagger>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 border-t border-white/10">
+      <section className="py-20 px-6 border-t border-white/10 relative z-10">
         <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-            Ready to be the next <span className="text-brand-blue">case study?</span>
-          </h2>
-          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            Let&apos;s build you an intelligent marketing system that delivers measurable results.
-          </p>
-          <Link
-            href="/#contact"
-            className="inline-flex items-center gap-2 bg-brand-blue text-white px-8 py-4 rounded-full font-semibold text-lg shadow-[0_0_30px_rgba(0,112,243,0.4)] hover:shadow-[0_0_50px_rgba(0,112,243,0.6)] hover:-translate-y-1 transition-all duration-300"
-          >
-            Start Your Project <ArrowRight size={20} />
-          </Link>
+          <FadeIn>
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
+              Ready to be the next <span className="text-brand-blue">case study?</span>
+            </h2>
+            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+              Let&apos;s build you an intelligent marketing system that delivers measurable results.
+            </p>
+            <MagneticButton
+              href="/#contact"
+              className="inline-flex items-center gap-2 bg-brand-blue text-white px-8 py-4 rounded-full font-semibold text-lg shadow-[0_0_30px_rgba(0,112,243,0.4)] hover:shadow-[0_0_50px_rgba(0,112,243,0.6)] hover:-translate-y-1 transition-all duration-300"
+            >
+              Start Your Project <ArrowRight size={20} />
+            </MagneticButton>
+          </FadeIn>
         </div>
       </section>
 

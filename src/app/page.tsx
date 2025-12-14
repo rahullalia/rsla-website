@@ -4,6 +4,20 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import FadeInStagger from "@/components/FadeInStagger";
+import {
+  Card3D,
+  MagneticButton,
+  TextScramble,
+  NumberCounter,
+  ParallaxBackground,
+  ParallaxDivider,
+  HeroParallax,
+  AuroraBackground,
+  GlitchText,
+  SpotlightCard,
+  InfiniteMarquee,
+  LiquidText
+} from "@/components/animations";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Cpu, Globe, Rocket, Terminal } from "lucide-react";
@@ -113,125 +127,145 @@ export default function Home() {
 
       <Navigation />
 
-      {/* HERO SECTION */}
-      <section className="min-h-[75vh] flex flex-col justify-center px-6 md:px-12 pt-32 pb-16 relative overflow-hidden z-10">
-        <div className="max-w-[1400px] mx-auto w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-brand-blue font-medium mb-8"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse-slow"></span>
-            </span>
-            Accepting New Systems Clients for Q1 2026
-          </motion.div>
+      {/* HERO SECTION with Parallax */}
+      <HeroParallax>
+        <section className="min-h-[75vh] flex flex-col justify-center px-6 md:px-12 pt-32 pb-16 relative overflow-hidden z-10">
+          {/* Aurora Background */}
+          <AuroraBackground />
 
-          <motion.h1
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-            className="hero-heading font-display font-bold mb-10"
-          >
-            We build<br />
-            <motion.span
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-              className="text-gradient"
+          <div className="max-w-[1400px] mx-auto w-full relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-brand-blue font-medium mb-8"
             >
-              intelligent
-            </motion.span>
-            <br />
-            marketing systems
-          </motion.h1>
+              <span className="relative flex h-2 w-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse-slow"></span>
+              </span>
+              Accepting New Systems Clients for Q1 2026
+            </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-xl md:text-2xl text-white/70 max-w-[700px] leading-relaxed font-light mb-12"
-          >
-            Smart marketing meets AI automation. We build the infrastructure that scales your revenue, automates your fulfillment, and organizes your chaos.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <Link
-              href="/#contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-black text-lg font-bold rounded-full hover:bg-brand-blue hover:text-white transition-all group"
+            <motion.h1
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
+              className="hero-heading font-display font-bold mb-10"
             >
-              Build My System
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="/work"
-              className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/20 text-white text-lg font-medium rounded-full hover:bg-white/10 transition-all"
-            >
-              View Case Studies
-            </Link>
-          </motion.div>
-        </div>
+              We build<br />
+              <motion.span
+                initial={{ opacity: 0, x: -40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+                className="text-gradient"
+              >
+                <TextScramble text="intelligent" />
+              </motion.span>
+              <br />
+              marketing systems
+            </motion.h1>
 
-        {/* Animated line */}
-        <div className="line-container">
-          <div className="line-progress"></div>
-        </div>
-      </section>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="text-xl md:text-2xl text-white/70 max-w-[700px] leading-relaxed font-light mb-12"
+            >
+              Smart marketing meets AI automation. We build the infrastructure that scales your revenue, automates your fulfillment, and organizes your chaos.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <MagneticButton
+                href="/#contact"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-black text-lg font-bold rounded-full hover:bg-brand-blue hover:text-white transition-all group"
+              >
+                Build My System
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </MagneticButton>
+              <MagneticButton
+                href="/work"
+                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/20 text-white text-lg font-medium rounded-full hover:bg-white/10 transition-all"
+              >
+                View Case Studies
+              </MagneticButton>
+            </motion.div>
+          </div>
+
+          {/* Animated line */}
+          <div className="line-container">
+            <div className="line-progress"></div>
+          </div>
+        </section>
+      </HeroParallax>
+
+      {/* Infinite Marquee */}
+      <div className="py-8 border-y border-white/5 bg-[#080808]">
+        <InfiniteMarquee speed={25}>
+          <span className="text-4xl md:text-6xl font-display font-bold text-white/10 mx-8">
+            AI AUTOMATION • PAID ADS • CRM SYSTEMS • LOCAL SEO • WEBSITE DEVELOPMENT •
+          </span>
+        </InfiniteMarquee>
+      </div>
 
       {/* CORE DISCIPLINES */}
-      <section className="py-20 md:py-32 border-t border-white/5">
+      <section className="py-20 md:py-32 border-t border-white/5 relative">
+        <ParallaxBackground />
         <div className="container mx-auto px-6">
           <FadeIn>
             <div className="mb-20">
               <h2 className="text-sm font-bold tracking-widest text-brand-blue uppercase mb-4">Core Disciplines</h2>
-              <h3 className="text-4xl md:text-6xl font-display font-bold">Engineering Growth.</h3>
+              <h3 className="text-4xl md:text-6xl font-display font-bold">
+                <LiquidText text="Engineering" /> <GlitchText text="Growth." />
+              </h3>
             </div>
           </FadeIn>
 
           <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="glass-card p-8 rounded-2xl group hover:border-brand-blue/50 transition-colors">
+            <SpotlightCard className="glass-card p-8 rounded-2xl group hover:border-brand-blue/50 transition-colors">
               <Globe className="w-10 h-10 text-brand-blue mb-6" />
               <h4 className="text-xl font-bold mb-3">Smart Websites</h4>
               <p className="text-gray-400 leading-relaxed">
                 High-performance architecture. Built for SEO domination and conversion, not just aesthetics.
               </p>
-            </div>
+            </SpotlightCard>
 
-            <div className="glass-card p-8 rounded-2xl group hover:border-brand-blue/50 transition-colors">
+            <SpotlightCard className="glass-card p-8 rounded-2xl group hover:border-brand-blue/50 transition-colors">
               <Rocket className="w-10 h-10 text-brand-blue mb-6" />
               <h4 className="text-xl font-bold mb-3">Paid Acquisition</h4>
               <p className="text-gray-400 leading-relaxed">
                 Meta & Google ecosystems engineered to print ROI. We track every dollar back to revenue.
               </p>
-            </div>
+            </SpotlightCard>
 
-            <div className="glass-card p-8 rounded-2xl group hover:border-brand-blue/50 transition-colors">
+            <SpotlightCard className="glass-card p-8 rounded-2xl group hover:border-brand-blue/50 transition-colors">
               <Cpu className="w-10 h-10 text-brand-blue mb-6" />
               <h4 className="text-xl font-bold mb-3">AI Automation</h4>
               <p className="text-gray-400 leading-relaxed">
                 Replicate your best employee. We build AI agents that handle bookings, support, and sales 24/7.
               </p>
-            </div>
+            </SpotlightCard>
 
-            <div className="glass-card p-8 rounded-2xl group hover:border-brand-blue/50 transition-colors">
+            <SpotlightCard className="glass-card p-8 rounded-2xl group hover:border-brand-blue/50 transition-colors">
               <Terminal className="w-10 h-10 text-brand-blue mb-6" />
               <h4 className="text-xl font-bold mb-3">CRM Infrastructure</h4>
               <p className="text-gray-400 leading-relaxed">
                 The backbone of your business. Automated pipelines, database reactivation, and lead nurturing.
               </p>
-            </div>
+            </SpotlightCard>
           </FadeInStagger>
         </div>
       </section>
 
+      {/* Parallax Divider */}
+      <ParallaxDivider />
+
       {/* RECENT WORK */}
-      <section className="py-20 md:py-32 bg-[#080808]">
+      <section className="py-20 md:py-32 bg-[#080808] relative">
         <div className="container mx-auto px-6">
           <FadeIn>
             <div className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -248,44 +282,57 @@ export default function Home() {
             </div>
           </FadeIn>
 
-          <FadeInStagger className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <FadeInStagger className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ perspective: "1000px" }}>
             {caseStudies.map((study, index) => (
-              <Link
-                key={index}
-                href={study.href}
-                className="glass-card p-8 rounded-[20px] flex flex-col justify-between group hover:border-brand-blue hover:-translate-y-[5px] hover:shadow-[0_10px_30px_rgba(0,112,243,0.15)] transition-all duration-300"
-              >
-                <div>
-                  <span className="text-[0.8rem] text-brand-blue uppercase tracking-[1.5px] mb-4 block font-bold">
-                    {study.tag}
-                  </span>
-                  <h4 className="text-[1.8rem] leading-[1.2] text-white mb-3">{study.title}</h4>
-                  <p className="text-base text-gray-400 mb-8">
-                    {study.description}
-                  </p>
-                </div>
+              <Card3D key={index} className="h-full">
+                <Link
+                  href={study.href}
+                  className="glass-card p-8 rounded-[20px] flex flex-col justify-between group hover:border-brand-blue hover:shadow-[0_10px_30px_rgba(0,112,243,0.15)] transition-all duration-300 h-full"
+                >
+                  <div>
+                    <span className="text-[0.8rem] text-brand-blue uppercase tracking-[1.5px] mb-4 block font-bold">
+                      {study.tag}
+                    </span>
+                    <h4 className="text-[1.8rem] leading-[1.2] text-white mb-3">{study.title}</h4>
+                    <p className="text-base text-gray-400 mb-8">
+                      {study.description}
+                    </p>
+                  </div>
 
-                {/* Results */}
-                <div className="mt-5 pt-4 border-t border-white/10 flex justify-between gap-4">
-                  {study.metrics.map((metric, idx) => (
-                    <div key={idx} className="text-center flex-1">
-                      <strong className="block text-[1.6rem] text-white leading-[1.1]">
-                        {metric.value}
-                      </strong>
-                      <span className="block text-[0.75rem] text-brand-blue uppercase mt-1">
-                        {metric.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </Link>
+                  {/* Results with Number Counter */}
+                  <div className="mt-5 pt-4 border-t border-white/10 flex justify-between gap-4">
+                    {study.metrics.map((metric, idx) => (
+                      <div key={idx} className="text-center flex-1">
+                        <strong className="block text-[1.6rem] text-white leading-[1.1]">
+                          {metric.value.startsWith('+') ? (
+                            <><span>+</span><NumberCounter value={parseInt(metric.value.replace(/[^0-9]/g, ''))} suffix="X" /></>
+                          ) : metric.value.startsWith('$') ? (
+                            <NumberCounter value={parseInt(metric.value.replace(/[^0-9]/g, ''))} prefix="$" suffix="K" />
+                          ) : metric.value.endsWith('%') ? (
+                            <NumberCounter value={parseInt(metric.value.replace(/[^0-9]/g, ''))} suffix="%" />
+                          ) : (
+                            metric.value
+                          )}
+                        </strong>
+                        <span className="block text-[0.75rem] text-brand-blue uppercase mt-1">
+                          {metric.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </Link>
+              </Card3D>
             ))}
           </FadeInStagger>
         </div>
       </section>
 
+      {/* Parallax Divider */}
+      <ParallaxDivider />
+
       {/* TEAM SECTION */}
-      <section className="py-20 md:py-32 border-t border-white/5">
+      <section className="py-20 md:py-32 border-t border-white/5 relative">
+        <ParallaxBackground />
         <div className="container mx-auto px-6">
           <FadeIn>
             <div className="mb-16 text-center max-w-[600px] mx-auto">
