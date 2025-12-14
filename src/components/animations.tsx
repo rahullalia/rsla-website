@@ -156,10 +156,12 @@ export function TextScramble({ text, className = "" }: { text: string; className
   return <span className={className}>{displayText}</span>;
 }
 
-// 4. NumberCounter - Animated counter (desktop only)
+// 4. NumberCounter - Animated counter that triggers when scrolled into view (desktop only)
 export function NumberCounter({ value, suffix = "", prefix = "" }: { value: number; suffix?: string; prefix?: string }) {
   const isMobile = useIsMobile();
   const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     if (isMobile) {
@@ -167,26 +169,42 @@ export function NumberCounter({ value, suffix = "", prefix = "" }: { value: numb
       return;
     }
 
-    const duration = 2000;
-    const steps = 60;
-    const increment = value / steps;
-    let current = 0;
+    // Set up intersection observer to trigger animation when in view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
 
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= value) {
-        setCount(value);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(current));
-      }
-    }, duration / steps);
+            const duration = 2000;
+            const steps = 60;
+            const increment = value / steps;
+            let current = 0;
 
-    return () => clearInterval(timer);
-  }, [value, isMobile]);
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= value) {
+                setCount(value);
+                clearInterval(timer);
+              } else {
+                setCount(Math.floor(current));
+              }
+            }, duration / steps);
+          }
+        });
+      },
+      { threshold: 0.3 } // Trigger when 30% of element is visible
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [value, isMobile, hasAnimated]);
 
   return (
-    <span className="tabular-nums">
+    <span ref={ref} className="tabular-nums">
       {prefix}{count}{suffix}
     </span>
   );

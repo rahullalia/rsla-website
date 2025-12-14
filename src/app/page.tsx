@@ -318,12 +318,13 @@ export default function Home() {
                 style={{
                   width: '100%',
                   border: 'none',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
+                  height: '820px'
                 }}
                 scrolling="no"
                 id="booking-calendar"
                 title="Booking Calendar"
-                className="min-h-[650px] rounded-2xl"
+                className="rounded-2xl"
               />
             </div>
           </FadeIn>
