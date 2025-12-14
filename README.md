@@ -95,6 +95,42 @@ Blog content is managed via Sanity CMS.
 - Content-first layout on mobile (case studies show content before stats)
 - WCAG-compliant color contrast ratios
 
+## ⚠️ iOS Safari Compatibility
+
+**CRITICAL:** This project uses React 19 + Next.js 16, which has known issues with iOS Safari.
+
+**DO NOT USE:**
+- `next/image` component - Causes iOS Safari crashes
+- `Image` from 'next/image' - Use native `<img>` tags instead
+- Framer Motion animations on mobile - Use `useIsMobile()` hook
+
+**Safe Pattern for Images:**
+```tsx
+// ❌ WRONG - Will crash iOS Safari
+import Image from 'next/image';
+<Image src="/logo.png" alt="Logo" width={100} height={100} />
+
+// ✅ CORRECT - Use native img tag
+<img src="/logo.png" alt="Logo" className="h-16 w-auto" />
+```
+
+**Safe Pattern for Animations:**
+```tsx
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(true);
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+  return isMobile;
+}
+
+// Return static fallback on mobile
+if (isMobile) return <div>{children}</div>;
+return <motion.div ...>{children}</motion.div>;
+```
+
+See [CLAUDE.md](../CLAUDE.md) for full details on the iOS crash fix.
+
 ## Deployment
 
 Auto-deploys to Vercel on push to `main` branch.
