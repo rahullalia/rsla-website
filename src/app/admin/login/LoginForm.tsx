@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { auth } from '@/lib/firebase';
-import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, onAuthStateChanged } from 'firebase/auth';
 
 const ALLOWED_DOMAIN = 'rsla.io';
 
@@ -14,6 +14,24 @@ export default function LoginForm() {
   const router = useRouter();
 
   useEffect(() => {
+    // Check for redirect result first
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result?.user) {
+          const email = result.user.email;
+          if (!email || !email.endsWith(`@${ALLOWED_DOMAIN}`)) {
+            auth.signOut();
+            setError(`Access denied. Only @${ALLOWED_DOMAIN} accounts are allowed.`);
+          } else {
+            router.push('/admin');
+          }
+        }
+      })
+      .catch((err) => {
+        console.error('Redirect result error:', err);
+        setError('Authentication failed. Please try again.');
+      });
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user && user.email?.endsWith(`@${ALLOWED_DOMAIN}`)) {
         router.push('/admin');
@@ -28,10 +46,11 @@ export default function LoginForm() {
     setLoading(true);
     setError('');
 
-    try {
-      const provider = new GoogleAuthProvider();
-      provider.setCustomParameters({ prompt: 'select_account' });
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account' });
 
+    try {
+      // Try popup first
       const result = await signInWithPopup(auth, provider);
       const email = result.user.email;
 
@@ -44,13 +63,20 @@ export default function LoginForm() {
 
       router.push('/admin');
     } catch (err: unknown) {
-      const error = err as { code?: string };
+      const error = err as { code?: string; message?: string };
+      console.error('Sign-in error:', error);
+
       if (error.code === 'auth/popup-closed-by-user') {
         setError('Sign-in cancelled.');
+        setLoading(false);
+      } else if (error.code === 'auth/popup-blocked') {
+        // Fallback to redirect if popup is blocked
+        console.log('Popup blocked, using redirect...');
+        await signInWithRedirect(auth, provider);
       } else {
-        setError('Failed to sign in. Please try again.');
+        setError(`Failed to sign in: ${error.message || error.code || 'Unknown error'}`);
+        setLoading(false);
       }
-      setLoading(false);
     }
   };
 
