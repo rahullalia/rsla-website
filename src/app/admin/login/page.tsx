@@ -10,7 +10,7 @@ export default function AdminLoginPage() {
         <div className="absolute bottom-0 left-1/4 w-[600px] h-[300px] bg-[#0070f3]/10 rounded-full blur-[100px]" />
       </div>
 
-      <div className="max-w-md w-full relative z-10">
+      <div className="max-w-lg w-full relative z-10">
         {/* Logo/Header */}
         <div className="text-center mb-10">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 font-satoshi">

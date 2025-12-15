@@ -37,9 +37,9 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white/5 border border-white/10 backdrop-blur-xl p-8 md:p-10 rounded-[20px]">
-      <div className="mb-6">
-        <label htmlFor="password" className="block text-sm font-semibold text-white mb-3">
+    <form onSubmit={handleSubmit} className="bg-white/5 border border-white/10 backdrop-blur-xl p-10 md:p-12 rounded-[20px]">
+      <div className="mb-8">
+        <label htmlFor="password" className="block text-base font-semibold text-white mb-4">
           Password
         </label>
         <input
@@ -47,7 +47,7 @@ export default function LoginForm() {
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0070f3] focus:border-[#0070f3]/50 text-white placeholder:text-gray-500 transition-all duration-300 text-lg"
+          className="w-full px-5 py-5 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0070f3] focus:border-[#0070f3]/50 text-white placeholder:text-gray-500 transition-all duration-300 text-lg"
           placeholder="Enter admin password"
           required
           autoFocus
