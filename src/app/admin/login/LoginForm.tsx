@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function LoginForm() {
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -37,21 +39,30 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white/5 border border-white/10 backdrop-blur-xl p-10 md:p-12 rounded-[20px]">
-      <div className="mb-8">
+    <form onSubmit={handleSubmit} className="bg-white/5 border border-white/10 backdrop-blur-xl p-12 md:p-14 rounded-[20px]">
+      <div className="mb-10">
         <label htmlFor="password" className="block text-base font-semibold text-white mb-4">
           Password
         </label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full px-5 py-5 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0070f3] focus:border-[#0070f3]/50 text-white placeholder:text-gray-500 transition-all duration-300 text-lg"
-          placeholder="Enter admin password"
-          required
-          autoFocus
-        />
+        <div className="relative">
+          <input
+            type={showPassword ? 'text' : 'password'}
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full px-6 py-5 pr-14 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0070f3] focus:border-[#0070f3]/50 text-white placeholder:text-gray-500 transition-all duration-300 text-lg"
+            placeholder="Enter admin password"
+            required
+            autoFocus
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+          >
+            {showPassword ? <EyeOff size={22} /> : <Eye size={22} />}
+          </button>
+        </div>
       </div>
 
       {error && (
