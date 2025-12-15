@@ -38,6 +38,10 @@ src/
 │   ├── sitemap.ts         # Dynamic sitemap (11 case studies + blog)
 │   ├── work/              # 11 case study pages
 │   ├── blog/              # Blog (Sanity-powered)
+│   ├── admin/             # Admin dashboard (no auth currently)
+│   │   ├── page.tsx       # Dashboard
+│   │   └── blog/          # Blog automation UI
+│   ├── studio/            # Sanity Studio (embedded)
 │   ├── privacy-policy/    # Privacy policy
 │   ├── terms/             # Terms of service
 │   └── insider/           # Newsletter insider page
@@ -184,6 +188,18 @@ Interactive canvas-based tool for generating RSL/A logo assets with real-time pr
 }
 ```
 
+## Admin Routes
+
+**Note:** Authentication is currently disabled due to Vercel COOP issues blocking Firebase popup auth.
+
+| Route | Description |
+|-------|-------------|
+| `/admin` | Admin dashboard |
+| `/admin/blog` | Blog automation UI (Gemini-powered) |
+| `/studio` | Sanity Studio (content management) |
+
+See [CLAUDE.md](../CLAUDE.md) for details on re-enabling authentication.
+
 ## Documentation
 
 See [CLAUDE.md](../CLAUDE.md) for detailed project documentation including:
@@ -191,4 +207,5 @@ See [CLAUDE.md](../CLAUDE.md) for detailed project documentation including:
 - Build issue fixes
 - Progress log
 - Integration details
+- Admin authentication details
 - Logo builder technical implementation
