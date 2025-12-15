@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { auth } from '@/lib/firebase';
-import { GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, onAuthStateChanged } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged } from 'firebase/auth';
 
 const ALLOWED_DOMAIN = 'rsla.io';
 
@@ -49,35 +49,8 @@ export default function LoginForm() {
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
 
-    try {
-      // Try popup first
-      const result = await signInWithPopup(auth, provider);
-      const email = result.user.email;
-
-      if (!email || !email.endsWith(`@${ALLOWED_DOMAIN}`)) {
-        await auth.signOut();
-        setError(`Access denied. Only @${ALLOWED_DOMAIN} accounts are allowed.`);
-        setLoading(false);
-        return;
-      }
-
-      router.push('/admin');
-    } catch (err: unknown) {
-      const error = err as { code?: string; message?: string };
-      console.error('Sign-in error:', error);
-
-      if (error.code === 'auth/popup-closed-by-user') {
-        setError('Sign-in cancelled.');
-        setLoading(false);
-      } else if (error.code === 'auth/popup-blocked') {
-        // Fallback to redirect if popup is blocked
-        console.log('Popup blocked, using redirect...');
-        await signInWithRedirect(auth, provider);
-      } else {
-        setError(`Failed to sign in: ${error.message || error.code || 'Unknown error'}`);
-        setLoading(false);
-      }
-    }
+    // Use redirect instead of popup (popup blocked by Vercel's COOP headers)
+    await signInWithRedirect(auth, provider);
   };
 
   if (checking) {
