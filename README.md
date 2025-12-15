@@ -38,7 +38,6 @@ src/
 │   ├── sitemap.ts         # Dynamic sitemap (11 case studies + blog)
 │   ├── work/              # 11 case study pages
 │   ├── blog/              # Blog (Sanity-powered)
-│   ├── about/             # About page
 │   ├── privacy-policy/    # Privacy policy
 │   ├── terms/             # Terms of service
 │   └── insider/           # Newsletter insider page
