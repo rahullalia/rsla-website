@@ -9,6 +9,7 @@ import {
 } from '@/sanity/lib/queries';
 import { urlForImage } from '@/sanity/lib/image';
 import BlogPostContent from './BlogPostContent';
+import { BlogPostSchema, BreadcrumbSchema } from '@/components/JsonLd';
 
 interface BlogPost {
   _id: string;
@@ -154,10 +155,31 @@ export default async function BlogPostPage({
       : undefined,
   }));
 
+  const imageUrl = post.featuredImage?.asset
+    ? urlForImage(post.featuredImage.asset)?.width(1200).height(630).url()
+    : undefined;
+
   return (
-    <BlogPostContent
-      post={transformedPost}
-      recentPosts={transformedRecentPosts}
-    />
+    <>
+      <BlogPostSchema
+        title={post.title}
+        description={post.excerpt}
+        url={`https://rsla.io/blog/${slug}`}
+        datePublished={post.publishedAt}
+        authorName={post.author.name}
+        image={imageUrl}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "https://rsla.io" },
+          { name: "Blog", url: "https://rsla.io/blog" },
+          { name: post.title, url: `https://rsla.io/blog/${slug}` },
+        ]}
+      />
+      <BlogPostContent
+        post={transformedPost}
+        recentPosts={transformedRecentPosts}
+      />
+    </>
   );
 }

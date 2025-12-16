@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ProposalGeneratorContent from "./ProposalGeneratorContent";
+import { ArticleSchema, BreadcrumbSchema, FAQSchema } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
     title: "AI Proposal Generator Saves $22K Annually for RSL/A | Case Study",
@@ -17,5 +18,38 @@ export const metadata: Metadata = {
 };
 
 export default function ProposalGeneratorAutomationPage() {
-    return <ProposalGeneratorContent />;
+    return (
+        <>
+            <ArticleSchema
+                title="AI Proposal Generator Saves $22K Annually"
+                description="RSL/A automated proposal creation with AI, reducing production time from 2 hours to 10 minutes."
+                url="https://rsla.io/work/proposal-generator-automation"
+                datePublished="2024-10-01"
+            />
+            <BreadcrumbSchema
+                items={[
+                    { name: "Home", url: "https://rsla.io" },
+                    { name: "Case Studies", url: "https://rsla.io/work" },
+                    { name: "AI Proposal Generator", url: "https://rsla.io/work/proposal-generator-automation" },
+                ]}
+            />
+            <FAQSchema
+                faqs={[
+                    {
+                        question: "How much time does the AI proposal generator save?",
+                        answer: "The automation reduces proposal creation from 2 hours to 10 minutes, recovering 165 hours annually.",
+                    },
+                    {
+                        question: "What is the annual cost savings?",
+                        answer: "The AI proposal generator saves $22,000 annually by eliminating manual proposal writing time.",
+                    },
+                    {
+                        question: "What tools power the proposal generator?",
+                        answer: "The system uses Make.com for orchestration, Claude AI for intelligent writing, and Google Docs for document generation.",
+                    },
+                ]}
+            />
+            <ProposalGeneratorContent />
+        </>
+    );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AIMediaContent from "./AIMediaContent";
+import { ArticleSchema, BreadcrumbSchema, FAQSchema } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
     title: "Founding Engineer: AI Automation Systems for Media Company | RSL/A",
@@ -17,5 +18,38 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-    return <AIMediaContent />;
+    return (
+        <>
+            <ArticleSchema
+                title="Founding Engineer: AI Automation Systems for Media Company"
+                description="How we built production AI systems for a Singapore media company, reducing manual workload by 70%."
+                url="https://rsla.io/work/ai-media-automation-founding-engineer"
+                datePublished="2024-01-01"
+            />
+            <BreadcrumbSchema
+                items={[
+                    { name: "Home", url: "https://rsla.io" },
+                    { name: "Case Studies", url: "https://rsla.io/work" },
+                    { name: "AI Media Automation", url: "https://rsla.io/work/ai-media-automation-founding-engineer" },
+                ]}
+            />
+            <FAQSchema
+                faqs={[
+                    {
+                        question: "What was the workload reduction achieved?",
+                        answer: "The AI automation systems reduced manual content operations workload by 70% through video QC automation and content generation pipelines.",
+                    },
+                    {
+                        question: "What AI systems were built?",
+                        answer: "Three production AI systems were deployed: video quality control automation, AI content generation pipelines, and analytics tools.",
+                    },
+                    {
+                        question: "What was the role at the media company?",
+                        answer: "As Founding Engineer at CrazyTok Media (Singapore), we architected and deployed the entire AI automation infrastructure.",
+                    },
+                ]}
+            />
+            <AIMediaContent />
+        </>
+    );
 }

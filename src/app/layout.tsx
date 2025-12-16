@@ -64,6 +64,157 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
 };
 
+// JSON-LD Structured Data
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://rsla.io/#organization",
+  name: "RSL/A",
+  alternateName: "RSL/A Marketing & AI Automation",
+  url: "https://rsla.io",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://rsla.io/favicon.svg",
+    width: 512,
+    height: 512,
+  },
+  image: "https://rsla.io/og-image.png",
+  description: "We architect intelligent marketing systems. Paid Ads, AI Automation, and Smart Infrastructure for scaling businesses.",
+  foundingDate: "2024",
+  founders: [
+    {
+      "@type": "Person",
+      name: "Rahul Lalia",
+      jobTitle: "Founder & CEO",
+      url: "https://rsla.io/rahul",
+    },
+    {
+      "@type": "Person",
+      name: "Siddharth Rodrigues",
+      jobTitle: "Co-Founder & CTO",
+      url: "https://rsla.io/sid",
+    },
+  ],
+  sameAs: [
+    "https://www.linkedin.com/company/rsla-io",
+    "https://www.instagram.com/rsla.io",
+    "https://www.tiktok.com/@rsla.io",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    url: "https://rsla.io/#contact",
+    availableLanguage: "English",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "United States",
+  },
+  serviceType: [
+    "Marketing Automation",
+    "AI Automation",
+    "Paid Advertising",
+    "CRM Implementation",
+    "Local SEO",
+  ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://rsla.io/#website",
+  name: "RSL/A",
+  url: "https://rsla.io",
+  publisher: {
+    "@id": "https://rsla.io/#organization",
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://rsla.io/blog?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+};
+
+// LocalBusiness schema for Google Business Profile
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://rsla.io/#localbusiness",
+  name: "RSL/A",
+  alternateName: "RSL/A Marketing & AI Automation",
+  url: "https://rsla.io",
+  logo: "https://rsla.io/favicon.svg",
+  image: "https://rsla.io/og-image.png",
+  description: "Marketing automation and AI systems agency specializing in paid advertising, CRM automation, and local SEO for scaling businesses.",
+  telephone: "+1-646-641-3173",
+  email: "hello@rsla.io",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "New York",
+    addressRegion: "NY",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 40.7128,
+    longitude: -74.0060,
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "18:00",
+  },
+  priceRange: "$$",
+  areaServed: {
+    "@type": "Country",
+    name: "United States",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Marketing & Automation Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "AI Automation",
+          description: "Custom AI agents for bookings, support, and sales automation",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Paid Advertising",
+          description: "Meta & Google ads management with ROI tracking",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "CRM Implementation",
+          description: "GoHighLevel setup, automation, and database management",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Local SEO",
+          description: "Google Business Profile optimization and review management",
+        },
+      },
+    ],
+  },
+  sameAs: [
+    "https://www.linkedin.com/company/rsla-io",
+    "https://www.instagram.com/rsla.io",
+    "https://www.tiktok.com/@rsla.io",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -72,6 +223,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([organizationSchema, websiteSchema, localBusinessSchema]),
+          }}
+        />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
@@ -79,7 +237,7 @@ export default function RootLayout({
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PGTJ93F2');`
+})(window,document,'script','dataLayer','GTM-MVJQSMF8');`
           }}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
@@ -96,7 +254,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-PGTJ93F2"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MVJQSMF8"
             height="0"
             width="0"
             style={{ display: 'none', visibility: 'hidden' }}
