@@ -95,33 +95,36 @@ export default function CookieBanner() {
                 </div>
             </div>
 
-            {/* Mobile Slide-in Banner */}
+            {/* Mobile Bottom Banner - covers chat widget */}
             <div
-                className={`md:hidden fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ease-out ${
+                className={`md:hidden fixed bottom-0 left-0 right-0 z-[100] transition-all duration-500 ease-out ${
                     isClosing
-                        ? "opacity-0 -translate-y-full"
+                        ? "opacity-0 translate-y-full"
                         : "opacity-100 translate-y-0"
                 }`}
             >
-                <div className="bg-[#161616] border-b border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+                <div className="bg-[#111]/98 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
                     {/* Gradient accent line */}
-                    <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-brand-blue via-[#7928ca] to-brand-blue" />
+                    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-brand-blue via-[#7928ca] to-brand-blue" />
 
-                    <div className="px-4 py-4">
-                        <p className="text-gray-300 text-sm mb-3 text-center">
-                            We use cookies to improve your experience.
+                    <div className="px-5 pt-5 pb-8">
+                        <p className="text-gray-300 text-sm mb-4 text-center leading-relaxed">
+                            We use cookies to enhance your experience.{" "}
+                            <a href="/privacy-policy" className="text-brand-blue underline underline-offset-2">
+                                Learn more
+                            </a>
                         </p>
 
-                        <div className="flex gap-2">
+                        <div className="flex gap-3">
                             <button
                                 onClick={handleDecline}
-                                className="flex-1 px-4 py-2.5 text-sm font-medium text-gray-400 rounded-lg border border-white/10 active:bg-white/5 transition-all"
+                                className="flex-1 px-4 py-3 text-sm font-medium text-gray-400 rounded-xl border border-white/10 active:bg-white/5 transition-all"
                             >
                                 Only Necessary
                             </button>
                             <button
                                 onClick={handleAccept}
-                                className="flex-1 px-4 py-2.5 text-sm font-medium text-white rounded-lg bg-brand-blue active:bg-brand-blue/80 transition-all"
+                                className="flex-1 px-4 py-3 text-sm font-medium text-white rounded-xl bg-brand-blue active:bg-brand-blue/80 transition-all"
                             >
                                 Accept All
                             </button>
