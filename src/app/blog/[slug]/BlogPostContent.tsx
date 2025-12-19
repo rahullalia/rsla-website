@@ -46,7 +46,7 @@ export default function BlogPostContent({ post, recentPosts }: BlogPostContentPr
       <AuroraBackground />
 
       <div className="max-w-7xl mx-auto py-24 md:py-32 px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 items-start">
           <article>
             <div>
               <Link href="/blog" className="inline-flex items-center gap-2 text-brand-blue hover:text-white mb-8 transition-colors">
@@ -105,7 +105,7 @@ export default function BlogPostContent({ post, recentPosts }: BlogPostContentPr
             )}
           </article>
 
-          <aside className="hidden lg:block">
+          <aside className="hidden lg:block h-fit">
             <TableOfContents content={post.body} recentPosts={recentPosts} currentPostId={post._id} />
           </aside>
         </div>
