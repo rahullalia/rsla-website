@@ -27,7 +27,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/blog', request.url), 301);
   }
 
-  // 3. Legacy portfolio pages → /case-studies
+  // 3. Legacy portfolio pages → /work
   const legacyPortfolioPages = [
     '/portfolio-style',
     '/portfolio-grid',
@@ -35,9 +35,10 @@ export function middleware(request: NextRequest) {
     '/home-portfolio',
     '/portfolios',
     '/our-recents',
+    '/case-studies',
   ];
   if (legacyPortfolioPages.some((page) => pathname.startsWith(page))) {
-    return NextResponse.redirect(new URL('/case-studies', request.url), 301);
+    return NextResponse.redirect(new URL('/work', request.url), 301);
   }
 
   // 4. Legacy e-commerce/WordPress pages → homepage
@@ -212,6 +213,7 @@ export const config = {
     '/home-portfolio/:path*',
     '/portfolios/:path*',
     '/our-recents/:path*',
+    '/case-studies/:path*',
     '/shop/:path*',
     '/cart/:path*',
     '/cart-2/:path*',
