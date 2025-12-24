@@ -39,7 +39,7 @@ export default function ThankYouContent() {
           <img
             src="/lockup.png"
             alt="RSL/A"
-            className="h-12 md:h-16 w-auto"
+            className="h-[4.5rem] sm:h-20 md:h-20 lg:h-24 w-auto"
           />
         </Link>
       </header>
