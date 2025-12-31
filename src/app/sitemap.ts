@@ -45,19 +45,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Case study pages
+  // Case study pages (updated 2025-12-31 with SEO-optimized slugs)
   const caseStudies = [
-    'casagrande-salon',
-    'market-research-automation',
-    'email-ice-breaker-automation',
-    'united-sikhs',
-    'rsl-blog-automation',
-    'proposal-generator-automation',
-    'lead-magnet-automation',
-    'linkedin-dms-automation',
-    'instantly-campaign-automation',
-    'upwork-scraper-automation',
-    'gmaps-scraper-automation',
+    'market-research-data-scraping-automation',
+    'salon-marketing-automation-roi',
+    'ai-cold-email-personalization',
+    'nonprofit-crm-volunteer-automation',
+    'ai-proposal-generator-sales-workflow',
+    'local-seo-reputation-management',
+    'marketing-analytics-reporting-automation',
+    'ai-lead-response-autoresponder',
+    'media-content-operations-ai',
+    'field-service-operations-automation',
+    'seo-content-marketing-automation',
+    'iot-manufacturing-robot-tracking',
   ];
 
   const caseStudyPages = caseStudies.map(slug => ({

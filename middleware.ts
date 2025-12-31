@@ -87,19 +87,19 @@ export function middleware(request: NextRequest) {
   if (pathname.endsWith('.html')) {
     // Old case study HTML files
     if (pathname.includes('casagrande') || pathname.includes('salon')) {
-      return NextResponse.redirect(new URL('/case-studies/casagrande-salon', request.url), 301);
+      return NextResponse.redirect(new URL('/work/salon-marketing-automation-roi', request.url), 301);
     }
     if (pathname.includes('spice-on-a-slice')) {
-      return NextResponse.redirect(new URL('/case-studies/spice-on-a-slice', request.url), 301);
+      return NextResponse.redirect(new URL('/work/local-seo-reputation-management', request.url), 301);
     }
     if (pathname.includes('united-sikhs')) {
-      return NextResponse.redirect(new URL('/case-studies/united-sikhs', request.url), 301);
+      return NextResponse.redirect(new URL('/work/nonprofit-crm-volunteer-automation', request.url), 301);
     }
     if (pathname.includes('cleaning-company') || pathname.includes('ghl-system')) {
-      return NextResponse.redirect(new URL('/case-studies/cleaning-company-automation', request.url), 301);
+      return NextResponse.redirect(new URL('/work/field-service-operations-automation', request.url), 301);
     }
     if (pathname.includes('blog-automation') || pathname.includes('rsl-blog')) {
-      return NextResponse.redirect(new URL('/case-studies/rsl-blog-automation', request.url), 301);
+      return NextResponse.redirect(new URL('/work/seo-content-marketing-automation', request.url), 301);
     }
     if (pathname.includes('terms')) {
       return NextResponse.redirect(new URL('/terms', request.url), 301);
@@ -136,18 +136,41 @@ export function middleware(request: NextRequest) {
 
   // 10. Old case study URLs (WordPress slugs) → new case study pages
   if (pathname === '/lead-gen-casagrande-salon-nyc' || pathname.startsWith('/lead-gen-casagrande-salon-nyc')) {
-    return NextResponse.redirect(new URL('/case-studies/casagrande-salon', request.url), 301);
+    return NextResponse.redirect(new URL('/work/salon-marketing-automation-roi', request.url), 301);
   }
   if (pathname === '/gbp-optimization-spice-on-a-slice-nyc' || pathname.startsWith('/gbp-optimization-spice-on-a-slice-nyc')) {
-    return NextResponse.redirect(new URL('/case-studies/spice-on-a-slice', request.url), 301);
+    return NextResponse.redirect(new URL('/work/local-seo-reputation-management', request.url), 301);
   }
   if (pathname === '/salon-marketing-case-study' || pathname.startsWith('/salon-marketing-case-study')) {
-    return NextResponse.redirect(new URL('/case-studies/casagrande-salon', request.url), 301);
+    return NextResponse.redirect(new URL('/work/salon-marketing-automation-roi', request.url), 301);
   }
 
   // 11. Feed URLs → homepage (we don't have RSS feeds)
   if (pathname.endsWith('/feed/') || pathname.endsWith('/feed')) {
     return NextResponse.redirect(new URL('/', request.url), 301);
+  }
+
+  // ============================================
+  // CASE STUDY URL MIGRATIONS (301 Permanent)
+  // Old slugs → New SEO-optimized slugs (2025-12-31)
+  // ============================================
+  const caseStudyRedirects: Record<string, string> = {
+    '/work/market-research-automation': '/work/market-research-data-scraping-automation',
+    '/work/casagrande-salon': '/work/salon-marketing-automation-roi',
+    '/work/email-ice-breaker-automation': '/work/ai-cold-email-personalization',
+    '/work/united-sikhs': '/work/nonprofit-crm-volunteer-automation',
+    '/work/proposal-generator-automation': '/work/ai-proposal-generator-sales-workflow',
+    '/work/spice-on-a-slice': '/work/local-seo-reputation-management',
+    '/work/facebook-ads-reporting-automation': '/work/marketing-analytics-reporting-automation',
+    '/work/email-autoresponder-automation': '/work/ai-lead-response-autoresponder',
+    '/work/ai-media-automation-founding-engineer': '/work/media-content-operations-ai',
+    '/work/cleaning-company-automation': '/work/field-service-operations-automation',
+    '/work/rsl-blog-automation': '/work/seo-content-marketing-automation',
+    '/work/smart-factory-robot-integration': '/work/iot-manufacturing-robot-tracking',
+  };
+
+  if (caseStudyRedirects[pathname]) {
+    return NextResponse.redirect(new URL(caseStudyRedirects[pathname], request.url), 301);
   }
 
   // 12. Old contact page variations (contact-2 only, /contact is a valid page)
@@ -255,5 +278,18 @@ export const config = {
     '/:path*/feed/',
     // HTML files
     '/:path*.html',
+    // Old case study slugs (2025-12-31 migration)
+    '/work/market-research-automation',
+    '/work/casagrande-salon',
+    '/work/email-ice-breaker-automation',
+    '/work/united-sikhs',
+    '/work/proposal-generator-automation',
+    '/work/spice-on-a-slice',
+    '/work/facebook-ads-reporting-automation',
+    '/work/email-autoresponder-automation',
+    '/work/ai-media-automation-founding-engineer',
+    '/work/cleaning-company-automation',
+    '/work/rsl-blog-automation',
+    '/work/smart-factory-robot-integration',
   ],
 };

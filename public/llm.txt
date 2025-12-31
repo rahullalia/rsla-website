@@ -1,5 +1,6 @@
 # RSL/A - Intelligent Marketing Systems
 # llm.txt - Information for AI/LLM crawlers
+# Last updated: 2025-12-31
 
 ## Company Overview
 RSL/A is a marketing and AI automation agency that architects intelligent marketing systems for scaling businesses. We specialize in paid advertising (Meta & Google), AI automation, CRM infrastructure, and smart website development.
@@ -11,15 +12,51 @@ RSL/A is a marketing and AI automation agency that architects intelligent market
 - CRM Infrastructure: Automated pipelines, lead nurturing, and database reactivation
 
 ## Technologies & Expertise
-- Platforms: GoHighLevel, Meta Ads, Google Ads, Sanity CMS
-- Development: Next.js, TypeScript, AI agents, marketing automation
+- Platforms: GoHighLevel, Meta Ads, Google Ads, Sanity CMS, Make.com
+- Development: Next.js, TypeScript, Python, AWS, AI agents
+- AI/ML: OpenAI GPT-4, Claude, OCR, computer vision
 - Specializations: Local SEO, conversion optimization, workflow automation, cold email personalization
 
-## Case Studies & Results
-- 60X ROAS on Meta Ads campaigns
-- 94% time reduction in cold email personalization
-- 92% efficiency gains in proposal automation
-- $43K+ annual savings through AI workflow automation
+## Case Studies (12 Published)
+
+### AI Automation
+1. Market Research Data Scraping - $136K/year savings, 87.5% time reduction
+   URL: https://rsla.io/work/market-research-data-scraping-automation
+2. AI Cold Email Personalization - $43K/year savings, 94% time reduction
+   URL: https://rsla.io/work/ai-cold-email-personalization
+3. AI Proposal Generator - $22K/year savings, 92% time reduction
+   URL: https://rsla.io/work/ai-proposal-generator-sales-workflow
+4. AI Lead Response Autoresponder - 24-second response time, 24/7 coverage
+   URL: https://rsla.io/work/ai-lead-response-autoresponder
+5. SEO Content Marketing Automation - $18K/year savings, 4X output
+   URL: https://rsla.io/work/seo-content-marketing-automation
+
+### Marketing & Local SEO
+6. Salon Marketing Automation - 60X ROAS, $36K annual revenue
+   URL: https://rsla.io/work/salon-marketing-automation-roi
+7. Local SEO & Reputation Management - 118 new reviews, $25K revenue in 60 days
+   URL: https://rsla.io/work/local-seo-reputation-management
+8. Marketing Analytics Reporting - 96% time reduction, $18K/year savings
+   URL: https://rsla.io/work/marketing-analytics-reporting-automation
+
+### CRM & Operations
+9. Nonprofit CRM & Volunteer Management - $40K/year savings, 2000+ volunteers
+   URL: https://rsla.io/work/nonprofit-crm-volunteer-automation
+10. Field Service Operations Automation - 100% operations consolidated
+    URL: https://rsla.io/work/field-service-operations-automation
+
+### Development & Engineering
+11. Media Content Operations AI - 70% workload reduction
+    URL: https://rsla.io/work/media-content-operations-ai
+12. IoT Manufacturing Robot Tracking - 10Hz real-time streaming
+    URL: https://rsla.io/work/iot-manufacturing-robot-tracking
+
+## Key Results Summary
+- $136K largest annual savings (market research automation)
+- 60X highest ROAS (salon marketing)
+- 97% data accuracy (OCR automation)
+- 94% time reduction (cold email personalization)
+- 2000+ volunteers managed (nonprofit CRM)
 
 ## Contact
 Website: https://rsla.io
@@ -39,9 +76,11 @@ Location: Manhattan, New York
 - Conversion rate optimization
 - Lead generation systems
 - Business process automation
+- GoHighLevel implementation
+- Make.com workflow automation
 
 ## Target Audience
-Small to medium businesses looking to scale through intelligent marketing systems, automation, and AI integration. Industries: service businesses, local businesses, B2B companies.
+Small to medium businesses looking to scale through intelligent marketing systems, automation, and AI integration. Industries: service businesses, local businesses, B2B companies, nonprofits, field service companies, media companies.
 
 ## Brand Voice
-Technical, systems-focused, results-driven. We emphasize engineering and architecture metaphors. Direct, professional tone with emphasis on ROI and measurable outcomes.
+Technical, systems-focused, results-driven. We emphasize engineering and architecture metaphors. Direct, professional tone with emphasis on ROI and measurable outcomes. High-contrast storytelling that presents problems viscerally and solutions authoritatively.

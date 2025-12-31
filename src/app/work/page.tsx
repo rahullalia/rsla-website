@@ -30,7 +30,7 @@ type CaseStudy = {
 
 const caseStudies: CaseStudy[] = [
   {
-    slug: "market-research-automation",
+    slug: "market-research-data-scraping-automation",
     tag: "Python Automation & AWS Development",
     title: "Automation Platform Saving $136K Annually for Market Research Firm",
     description: "Built distributed web scraping and OCR automation on AWS, reducing a 4-month manual process to 2 weeks with 97% accuracy.",
@@ -44,7 +44,7 @@ const caseStudies: CaseStudy[] = [
     annualSavings: 136000,
   },
   {
-    slug: "casagrande-salon",
+    slug: "salon-marketing-automation-roi",
     tag: "Digital Marketing & Lead Nurture",
     title: "$600 in Meta Ads Drove $36K in Rental Income",
     description: "Helped a Manhattan salon owner fill vacant suites, turning unused space into a reliable, passive revenue stream with a 60X return on ad spend.",
@@ -58,7 +58,7 @@ const caseStudies: CaseStudy[] = [
     annualSavings: 36000,
   },
   {
-    slug: "email-ice-breaker-automation",
+    slug: "ai-cold-email-personalization",
     tag: "AI Automation & Cold Email",
     title: "AI Cold Email Personalization Saves 325 Hours Annually",
     description: "Automated cold email personalization with AI, reducing research and writing time from 8 minutes to 30 seconds per email using LinkedIn enrichment data.",
@@ -72,7 +72,7 @@ const caseStudies: CaseStudy[] = [
     annualSavings: 43387,
   },
   {
-    slug: "united-sikhs",
+    slug: "nonprofit-crm-volunteer-automation",
     tag: "Nonprofit CRM & Volunteer Management",
     title: "Automated Volunteer Onboarding, Saving $40K a Year",
     description: "Centralized volunteer and donor data for a humanitarian NGO, saving the cost of a full-time coordinator by implementing automated GHL workflows.",
@@ -86,7 +86,7 @@ const caseStudies: CaseStudy[] = [
     annualSavings: 40000,
   },
   {
-    slug: "proposal-generator-automation",
+    slug: "ai-proposal-generator-sales-workflow",
     tag: "AI Automation & Workflow",
     title: "AI Proposal Generator Saves $22K Annually",
     description: "Automated proposal creation with AI, reducing production time from 2 hours to 10 minutes and recovering 165 hours annually through Make.com, Claude AI, and Google Docs.",
@@ -100,7 +100,7 @@ const caseStudies: CaseStudy[] = [
     annualSavings: 22027,
   },
   {
-    slug: "spice-on-a-slice",
+    slug: "local-seo-reputation-management",
     tag: "Local SEO & Customer Nurture",
     title: "From 14 to 132 Google Reviews and $25K in 60 Days",
     description: "Transformed a local pizza shop's online visibility, generating over 100 new reviews and a significant revenue bump through automated customer sequences.",
@@ -114,7 +114,7 @@ const caseStudies: CaseStudy[] = [
     annualSavings: 25000,
   },
   {
-    slug: "facebook-ads-reporting-automation",
+    slug: "marketing-analytics-reporting-automation",
     tag: "Marketing Automation & Google Sheets",
     title: "Facebook Ads Reporting Automation Saves 990+ Hours Annually",
     description: "Automated a 4-hour daily Facebook Ads data tracking process down to 10 minutes, freeing up the lead marketer and boosting conversions by 4%.",
@@ -128,7 +128,7 @@ const caseStudies: CaseStudy[] = [
     annualSavings: 18000,
   },
   {
-    slug: "email-autoresponder-automation",
+    slug: "ai-lead-response-autoresponder",
     tag: "AI Automation & Email Intelligence",
     title: "Never Lose Another Lead: AI Auto-Responder That Actually Reads Messages",
     description: "Built an intelligent AI email auto-responder that personalizes replies based on message content, responding in 24 seconds and capturing leads 24/7.",
@@ -142,7 +142,7 @@ const caseStudies: CaseStudy[] = [
     annualSavings: 0,
   },
   {
-    slug: "ai-media-automation-founding-engineer",
+    slug: "media-content-operations-ai",
     tag: "AI Engineering & Content Automation",
     title: "Founding Engineer: AI Automation Systems for Media Company",
     description: "Architected three production AI systems reducing manual content operations by 70%, from video QC to social content generation.",
@@ -156,7 +156,7 @@ const caseStudies: CaseStudy[] = [
     annualSavings: 0,
   },
   {
-    slug: "cleaning-company-automation",
+    slug: "field-service-operations-automation",
     tag: "GoHighLevel Business Operations",
     title: "Rebuilt Entire Operations With AI and Housecall Pro Sync",
     description: "Designed an end-to-end operational system using GHL, AI, and deep integration with HCP, eliminating manual tasks and creating a foundation for scaling.",
@@ -170,7 +170,7 @@ const caseStudies: CaseStudy[] = [
     annualSavings: 0,
   },
   {
-    slug: "rsl-blog-automation",
+    slug: "seo-content-marketing-automation",
     tag: "AI Automation & Content Strategy",
     title: "Saved $18K a Year with Make.com and ChatGPT",
     description: "An internal case study proving that AI-powered automation can consistently publish high-quality, SEO-optimized content, eliminating massive copywriting costs.",
@@ -184,7 +184,7 @@ const caseStudies: CaseStudy[] = [
     annualSavings: 18000,
   },
   {
-    slug: "smart-factory-robot-integration",
+    slug: "iot-manufacturing-robot-tracking",
     tag: "IoT & Industrial Automation",
     title: "Real-Time Robot Tracking for Automotive Manufacturing",
     description: "Engineered MQTT + REST API integration for autonomous mobile robots, enabling 10Hz real-time tracking across manufacturing plants.",
