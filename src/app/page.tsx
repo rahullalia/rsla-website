@@ -123,6 +123,18 @@ export default function Home() {
                 View Case Studies
               </MagneticButton>
             </div>
+
+            {/* Trust Badge */}
+            <div className="mt-10 flex items-center gap-4">
+              <span className="text-sm text-white/50 uppercase tracking-wider">Recognized by</span>
+              <div className="bg-white rounded-lg px-4 py-3">
+                <img
+                  src="/images/designrush-badge.png"
+                  alt="DesignRush"
+                  className="h-16 w-auto"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Animated line */}

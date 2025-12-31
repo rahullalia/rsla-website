@@ -16,6 +16,14 @@ export default function Footer() {
                         />
                     </Link>
 
+                    <div className="bg-white/90 rounded-lg px-3 py-2">
+                        <img
+                            src="/images/designrush-badge.png"
+                            alt="DesignRush"
+                            className="h-12 w-auto"
+                        />
+                    </div>
+
                     <div className="flex items-center gap-6 text-sm text-white/50">
                         <Link
                             href="/privacy-policy"
@@ -58,6 +66,14 @@ export default function Footer() {
                         >
                             Terms
                         </Link>
+                    </div>
+
+                    <div className="bg-white/90 rounded-lg px-3 py-2">
+                        <img
+                            src="/images/designrush-badge.png"
+                            alt="DesignRush"
+                            className="h-10 w-auto"
+                        />
                     </div>
 
                     <p className="text-sm text-white/40">
