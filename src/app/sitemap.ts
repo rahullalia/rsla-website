@@ -5,7 +5,7 @@ import { blogPostSlugsQuery } from '@/sanity/lib/queries';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://rsla.io';
 
-  // Static pages
+  // Static pages (only indexable pages - excludes noindex pages like /privacy-policy, /terms, /insider, /rahul, /sid, /thank-you)
   const staticPages = [
     {
       url: baseUrl,
@@ -24,24 +24,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/insider`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/privacy-policy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.3,
     },
   ];
 

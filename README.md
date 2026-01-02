@@ -35,15 +35,12 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 src/
 ├── app/                    # Next.js App Router pages
 │   ├── page.tsx           # Homepage
-│   ├── sitemap.ts         # Dynamic sitemap (11 case studies + blog)
-│   ├── work/              # 11 case study pages
+│   ├── sitemap.ts         # Dynamic sitemap (12 case studies + blog)
+│   ├── work/              # 12 case study pages (SEO-optimized slugs)
 │   ├── blog/              # Blog (Sanity-powered)
-│   ├── admin/             # Admin dashboard (no auth currently)
-│   │   ├── page.tsx       # Dashboard
-│   │   └── blog/          # Blog automation UI
-│   ├── studio/            # Sanity Studio (embedded)
 │   ├── privacy-policy/    # Privacy policy
 │   ├── terms/             # Terms of service
+│   ├── thank-you/         # Calendar booking confirmation
 │   └── insider/           # Newsletter insider page
 ├── components/            # React components
 │   ├── Navigation.tsx     # Main navigation (Home/Work/Blog)
