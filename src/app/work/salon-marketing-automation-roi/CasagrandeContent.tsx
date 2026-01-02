@@ -56,7 +56,7 @@ export default function CasagrandeContent() {
             </ul>
 
             <ImageLightbox
-                src="/images/case-studies/casagrande-salon/ghl-workflow-example.png"
+                src="/images/case-studies/casagrande-salon/ghl-workflow-example.webp"
                 alt="GoHighLevel CRM workflow setup for Casagrande Salon"
                 caption="Automated CRM workflow in GoHighLevel (click to enlarge)"
                 className="my-12"
@@ -70,13 +70,13 @@ export default function CasagrandeContent() {
 
             <div className="grid md:grid-cols-2 gap-8 my-12">
                 <ImageLightbox
-                    src="/images/case-studies/casagrande-salon/sms-workflow-example.png"
+                    src="/images/case-studies/casagrande-salon/sms-workflow-example.webp"
                     alt="Automated SMS follow-up sequence"
                     caption="Automated SMS sequence (click to enlarge)"
                     size="full"
                 />
                 <ImageLightbox
-                    src="/images/case-studies/casagrande-salon/email-workflow-example.png"
+                    src="/images/case-studies/casagrande-salon/email-workflow-example.webp"
                     alt="Automated email follow-up sequence"
                     caption="Automated email sequence (click to enlarge)"
                     size="full"

@@ -73,7 +73,7 @@ export default function SpiceOnASliceContent() {
             </p>
 
             <ImageLightbox
-                src="/images/case-studies/spice-on-a-slice/before-after-reviews.png"
+                src="/images/case-studies/spice-on-a-slice/before-after-reviews.webp"
                 alt="Spice on a Slice Google reviews growth: 14 to 132 reviews"
                 caption="Before & After: 14 to 132 Google reviews in 60 days (click to enlarge)"
                 className="my-12"

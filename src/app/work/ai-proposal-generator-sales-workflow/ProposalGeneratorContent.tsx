@@ -50,7 +50,7 @@ export default function ProposalGeneratorContent() {
 
             <h3>The Architecture</h3>
             <ImageLightbox
-                src="/images/case-studies/proposal-generator-automation/workflow-screenshot.png"
+                src="/images/case-studies/proposal-generator-automation/workflow-screenshot.webp"
                 alt="AI Proposal Generator Make.com Workflow"
                 caption="The complete Make.com workflow: Typeform → Claude AI → Google Docs (click to enlarge)"
                 className="my-12"

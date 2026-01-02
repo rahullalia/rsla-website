@@ -53,7 +53,7 @@ export default function RSLBlogContent() {
             </ul>
 
             <ImageLightbox
-                src="/images/case-studies/rsl-blog-automation/typeform-screenshot.png"
+                src="/images/case-studies/rsl-blog-automation/typeform-screenshot.webp"
                 alt="Typeform interface for blog topic input"
                 caption="Typeform input interface (click to enlarge)"
                 className="my-12"
@@ -66,7 +66,7 @@ export default function RSLBlogContent() {
             </p>
 
             <ImageLightbox
-                src="/images/case-studies/rsl-blog-automation/automation-screenshot.png"
+                src="/images/case-studies/rsl-blog-automation/automation-screenshot.webp"
                 alt="Make.com automation workflow for blog publishing"
                 caption="Make.com automation workflow (click to enlarge)"
                 className="my-12"

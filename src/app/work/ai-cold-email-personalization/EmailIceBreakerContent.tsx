@@ -68,7 +68,7 @@ export default function EmailIceBreakerContent() {
 
             <h3>The Architecture</h3>
             <ImageLightbox
-                src="/images/case-studies/email-ice-breaker/workflow-screenshot.png"
+                src="/images/case-studies/email-ice-breaker/workflow-screenshot.webp"
                 alt="AI Email Ice-Breaker Make.com Workflow"
                 caption="The complete Make.com workflow: Google Sheets → OpenAI → Update Sheet (click to enlarge)"
                 className="my-12"

@@ -56,7 +56,7 @@ export default function EmailAutoresponderContent() {
 
             <h3>The Architecture</h3>
             <ImageLightbox
-                src="/images/case-studies/email-autoresponder/workflow-screenshot.png"
+                src="/images/case-studies/email-autoresponder/workflow-screenshot.webp"
                 alt="AI Email Auto-Responder Make.com Workflow"
                 caption="The complete Make.com workflow: Email Trigger → AI Analysis → Personalized Reply (click to enlarge)"
                 className="my-12"
