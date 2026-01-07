@@ -1,0 +1,458 @@
+/* iPhone 14 Pro Mockup - Based on devices.css */
+
+/* Device base reset */
+.device,
+.device *,
+.device *::before,
+.device *::after {
+  box-sizing: border-box;
+  display: block;
+}
+
+.device {
+  position: relative;
+  transform: scale(1);
+  z-index: 1;
+  height: 434px;
+  width: 214px;
+}
+
+.deviceFrame {
+  --device-purple: #342C3F;
+  --device-purple-dark: #26202e;
+  --device-panel: #010101;
+  background: var(--device-panel);
+  border: 1px solid var(--device-purple-dark);
+  border-radius: 34px;
+  box-shadow:
+    inset 0 0 2px 1px rgba(52, 44, 63, 0.7),
+    inset 0 0 0 3px var(--device-purple),
+    0 10px 30px rgba(0, 0, 0, 0.35);
+  height: 434px;
+  padding: 9.5px;
+  width: 214px;
+  z-index: 1;
+}
+
+.deviceScreen {
+  border-radius: 24.5px;
+  height: 415px;
+  width: 195px;
+  overflow: hidden;
+  background-color: #000;
+  background-position: center center;
+  background-size: cover;
+  object-fit: cover;
+  position: relative;
+}
+
+/* Antenna lines */
+.deviceStripe::after,
+.deviceStripe::before {
+  border: solid rgba(1, 1, 1, 0.25);
+  border-width: 0 3.5px;
+  content: "";
+  height: 3.5px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 9;
+}
+
+.deviceStripe::after {
+  top: 42.5px;
+}
+
+.deviceStripe::before {
+  bottom: 42.5px;
+}
+
+/* Dynamic Island */
+.deviceHeader {
+  --device-panel: #010101;
+  background: var(--device-panel);
+  border-radius: 10px;
+  height: 17.5px;
+  left: 50%;
+  margin-left: -30px;
+  position: absolute;
+  top: 14.5px;
+  width: 60px;
+  z-index: 10;
+}
+
+/* Sensors (camera) */
+.deviceSensors::after,
+.deviceSensors::before {
+  content: "";
+  position: absolute;
+}
+
+.deviceSensors::after {
+  --device-panel: #010101;
+  background: var(--device-panel);
+  border-radius: 8.5px;
+  height: 16.5px;
+  left: 50%;
+  margin-left: -30px;
+  top: 15px;
+  width: 37px;
+}
+
+.deviceSensors::before {
+  background: radial-gradient(farthest-corner at 20% 20%, #6074BF 0, transparent 40%),
+              radial-gradient(farthest-corner at 80% 80%, #513785 0, #24555E 20%, transparent 50%);
+  box-shadow: 0 0 0.5px 0.5px rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  height: 4.5px;
+  left: 50%;
+  margin-left: 18px;
+  top: 21px;
+  width: 4.5px;
+}
+
+/* Volume buttons (left side) */
+.deviceBtns {
+  --device-purple-dark: #26202e;
+  background: var(--device-purple-dark);
+  border-radius: 1px;
+  height: 16px;
+  left: -1px;
+  position: absolute;
+  top: 57.5px;
+  width: 1.5px;
+}
+
+.deviceBtns::after,
+.deviceBtns::before {
+  --device-purple-dark: #26202e;
+  background: var(--device-purple-dark);
+  border-radius: 1px;
+  content: "";
+  height: 31px;
+  left: 0;
+  position: absolute;
+  width: 1.5px;
+}
+
+.deviceBtns::after {
+  top: 30px;
+}
+
+.deviceBtns::before {
+  top: 70px;
+}
+
+/* Power button (right side) */
+.devicePower {
+  --device-purple-dark: #26202e;
+  background: var(--device-purple-dark);
+  border-radius: 1px;
+  height: 50px;
+  right: -1px;
+  position: absolute;
+  top: 100px;
+  width: 1.5px;
+}
+
+/* Corner antenna accents */
+.deviceHome::after,
+.deviceHome::before {
+  border: solid rgba(1, 1, 1, 0.25);
+  border-width: 3px 0;
+  content: "";
+  height: 3px;
+  position: absolute;
+  width: 3px;
+  z-index: 9;
+}
+
+.deviceHome::after {
+  right: 43px;
+  top: 0;
+}
+
+.deviceHome::before {
+  bottom: 0;
+  left: 43px;
+}
+
+/* iMessage Screen Content */
+.imessageScreen {
+  --ios-green: #34c759;
+  --ios-blue: #007aff;
+  --ios-gray: #e5e5ea;
+  --ios-bg: #f2f2f7;
+  background: var(--ios-bg);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+}
+
+/* Status bar */
+.statusbar {
+  height: 22px;
+  padding: 4px 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 8px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.statusbarLeft {
+  width: 40px;
+}
+
+.statusbarCenter {
+  width: 70px;
+}
+
+.statusbarRight {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.statusbarRight svg {
+  width: 9px;
+  height: 9px;
+  fill: #1a1a1a;
+}
+
+/* Message header */
+.header {
+  background: rgba(248, 248, 248, 0.92);
+  backdrop-filter: blur(10px);
+  padding: 6px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
+  position: relative;
+}
+
+.back {
+  position: absolute;
+  left: 8px;
+  top: 10px;
+  color: var(--ios-blue);
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.back svg {
+  width: 14px;
+  height: 14px;
+  fill: #007aff;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--color-navy) 0%, #2d4a6d 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 7px;
+  font-weight: 700;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.contactName {
+  font-size: 8px;
+  font-weight: 400;
+  color: #8e8e93;
+  text-align: center;
+  margin-bottom: -4px;
+}
+
+/* Message body */
+.body {
+  flex: 1;
+  padding: 8px 8px 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide scrollbars in device */
+.device * {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.device *::-webkit-scrollbar {
+  display: none;
+}
+
+/* iOS-style bubble */
+.bubbleWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 2px;
+}
+
+.bubbleWrapperReceived {
+  align-items: flex-start;
+}
+
+.bubble {
+  position: relative;
+  max-width: 85%;
+  padding: 8px 12px 12px;
+  font-size: 9.5px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Sent message (green SMS) */
+.bubbleSent {
+  background: #34c759;
+  color: #ffffff;
+  border-radius: 14px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Received message (gray) */
+.bubbleReceived {
+  background: #e5e5ea;
+  color: #000000;
+  border-radius: 14px;
+  border-bottom-left-radius: 4px;
+}
+
+/* Bubble tail */
+.bubble::before,
+.bubble::after {
+  bottom: -0.1rem;
+  content: "";
+  height: 1rem;
+  position: absolute;
+}
+
+.bubbleSent.hasTail::before {
+  border-bottom-left-radius: 0.8rem 0.7rem;
+  border-right: 1rem solid #34c759;
+  right: -0.35rem;
+  transform: translate(0, -0.1rem);
+}
+
+.bubbleSent.hasTail::after {
+  background-color: #f2f2f7;
+  border-bottom-left-radius: 0.5rem;
+  right: -40px;
+  transform: translate(-30px, -2px);
+  width: 10px;
+}
+
+/* Received message tail (left side) */
+.bubbleReceived.hasTail::before {
+  border-bottom-right-radius: 0.8rem 0.7rem;
+  border-left: 1rem solid #e5e5ea;
+  left: -0.35rem;
+  transform: translate(0, -0.1rem);
+}
+
+.bubbleReceived.hasTail::after {
+  background-color: #f2f2f7;
+  border-bottom-right-radius: 0.5rem;
+  left: -40px;
+  transform: translate(30px, -2px);
+  width: 10px;
+}
+
+.hl {
+  display: inline;
+  font-weight: 600;
+}
+
+.link {
+  display: inline;
+  text-decoration: underline;
+}
+
+/* Timestamp */
+.timestamp {
+  font-size: 8px;
+  color: #8e8e93;
+  text-align: center;
+  margin: 8px 0;
+}
+
+/* Delivered status */
+.delivered {
+  font-size: 8px;
+  color: #8e8e93;
+  text-align: right;
+  margin-top: 2px;
+  padding-right: 4px;
+}
+
+/* Input area */
+.input {
+  background: rgba(248, 248, 248, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 6px 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+
+.inputPlus {
+  width: 22px;
+  height: 22px;
+  background: #e5e5ea;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8e8e93;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.inputField {
+  flex: 1;
+  background: #fff;
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  border-radius: 14px;
+  padding: 5px 10px;
+  font-size: 11px;
+  color: #c7c7cc;
+}
+
+.inputSend {
+  width: 22px;
+  height: 22px;
+  background: #007aff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputSend svg {
+  width: 12px;
+  height: 12px;
+  fill: white;
+  margin-left: 1px;
+}

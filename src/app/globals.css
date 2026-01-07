@@ -460,3 +460,94 @@ h1, h2, h3, h4, h5, h6 {
 .prose a[target="_blank"]:hover img {
   opacity: 0.9;
 }
+
+/* =================================================================
+   PDF LEAD MAGNET COMPONENT STYLES
+   CSS Variables used by components in src/components/pdf/
+   ================================================================= */
+
+:root {
+  /* PDF Colors - Navy/Gold palette */
+  --color-navy: #1a2b4a;
+  --color-navy-dark: #0f1a2e;
+  --color-navy-light: #2d4066;
+  --color-gold: #d4a853;
+  --color-gold-light: #e8c97a;
+  --color-gold-dark: #b8923f;
+  --color-gray-light: #f7f8fa;
+  --color-gray-medium: #e1e5eb;
+  --color-text: #2d3748;
+  --color-text-light: #718096;
+
+  /* PDF Gradients */
+  --gradient-navy: linear-gradient(135deg, #1a2b4a 0%, #2d4a6d 100%);
+  --gradient-gold: linear-gradient(135deg, #d4a853 0%, #e8c97a 100%);
+  --gradient-hero: linear-gradient(135deg, #1a2b4a 0%, #1e3a5f 50%, #2d4a6d 100%);
+
+  /* PDF Typography */
+  --font-primary: inherit;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+
+  /* PDF Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* PDF Page dimensions (Letter: 8.5" x 11") */
+  --page-width: 8.5in;
+  --page-height: 11in;
+  --page-margin: 0.6in;
+}
+
+/* PDF Utility Classes */
+.text-navy { color: var(--color-navy); }
+.text-gold { color: var(--color-gold); }
+.text-light { color: var(--color-text-light); }
+.mb-0 { margin-bottom: 0 !important; }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+/* PDF Print Styles */
+@page {
+  size: 8.5in 11in;
+  margin: 0;
+}
+
+@media print {
+  .page {
+    width: 100%;
+    min-height: auto;
+    margin: 0;
+    box-shadow: none;
+    page-break-after: always;
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+  }
+
+  .page--cover {
+    min-height: 100vh;
+  }
+
+  /* Prevent breaks inside important elements */
+  .callout,
+  .template-box,
+  .pull-quote,
+  .stat-cards,
+  .hack-header,
+  .scorecard-row {
+    page-break-inside: avoid;
+  }
+
+  .no-print {
+    display: none;
+  }
+}

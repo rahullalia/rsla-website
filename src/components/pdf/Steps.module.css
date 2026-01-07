@@ -1,0 +1,44 @@
+.steps {
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-lg) 0;
+}
+
+.steps li {
+  position: relative;
+  padding-left: 3.5rem;
+  margin-bottom: var(--spacing-md);
+  counter-increment: step;
+  min-height: 2.5rem;
+  line-height: 1.5;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--gradient-navy);
+  color: var(--color-gold);
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Centered variant - for single-line items */
+.stepsCentered li {
+  display: flex;
+  align-items: center;
+  min-height: 2.5rem;
+}
+
+.stepsCentered li::before {
+  top: 50%;
+  transform: translateY(-50%);
+}

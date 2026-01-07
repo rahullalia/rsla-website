@@ -1,0 +1,26 @@
+.contentBlock {
+  margin: var(--spacing-xl) 0;
+}
+
+.contentBlockHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.contentBlockHeader h4 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.contentBlockHeader::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gray-medium) 0%, transparent 100%);
+}

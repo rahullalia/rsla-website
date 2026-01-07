@@ -1,0 +1,44 @@
+.pullQuote {
+  background: var(--gradient-navy);
+  border-radius: 8px;
+  padding: var(--spacing-xl);
+  margin: var(--spacing-xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.pullQuote::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background: rgba(212, 168, 83, 0.15);
+  transform: rotate(45deg) translate(30%, -50%);
+}
+
+.pullQuoteIcon {
+  font-size: 3rem;
+  color: var(--color-gold);
+  opacity: 0.4;
+  line-height: 1;
+  margin-bottom: var(--spacing-sm);
+}
+
+.pullQuote blockquote {
+  font-size: 1.0625rem;
+  font-style: italic;
+  color: var(--color-white);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.pullQuote cite {
+  display: block;
+  margin-top: var(--spacing-md);
+  font-size: 0.8125rem;
+  font-style: normal;
+  color: var(--color-gold);
+}

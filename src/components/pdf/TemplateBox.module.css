@@ -1,0 +1,50 @@
+.templateBox {
+  background: #1e2432;
+  border-radius: 8px;
+  margin: var(--spacing-lg) 0;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.templateBoxHeader {
+  background: #2a3142;
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.templateBoxDots {
+  display: flex;
+  gap: 6px;
+}
+
+.templateBoxDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.templateBoxDotRed { background: #ff5f56; }
+.templateBoxDotYellow { background: #ffbd2e; }
+.templateBoxDotGreen { background: #27ca40; }
+
+.templateBoxTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  margin-left: var(--spacing-sm);
+}
+
+.templateBoxContent {
+  padding: var(--spacing-lg);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: #e4e8f0;
+  white-space: pre-wrap;
+}
+
+.highlight {
+  color: var(--color-gold);
+}

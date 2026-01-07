@@ -1,0 +1,124 @@
+.coverEyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-lg);
+}
+
+.coverTitle {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--color-white);
+  max-width: 580px;
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.1;
+}
+
+.coverTitleAccent {
+  display: block;
+  color: var(--color-gold);
+}
+
+.coverDivider {
+  width: 80px;
+  height: 4px;
+  background: var(--color-gold);
+  margin: 0 auto var(--spacing-xl);
+}
+
+.coverSubtitle {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.8);
+  font-style: italic;
+}
+
+.coverBonus {
+  display: inline-block;
+  margin-top: var(--spacing-md);
+  padding: 0.5rem 1.25rem;
+  background: linear-gradient(135deg, var(--color-gold) 0%, #c49a47 100%);
+  color: var(--color-navy);
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Bonus Cover Content */
+.bonusCoverEyebrow {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-navy);
+  opacity: 0.8;
+  margin-bottom: var(--spacing-lg);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.bonusCoverTitle {
+  font-size: 4.5rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-md);
+  line-height: 1;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 0 40px rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.05em;
+}
+
+.bonusCoverSubtitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-lg);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.bonusCoverDivider {
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  margin: 0 auto var(--spacing-xl);
+  border-radius: 2px;
+}
+
+.bonusCoverDescription {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  opacity: 0.9;
+  max-width: 420px;
+  line-height: 1.6;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.bonusCoverBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-2xl);
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(135deg, var(--color-navy) 0%, #2d4a6d 100%);
+  color: #f5e6c8;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  box-shadow:
+    0 4px 15px rgba(26, 43, 74, 0.4),
+    0 0 0 2px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.bonusCoverBadge svg {
+  width: 18px;
+  height: 18px;
+  fill: #f5e6c8;
+}

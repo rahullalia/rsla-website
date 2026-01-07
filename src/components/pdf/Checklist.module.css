@@ -1,0 +1,26 @@
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-lg) 0;
+}
+
+.checklist li {
+  position: relative;
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 3rem;
+  margin-bottom: var(--spacing-sm);
+  background: var(--color-gray-light);
+  border-radius: 6px;
+  border-left: 3px solid var(--color-gray-medium);
+}
+
+.checklist li::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-navy);
+  border-radius: 4px;
+}

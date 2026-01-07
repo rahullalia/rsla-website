@@ -1,0 +1,84 @@
+.hackHeader {
+  display: flex;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 3px solid var(--color-gold);
+  position: relative;
+}
+
+.hackBadge {
+  width: 72px;
+  height: 72px;
+  background: var(--gradient-navy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hackBadgeNumber {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.hackBadgeLabel {
+  font-size: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.7);
+  margin-top: 2px;
+}
+
+.hackBadgeBonus {
+  background: linear-gradient(135deg, var(--color-gold) 0%, #c49a47 100%);
+}
+
+.hackBadgeBonus .hackBadgeNumber {
+  color: var(--color-navy);
+}
+
+.hackBadgeBonus .hackBadgeLabel {
+  color: rgba(26, 43, 74, 0.8);
+}
+
+.hackInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hackTitle {
+  font-size: 1.75rem;
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.hackIcon {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+}
+
+.hackIcon svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--color-gold);
+}
+
+.hackTagline {
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--color-text-light);
+  margin-bottom: 0;
+}
