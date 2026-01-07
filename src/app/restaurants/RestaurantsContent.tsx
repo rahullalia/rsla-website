@@ -73,7 +73,7 @@ export default function RestaurantsContent() {
         {/* LANDING PAGE CONTENT */}
         <div className="pt-4 md:pt-8">
           {/* Hero Headline */}
-          <div className="text-center mb-10">
+          <div className="text-center mb-16">
             <p className="text-brand-blue text-sm font-medium uppercase tracking-wider mb-3">
               Restaurant Growth System
             </p>
@@ -94,7 +94,7 @@ export default function RestaurantsContent() {
           </div>
 
           {/* Loom video placeholder */}
-          <div className="aspect-video bg-white/5 border border-white/10 rounded-2xl mb-10 flex items-center justify-center overflow-hidden">
+          <div className="aspect-video bg-white/5 border border-white/10 rounded-2xl mb-20 flex items-center justify-center overflow-hidden">
             <div className="text-center text-white/40">
               <div className="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-3 hover:bg-white/20 transition-colors cursor-pointer">
                 <svg className="w-10 h-10 ml-1" fill="currentColor" viewBox="0 0 24 24">
@@ -106,7 +106,7 @@ export default function RestaurantsContent() {
           </div>
 
           {/* Problem Agitation */}
-          <div className="mb-10">
+          <div className="mb-16">
             <h2 className="text-xl font-bold font-display text-center mb-6">
               Does any of this sound familiar?
             </h2>
@@ -130,7 +130,7 @@ export default function RestaurantsContent() {
           </div>
 
           {/* Mid-page CTA */}
-          <div className="text-center mb-10">
+          <div className="text-center mb-20">
             <button
               onClick={openQuiz}
               className="inline-block bg-brand-blue text-white px-8 py-3 rounded-full font-semibold shadow-[0_0_20px_rgba(0,112,243,0.4)] hover:shadow-[0_0_30px_rgba(0,112,243,0.6)] transition-all duration-300"
@@ -139,29 +139,41 @@ export default function RestaurantsContent() {
             </button>
           </div>
 
+          {/* Before/After Proof */}
+          <div className="mb-20">
+            <p className="text-white/40 text-sm text-center mb-4">Real results from a local pizzeria:</p>
+            <div className="rounded-2xl overflow-hidden border border-white/10">
+              <img
+                src="/images/case-studies/spice-on-a-slice/before-after-reviews.webp"
+                alt="Before and after: 14 reviews to 132 reviews on Google"
+                className="w-full"
+              />
+            </div>
+          </div>
+
           {/* Social Proof - iPhone Message Screenshots */}
-          <div className="mb-10">
+          <div className="mb-20">
             <p className="text-white/40 text-sm text-center mb-8">What restaurant owners are saying:</p>
 
             {/* Testimonial 1 - Left aligned */}
             <div className="flex flex-col md:flex-row items-center gap-6 mb-8">
               <div className="flex-shrink-0">
                 <IPhoneMockup
-                  contactName="Mike R."
-                  avatarInitials="MR"
-                  timestamp="Yesterday"
+                  contactName="[Name]"
+                  avatarInitials="??"
+                  timestamp="[Date]"
                 >
                   <MessageBubble>
-                    Got 47 new reviews in the first month. Game changer for our visibility on Google.
+                    [Testimonial message from restaurant owner about reviews/results]
                   </MessageBubble>
                 </IPhoneMockup>
               </div>
               <div className="flex-1 text-center md:text-left">
                 <p className="text-white/80 text-lg leading-relaxed mb-2">
-                  &ldquo;We went from page 3 to the top 5 in our area&rdquo;
+                  &ldquo;[Pull quote from testimonial]&rdquo;
                 </p>
                 <p className="text-white/40 text-sm">
-                  Mike runs a family Italian restaurant in Brooklyn
+                  [Name] runs [restaurant type] in [City]
                 </p>
               </div>
             </div>
@@ -170,21 +182,21 @@ export default function RestaurantsContent() {
             <div className="flex flex-col md:flex-row-reverse items-center gap-6 mb-8">
               <div className="flex-shrink-0">
                 <IPhoneMockup
-                  contactName="Sarah T."
-                  avatarInitials="ST"
-                  timestamp="2 days ago"
+                  contactName="[Name]"
+                  avatarInitials="??"
+                  timestamp="[Date]"
                 >
                   <MessageBubble>
-                    Brought back $8K from customers we thought we&apos;d lost forever. This system pays for itself.
+                    [Testimonial message from restaurant owner about revenue/reactivation]
                   </MessageBubble>
                 </IPhoneMockup>
               </div>
               <div className="flex-1 text-center md:text-right">
                 <p className="text-white/80 text-lg leading-relaxed mb-2">
-                  &ldquo;Best investment we made this year&rdquo;
+                  &ldquo;[Pull quote from testimonial]&rdquo;
                 </p>
                 <p className="text-white/40 text-sm">
-                  Sarah owns two taco spots in Austin
+                  [Name] owns [restaurant type] in [City]
                 </p>
               </div>
             </div>
@@ -193,28 +205,28 @@ export default function RestaurantsContent() {
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex-shrink-0">
                 <IPhoneMockup
-                  contactName="David L."
-                  avatarInitials="DL"
-                  timestamp="Last week"
+                  contactName="[Name]"
+                  avatarInitials="??"
+                  timestamp="[Date]"
                 >
                   <MessageBubble>
-                    Tuesday nights used to be dead. Now we&apos;re doing 30% more covers. The reactivation texts work.
+                    [Testimonial message from restaurant owner about slow nights/bookings]
                   </MessageBubble>
                 </IPhoneMockup>
               </div>
               <div className="flex-1 text-center md:text-left">
                 <p className="text-white/80 text-lg leading-relaxed mb-2">
-                  &ldquo;Slow nights aren&apos;t a problem anymore&rdquo;
+                  &ldquo;[Pull quote from testimonial]&rdquo;
                 </p>
                 <p className="text-white/40 text-sm">
-                  David manages a steakhouse in Phoenix
+                  [Name] manages [restaurant type] in [City]
                 </p>
               </div>
             </div>
           </div>
 
           {/* Case Study Card */}
-          <div className="bg-[#0d1117] border border-white/10 rounded-2xl p-8 mb-10">
+          <div className="bg-[#0d1117] border border-white/10 rounded-2xl p-8 mb-20">
             <p className="text-brand-blue text-xs font-medium uppercase tracking-[1.5px] mb-4">
               Local SEO & Customer Nurture
             </p>
@@ -242,7 +254,7 @@ export default function RestaurantsContent() {
                 </span>
               </div>
               <Link
-                href="/work/spice-on-a-slice"
+                href="/work/local-seo-reputation-management"
                 className="group flex items-center gap-1.5 text-brand-blue text-sm font-medium hover:text-white transition-colors self-center"
               >
                 <span>Read full case study</span>
@@ -260,7 +272,7 @@ export default function RestaurantsContent() {
           </div>
 
           {/* FAQ Section */}
-          <div className="mb-10">
+          <div className="mb-20">
             <h2 className="text-xl font-bold font-display text-center mb-6">
               Frequently Asked Questions
             </h2>
