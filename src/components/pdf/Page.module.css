@@ -1,0 +1,284 @@
+/* Page Structure */
+.page {
+  width: var(--page-width);
+  min-height: var(--page-height);
+  margin: 0 auto var(--spacing-xl);
+  background: var(--color-white);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  position: relative;
+  page-break-after: always;
+  overflow: hidden;
+}
+
+.page:last-child {
+  page-break-after: avoid;
+}
+
+.pageContent {
+  padding: var(--page-margin);
+  padding-top: calc(var(--page-margin) + 0.25in);
+  position: relative;
+  z-index: 2;
+}
+
+/* Angular Decorative Elements */
+.pageAccentTop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: var(--gradient-navy);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  opacity: 0.08;
+  z-index: 1;
+}
+
+.pageAccentBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  background: var(--color-gold);
+  clip-path: polygon(0 100%, 0 0, 100% 100%);
+  opacity: 0.15;
+  z-index: 1;
+}
+
+.pageNumber {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--color-navy);
+  color: var(--color-white);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem 0.5rem 1.5rem;
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.pageHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-gold);
+  z-index: 10;
+}
+
+.pageHeaderText {
+  position: absolute;
+  top: 0.4in;
+  left: var(--page-margin);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-light);
+}
+
+/* Cover Page */
+.pageCover {
+  width: var(--page-width);
+  min-height: var(--page-height);
+  margin: 0 auto var(--spacing-xl);
+  background: var(--gradient-hero);
+  color: var(--color-white);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  position: relative;
+  page-break-after: always;
+  overflow: hidden;
+}
+
+.pageCover .pageContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: calc(var(--page-height) - 1.2in);
+  padding: var(--page-margin);
+  position: relative;
+  z-index: 2;
+}
+
+.coverShape1 {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 300px;
+  height: 300px;
+  background: rgba(255,255,255,0.03);
+  transform: rotate(45deg);
+}
+
+.coverShape2 {
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: rgba(212, 168, 83, 0.1);
+  transform: rotate(45deg);
+}
+
+.coverShape3 {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 150px;
+  height: 600px;
+  background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+  transform: skewX(-15deg);
+}
+
+.coverFooter {
+  position: absolute;
+  bottom: 1in;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.05em;
+}
+
+/* Bonus Cover Page */
+.pageBonusCover {
+  width: var(--page-width);
+  min-height: var(--page-height);
+  margin: 0 auto var(--spacing-xl);
+  background: radial-gradient(ellipse at center, #e8c97a 0%, #d4a853 40%, #b8923f 80%, #a07830 100%);
+  color: var(--color-navy);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  position: relative;
+  page-break-after: always;
+  overflow: hidden;
+}
+
+.pageBonusCover .pageContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: calc(var(--page-height) - 1.2in);
+  padding: var(--page-margin);
+  position: relative;
+  z-index: 5;
+}
+
+.bonusCoverRays {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.08) 5deg,
+    transparent 10deg,
+    transparent 20deg,
+    rgba(255, 255, 255, 0.06) 25deg,
+    transparent 30deg,
+    transparent 40deg,
+    rgba(255, 255, 255, 0.08) 45deg,
+    transparent 50deg,
+    transparent 60deg,
+    rgba(255, 255, 255, 0.05) 65deg,
+    transparent 70deg,
+    transparent 80deg,
+    rgba(255, 255, 255, 0.07) 85deg,
+    transparent 90deg,
+    transparent 180deg,
+    rgba(255, 255, 255, 0.08) 185deg,
+    transparent 190deg,
+    transparent 270deg,
+    rgba(255, 255, 255, 0.06) 275deg,
+    transparent 280deg,
+    transparent 360deg
+  );
+  z-index: 1;
+}
+
+.bonusCoverGlow1 {
+  position: absolute;
+  top: -15%;
+  right: -10%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(255, 248, 220, 0.4) 0%, rgba(255, 248, 220, 0) 70%);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.bonusCoverGlow2 {
+  position: absolute;
+  bottom: -20%;
+  left: -15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(160, 120, 48, 0.5) 0%, rgba(160, 120, 48, 0) 70%);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.bonusCoverGlow3 {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.bonusCoverSparkle {
+  position: absolute;
+  z-index: 4;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.bonusCoverSparkle1 { top: 15%; left: 20%; }
+.bonusCoverSparkle2 { top: 25%; right: 15%; }
+.bonusCoverSparkle3 { bottom: 30%; left: 12%; }
+.bonusCoverSparkle4 { bottom: 20%; right: 20%; }
+.bonusCoverSparkle5 { top: 35%; left: 8%; }
+.bonusCoverSparkle6 { top: 18%; right: 30%; }
+
+.bonusCoverSparkleSm {
+  width: 16px;
+  height: 16px;
+}
+
+.bonusCoverFooter {
+  position: absolute;
+  bottom: 1in;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.1em;
+}

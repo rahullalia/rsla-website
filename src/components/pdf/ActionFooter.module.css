@@ -1,0 +1,33 @@
+.actionFooter {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-gray-light);
+  border-radius: 6px;
+}
+
+.actionFooterItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.icon svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--color-navy);
+  opacity: 0.6;
+}
+
+.actionFooterItem strong {
+  color: var(--color-navy);
+}

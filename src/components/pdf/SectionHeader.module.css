@@ -1,0 +1,32 @@
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--color-gray-medium);
+}
+
+.sectionIcon {
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-navy);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sectionIcon svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--color-white);
+}
+
+.sectionHeader h2 {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0;
+}
