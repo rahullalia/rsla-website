@@ -336,7 +336,7 @@ export default function Home() {
                 scrolling="no"
                 id="booking-calendar"
                 title="Booking Calendar"
-                className="h-[1100px]"
+                className="h-[1300px]"
               />
             </div>
           </FadeIn>
