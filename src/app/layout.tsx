@@ -101,7 +101,7 @@ const organizationSchema = {
     },
   ],
   sameAs: [
-    "https://www.linkedin.com/company/rsla-io",
+    "https://www.linkedin.com/company/rsl-a/",
     "https://www.instagram.com/rsla.io",
     "https://www.tiktok.com/@rsla.io",
   ],
@@ -214,7 +214,7 @@ const localBusinessSchema = {
     ],
   },
   sameAs: [
-    "https://www.linkedin.com/company/rsla-io",
+    "https://www.linkedin.com/company/rsl-a/",
     "https://www.instagram.com/rsla.io",
     "https://www.tiktok.com/@rsla.io",
   ],
