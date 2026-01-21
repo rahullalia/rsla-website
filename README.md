@@ -7,8 +7,9 @@ Marketing & AI automation agency website. Rebrand of RSL Media Hub.
 - **Next.js 16** (App Router) with Turbopack
 - **TypeScript** (strict mode)
 - **Tailwind CSS v4**
-- **Sanity CMS** for blog content
+- **Sanity CMS** for blog and case study content
 - **Framer Motion** for animations
+- **Server Components** for maximum performance (SSR)
 - **Vercel** for deployment
 
 ## Getting Started
@@ -35,8 +36,8 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 src/
 ├── app/                    # Next.js App Router pages
 │   ├── page.tsx           # Homepage
-│   ├── sitemap.ts         # Dynamic sitemap (12 case studies + blog)
-│   ├── work/              # 12 case study pages (SEO-optimized slugs)
+│   ├── sitemap.ts         # Dynamic sitemap (Case studies + Blog)
+│   ├── work/              # 12 Dynamic case study pages (Sanity-powered)
 │   ├── blog/              # Blog (Sanity-powered)
 │   ├── privacy-policy/    # Privacy policy
 │   ├── terms/             # Terms of service
@@ -72,7 +73,7 @@ public/
 
 ## Sanity CMS
 
-Blog content is managed via Sanity CMS.
+Blog and Case Study content is managed via Sanity CMS.
 
 - **Project ID:** `36wenybq`
 - **Dataset:** `production`
@@ -187,7 +188,7 @@ Interactive canvas-based tool for generating RSL/A logo assets with real-time pr
 
 ## Admin Routes
 
-**Note:** Authentication is currently disabled due to Vercel COOP issues blocking Firebase popup auth.
+**Note:** Authentication has been removed. Admin routes are currently open or protected by server-side headers where applicable.
 
 | Route | Description |
 |-------|-------------|
