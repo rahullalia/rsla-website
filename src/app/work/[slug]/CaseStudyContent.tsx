@@ -29,6 +29,30 @@ interface CaseStudyContentProps {
 }
 
 export default function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
+
+    // Parse stat value for NumberCounter - ported from CaseStudyLayout
+    const parseStatValue = (value: string) => {
+        // Match numbers including commas (e.g., "40,000" or "136,000")
+        const numMatch = value.match(/[\d,]+\.?\d*/);
+        if (!numMatch) return null;
+
+        // Remove commas before parsing
+        const numStr = numMatch[0].replace(/,/g, '');
+        const num = parseFloat(numStr);
+        const prefix = value.startsWith('$') ? '$' : value.startsWith('+') ? '+' : '';
+        // Improved suffix logic to handle cases like '24 sec'
+        let suffix = '';
+        if (value.includes('%')) suffix = '%';
+        else if (value.includes('X')) suffix = 'X';
+        else if (value.includes('K')) suffix = 'K';
+        else if (value.includes(' sec')) suffix = ' sec';
+
+        // Check if original had commas - if so, we need to format the output with commas
+        const hasCommas = numMatch[0].includes(',');
+
+        return { num, prefix, suffix, hasCommas };
+    };
+
     return (
         <main className="min-h-screen bg-brand-black text-white relative">
             <Navigation />
@@ -79,24 +103,30 @@ export default function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     {/* Metrics Grid */}
                     {caseStudy.metrics && caseStudy.metrics.length > 0 && (
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-y border-white/10 mb-12">
-                            {caseStudy.metrics.map((metric, idx) => (
-                                <div key={idx} className="text-center md:text-left">
-                                    <strong className="block text-4xl md:text-5xl font-bold text-white mb-2">
-                                        {metric.value.startsWith('+') ? (
-                                            <><span>+</span><NumberCounter value={parseInt(metric.value.replace(/[^0-9]/g, ''))} suffix="X" /></>
-                                        ) : metric.value.startsWith('$') ? (
-                                            <NumberCounter value={parseInt(metric.value.replace(/[^0-9]/g, ''))} prefix="$" suffix={metric.value.includes('K') ? 'K' : ''} />
-                                        ) : metric.value.endsWith('%') ? (
-                                            <NumberCounter value={parseFloat(metric.value.replace(/[^0-9.]/g, ''))} suffix="%" />
-                                        ) : (
-                                            metric.value
-                                        )}
-                                    </strong>
-                                    <span className="text-sm text-brand-blue uppercase tracking-wider">
-                                        {metric.label}
-                                    </span>
-                                </div>
-                            ))}
+                            {caseStudy.metrics.map((metric, idx) => {
+                                const parsed = parseStatValue(metric.value);
+                                return (
+                                    <div key={idx} className="text-center md:text-left">
+                                        <strong className="block text-4xl md:text-5xl font-bold text-white mb-2">
+                                            {parsed ? (
+                                                <>
+                                                    {parsed.prefix}
+                                                    <NumberCounter
+                                                        value={parsed.num}
+                                                        suffix={parsed.suffix}
+                                                        formatWithCommas={parsed.hasCommas}
+                                                    />
+                                                </>
+                                            ) : (
+                                                metric.value
+                                            )}
+                                        </strong>
+                                        <span className="text-sm text-brand-blue uppercase tracking-wider">
+                                            {metric.label}
+                                        </span>
+                                    </div>
+                                );
+                            })}
                         </div>
                     )}
 
