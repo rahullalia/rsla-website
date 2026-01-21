@@ -191,34 +191,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/terms', request.url), 301);
   }
 
-  // ============================================
-  // ADMIN ROUTE PROTECTION
-  // ============================================
-  if (pathname.startsWith('/admin')) {
-    // Allow access to login page
-    if (pathname === '/admin/login') {
-      return NextResponse.next();
-    }
-
-    // Check for admin auth cookie
-    const authCookie = request.cookies.get('admin-auth');
-    const isAuthenticated = authCookie?.value === process.env.ADMIN_PASSWORD;
-
-    if (!isAuthenticated) {
-      // Redirect to login page
-      const loginUrl = new URL('/admin/login', request.url);
-      loginUrl.searchParams.set('redirect', pathname);
-      return NextResponse.redirect(loginUrl);
-    }
-  }
-
   return NextResponse.next();
 }
 
 export const config = {
   matcher: [
-    // Admin routes
-    '/admin/:path*',
     // Legacy WordPress redirects
     '/category/:path*',
     '/tag/:path*',

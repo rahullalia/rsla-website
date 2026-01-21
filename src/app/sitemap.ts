@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { client } from '@/sanity/lib/client';
-import { blogPostSlugsQuery } from '@/sanity/lib/queries';
+import { blogPostSlugsQuery, caseStudySlugsQuery } from '@/sanity/lib/queries';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://rsla.io';
@@ -27,22 +27,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Case study pages (updated 2025-12-31 with SEO-optimized slugs)
-  const caseStudies = [
-    'market-research-data-scraping-automation',
-    'salon-marketing-automation-roi',
-    'ai-cold-email-personalization',
-    'nonprofit-crm-volunteer-automation',
-    'ai-proposal-generator-sales-workflow',
-    'local-seo-reputation-management',
-    'marketing-analytics-reporting-automation',
-    'ai-lead-response-autoresponder',
-    'media-content-operations-ai',
-    'field-service-operations-automation',
-    'seo-content-marketing-automation',
-    'iot-manufacturing-robot-tracking',
-  ];
-
+  // Dynamic Case Studies (from Sanity)
+  const caseStudies = await client.fetch<string[]>(caseStudySlugsQuery);
   const caseStudyPages = caseStudies.map(slug => ({
     url: `${baseUrl}/work/${slug}`,
     lastModified: new Date(),

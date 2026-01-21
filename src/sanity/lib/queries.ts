@@ -84,3 +84,42 @@ export const recentBlogPostsQuery = groq`
     }
   }
 `;
+
+// Get all case studies (ordered by priority)
+export const caseStudiesQuery = groq`
+  *[_type == "caseStudy"] | order(priority asc) {
+    title,
+    "slug": slug.current,
+    tag,
+    description,
+    metrics,
+    featured,
+    category,
+    priority,
+    annualSavings,
+    publishedAt
+  }
+`;
+
+// Get single case study by slug
+export const caseStudyBySlugQuery = groq`
+  *[_type == "caseStudy" && slug.current == $slug][0] {
+    title,
+    "slug": slug.current,
+    tag,
+    description,
+    metrics,
+    featured,
+    category,
+    priority,
+    annualSavings,
+    publishedAt,
+    content,
+    "seo": seo
+  }
+`;
+
+// Get all case study slugs (for sitemap/static generation)
+export const caseStudySlugsQuery = groq`
+  *[_type == "caseStudy" && defined(slug.current)][].slug.current
+`;
