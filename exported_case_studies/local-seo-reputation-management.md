@@ -5,89 +5,49 @@ seo_description: "Spice on a Slice, a neighborhood pizza shop, transformed its o
 canonical: "https://rsla.io/work/local-seo-reputation-management"
 ---
 
-<h2>The Challenge: Great Pizza, Zero Visibility</h2>
-            <p>
-                Spice on a Slice made excellent pizza. Their regulars loved them. But online? They were invisible. With only <strong>14 Google reviews</strong>, they were buried beyond page two of local search results, effectively nonexistent to anyone discovering restaurants online.
-            </p>
-            <p>
-                Every day, potential customers searched &quot;pizza near me&quot; and found their competitors instead. The shop&apos;s lack of digital social proof was strangling growth and leaving revenue on the table.
-            </p>
+## The Challenge: Great Pizza, Zero Visibility
 
-            <div className="key-takeaway-box">
-                <h3>Executive Axiom</h3>
-                <p>
-                    Satisfied customers don&apos;t become reviewers automatically. Without a system to convert in-store loyalty into online advocacy, even great businesses stay invisible to new customers.
-                </p>
-                <Link href="/#contact" className="btn-cta">
-                    Fix Your Visibility Gap
-                </Link>
-            </div>
+Spice on a Slice made excellent pizza. Their regulars loved them. But online? They were invisible. With only **14 Google reviews**, they were buried beyond page two of local search results, effectively nonexistent to anyone discovering restaurants online.
 
-            <h2>The Solution: We Built an Automated Review Generation Engine</h2>
-            <p>
-                We engineered a complete local SEO system, optimizing their Google Business Profile and deploying automated review generation that converts happy customers into online advocates.
-            </p>
+Every day, potential customers searched "pizza near me" and found their competitors instead. The shop's lack of digital social proof was strangling growth and leaving revenue on the table.
 
-            <h3>Phase 1: Deployed In-Store Lead Capture + CRM Pipeline</h3>
-            <ul>
-                <li>
-                    Configured a frictionless in-store capture system: free slice in exchange for contact info
-                </li>
-                <li>
-                    Every contact instantly flowed into CRM for automated follow-up
-                </li>
-                <li>
-                    Launched a <strong>database reactivation campaign</strong> via SMS and email to re-engage past customers and kickstart review generation
-                </li>
-            </ul>
+> ### Executive Axiom
+> Satisfied customers don't become reviewers automatically. Without a system to convert in-store loyalty into online advocacy, even great businesses stay invisible to new customers.
+> [Fix Your Visibility Gap](/#contact)
 
-            <h3>Phase 2: Activated Automated Review + Nurture Sequences</h3>
-            <p>
-                The system ran autonomously: every new customer received polite, well-timed <strong>review requests</strong> via SMS and email. Ongoing nurture campaigns drove repeat visits with promotions and menu updates, generating consistent reviews and compounding revenue.
-            </p>
+## The Solution: We Built an Automated Review Generation Engine
 
-            <h2>The Results: 118 New Reviews. $25K Revenue. Page 1 Ranking.</h2>
+We engineered a complete local SEO system, optimizing their Google Business Profile and deploying automated review generation that converts happy customers into online advocates.
 
-            <div className="proof-box">
-                <h3>Client Testimonial</h3>
-                <p>
-                    &quot;People already liked our pizza, but not enough people knew about us. New customers are finding us now, old ones are coming back, and our Google reviews finally show the quality we&apos;ve always had.&quot;
-                </p>
-            </div>
+### Phase 1: Deployed In-Store Lead Capture + CRM Pipeline
 
-            <p>
-                In under 60 days, the shop&apos;s local presence transformed completely:
-            </p>
+- Configured a frictionless in-store capture system: free slice in exchange for contact info
 
-            <ImageLightbox
-                src="/images/case-studies/spice-on-a-slice/before-after-reviews.webp"
-                alt="Spice on a Slice Google reviews growth: 14 to 132 reviews"
-                caption="Before & After: 14 to 132 Google reviews in 60 days (click to enlarge)"
-                className="my-12"
-                size="large"
-            />
+- Every contact instantly flowed into CRM for automated follow-up
 
-            <ul>
-                <li>
-                    <strong>Reviews exploded from 14 to 132</strong>, establishing undeniable social proof
-                </li>
-                <li>
-                    <strong>$25,000 in new revenue</strong> from increased visibility and repeat visits
-                </li>
-                <li>
-                    <strong>First page Google Maps ranking</strong> for key local searches, capturing walk-in traffic
-                </li>
-                <li>
-                    <strong>Repeat business compounding</strong> from automated nurture sequences
-                </li>
-            </ul>
+- Launched a **database reactivation campaign** via SMS and email to re-engage past customers and kickstart review generation
 
-            <div className="cta-section">
-                <h2>Your Competitors Are Stealing Your Customers Online</h2>
-                <p>
-                    Every day without reviews is a day competitors capture your potential customers. We build automated review generation systems that turn your satisfied customers into your marketing engine.
-                </p>
-                <Link href="/#contact" className="btn-cta">
-                    Dominate Local Search
-                </Link>
-            </div>
+### Phase 2: Activated Automated Review + Nurture Sequences
+
+The system ran autonomously: every new customer received polite, well-timed **review requests** via SMS and email. Ongoing nurture campaigns drove repeat visits with promotions and menu updates, generating consistent reviews and compounding revenue.
+
+## The Results: 118 New Reviews. $25K Revenue. Page 1 Ranking.
+
+> ### Client Testimonial
+> "People already liked our pizza, but not enough people knew about us. New customers are finding us now, old ones are coming back, and our Google reviews finally show the quality we've always had."
+
+In under 60 days, the shop's local presence transformed completely:
+
+![Spice on a Slice Google reviews growth: 14 to 132 reviews](/images/case-studies/spice-on-a-slice/before-after-reviews.webp)
+
+- **Reviews exploded from 14 to 132**, establishing undeniable social proof
+
+- **$25,000 in new revenue** from increased visibility and repeat visits
+
+- **First page Google Maps ranking** for key local searches, capturing walk-in traffic
+
+- **Repeat business compounding** from automated nurture sequences
+
+> ## Your Competitors Are Stealing Your Customers Online
+> Every day without reviews is a day competitors capture your potential customers. We build automated review generation systems that turn your satisfied customers into your marketing engine.
+> [Dominate Local Search](/#contact)

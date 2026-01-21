@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
 import { caseStudyBySlugQuery, caseStudySlugsQuery } from '@/sanity/lib/queries';
 import CaseStudyContent from './CaseStudyContent';
-import { ArticleSchema, BreadcrumbSchema } from '@/components/JsonLd';
+import { CaseStudySchema, BreadcrumbSchema, FAQSchema } from '@/components/JsonLd';
 
 interface CaseStudy {
     title: string;
@@ -18,9 +18,13 @@ interface CaseStudy {
     annualSavings: number;
     publishedAt?: string;
     content: any;
+    clientName?: string;
+    industry?: string;
+    faqSchema?: { question: string; answer: string }[];
     seo?: {
         metaTitle?: string;
         metaDescription?: string;
+        socialImage?: { asset?: { url?: string } };
     };
 }
 
@@ -81,11 +85,15 @@ export default async function CaseStudyPage({
 
     return (
         <>
-            <ArticleSchema
+            <CaseStudySchema
                 title={caseStudy.title}
                 description={caseStudy.description}
                 url={`https://rsla.io/work/${slug}`}
                 datePublished={caseStudy.publishedAt || '2024-01-01'}
+                clientName={caseStudy.clientName}
+                industry={caseStudy.industry}
+                metrics={caseStudy.metrics}
+                image={caseStudy.seo?.socialImage?.asset?.url}
             />
             <BreadcrumbSchema
                 items={[
@@ -94,6 +102,9 @@ export default async function CaseStudyPage({
                     { name: caseStudy.title, url: `https://rsla.io/work/${slug}` },
                 ]}
             />
+            {caseStudy.faqSchema && caseStudy.faqSchema.length > 0 && (
+                <FAQSchema faqs={caseStudy.faqSchema} />
+            )}
             <CaseStudyContent caseStudy={caseStudy} />
         </>
     );

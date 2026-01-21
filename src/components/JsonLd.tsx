@@ -115,6 +115,94 @@ export function FAQSchema({ faqs }: FAQSchemaProps) {
     );
 }
 
+interface CaseStudySchemaProps {
+    title: string;
+    description: string;
+    url: string;
+    datePublished?: string;
+    clientName?: string;
+    industry?: string;
+    metrics?: { value: string; label: string }[];
+    image?: string;
+}
+
+export function CaseStudySchema({
+    title,
+    description,
+    url,
+    datePublished = "2024-01-01",
+    clientName,
+    industry,
+    metrics = [],
+    image = "https://rsla.io/og-image.png",
+}: CaseStudySchemaProps) {
+    // Main Article schema for case study
+    const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "@id": `${url}#article`,
+        headline: title,
+        description: description,
+        url: url,
+        datePublished: datePublished,
+        author: {
+            "@type": "Organization",
+            name: "RSL/A",
+            url: "https://rsla.io",
+        },
+        publisher: {
+            "@type": "Organization",
+            name: "RSL/A",
+            logo: {
+                "@type": "ImageObject",
+                url: "https://rsla.io/favicon.svg",
+            },
+        },
+        image: image,
+        mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": url,
+        },
+        ...(clientName && {
+            about: {
+                "@type": "Organization",
+                name: clientName,
+            },
+        }),
+        ...(industry && {
+            keywords: industry,
+        }),
+    };
+
+    // Claims schema for metrics (helps with rich snippets)
+    const claimsSchema = metrics.length > 0 ? {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "@id": `${url}#results`,
+        name: "Case Study Results",
+        itemListElement: metrics.map((metric, idx) => ({
+            "@type": "ListItem",
+            position: idx + 1,
+            name: `${metric.value} ${metric.label}`,
+        })),
+    } : null;
+
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
+            {claimsSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(claimsSchema) }}
+                />
+            )}
+        </>
+    );
+}
+
 interface BlogPostSchemaProps {
     title: string;
     description: string;

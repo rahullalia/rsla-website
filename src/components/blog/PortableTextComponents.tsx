@@ -15,6 +15,34 @@ function slugify(text: string): string {
 
 export const PortableTextComponents: PortableTextComponentsType = {
   types: {
+    // Enhanced case study image with SEO fields
+    caseStudyImage: ({ value }) => {
+      const asset = value?.asset?.asset || value?.asset;
+      if (!asset?._ref) return null;
+
+      return (
+        <figure className="my-8">
+          <img
+            src={urlForImage(asset)?.width(1200).fit('max').url() || ''}
+            alt={value.alt || 'Case study image'}
+            title={value.alt}
+            loading="lazy"
+            className="rounded-xl w-full h-auto"
+          />
+          {value.caption && (
+            <figcaption className="text-center text-sm text-white/50 mt-3 italic">
+              {value.caption}
+            </figcaption>
+          )}
+          {value.credit && (
+            <div className="text-xs text-white/30 text-right mt-1">
+              {value.credit}
+            </div>
+          )}
+        </figure>
+      );
+    },
+    // Basic image (backwards compatibility)
     image: ({ value }) => {
       if (!value?.asset?._ref) {
         return null;
@@ -24,6 +52,7 @@ export const PortableTextComponents: PortableTextComponentsType = {
           <img
             src={urlForImage(value.asset)?.width(1200).fit('max').url() || ''}
             alt={value.alt || 'Blog image'}
+            title={value.alt}
             loading="lazy"
             className="rounded-xl w-full h-auto"
           />
@@ -46,6 +75,152 @@ export const PortableTextComponents: PortableTextComponentsType = {
           <code className="text-sm text-white font-mono block">{value.code}</code>
         </pre>
       );
+    },
+    videoEmbed: ({ value }) => {
+      const { url, caption } = value;
+
+      // Extract video ID and platform
+      let embedUrl = '';
+      if (url.includes('youtube.com') || url.includes('youtu.be')) {
+        const videoId = url.includes('youtu.be')
+          ? url.split('youtu.be/')[1]?.split('?')[0]
+          : url.split('v=')[1]?.split('&')[0];
+        embedUrl = `https://www.youtube.com/embed/${videoId}`;
+      } else if (url.includes('vimeo.com')) {
+        const videoId = url.split('vimeo.com/')[1]?.split('?')[0];
+        embedUrl = `https://player.vimeo.com/video/${videoId}`;
+      } else if (url.includes('loom.com')) {
+        const videoId = url.split('/share/')[1]?.split('?')[0];
+        embedUrl = `https://www.loom.com/embed/${videoId}`;
+      }
+
+      if (!embedUrl) {
+        return (
+          <div className="my-8 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400">
+            Unsupported video URL: {url}
+          </div>
+        );
+      }
+
+      return (
+        <figure className="my-8">
+          <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-white/5">
+            <iframe
+              src={embedUrl}
+              className="absolute inset-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+          {caption && (
+            <figcaption className="text-center text-sm text-white/50 mt-3 italic">
+              {caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    },
+    callout: ({ value }) => {
+      const { type, title, content } = value;
+      const styles: Record<string, { bg: string; border: string; icon: string }> = {
+        tip: { bg: 'bg-brand-blue/10', border: 'border-brand-blue/30', icon: '💡' },
+        warning: { bg: 'bg-yellow-500/10', border: 'border-yellow-500/30', icon: '⚠️' },
+        info: { bg: 'bg-blue-500/10', border: 'border-blue-500/30', icon: 'ℹ️' },
+        success: { bg: 'bg-green-500/10', border: 'border-green-500/30', icon: '✅' },
+      };
+      const style = styles[type] || styles.info;
+
+      return (
+        <div className={`my-8 p-6 rounded-xl border ${style.bg} ${style.border}`}>
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">{style.icon}</span>
+            <div className="flex-1">
+              {title && <h4 className="text-lg font-semibold text-white mb-2">{title}</h4>}
+              <p className="text-white/70 leading-relaxed">{content}</p>
+            </div>
+          </div>
+        </div>
+      );
+    },
+    testimonial: ({ value }) => {
+      const { quote, author, role } = value;
+      return (
+        <blockquote className="my-10 relative">
+          <div className="absolute -top-4 -left-2 text-6xl text-brand-blue/20 font-serif">"</div>
+          <div className="bg-white/5 border border-white/10 rounded-xl p-8 pl-10">
+            <p className="text-xl text-white/90 italic leading-relaxed mb-4">{quote}</p>
+            {(author || role) && (
+              <footer className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-brand-blue/20 flex items-center justify-center text-brand-blue font-bold">
+                  {author?.charAt(0) || '?'}
+                </div>
+                <div>
+                  {author && <cite className="text-white font-semibold not-italic block">{author}</cite>}
+                  {role && <span className="text-white/50 text-sm">{role}</span>}
+                </div>
+              </footer>
+            )}
+          </div>
+        </blockquote>
+      );
+    },
+    statsCard: ({ value }) => {
+      const { stats } = value;
+      if (!stats || stats.length === 0) return null;
+
+      return (
+        <div className="my-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+          {stats.map((stat: { value: string; label: string }, idx: number) => (
+            <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-6 text-center">
+              <div className="text-3xl font-bold text-brand-blue mb-1">{stat.value}</div>
+              <div className="text-sm text-white/50 uppercase tracking-wider">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      );
+    },
+    ctaButton: ({ value }) => {
+      const { text, url, style } = value;
+      const isPrimary = style === 'primary';
+
+      return (
+        <div className="my-8 flex justify-center">
+          <Link
+            href={url || '#'}
+            className={`inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-all ${
+              isPrimary
+                ? 'bg-brand-blue text-white hover:bg-brand-blue/90'
+                : 'border-2 border-brand-blue text-brand-blue hover:bg-brand-blue/10'
+            }`}
+          >
+            {text}
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+        </div>
+      );
+    },
+    divider: ({ value }) => {
+      const { style } = value;
+
+      if (style === 'dots') {
+        return (
+          <div className="my-12 flex justify-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-white/20"></span>
+            <span className="w-2 h-2 rounded-full bg-white/20"></span>
+            <span className="w-2 h-2 rounded-full bg-white/20"></span>
+          </div>
+        );
+      }
+
+      if (style === 'space') {
+        return <div className="my-16"></div>;
+      }
+
+      // Default: line
+      return <hr className="my-12 border-t border-white/10" />;
     },
   },
   block: {
