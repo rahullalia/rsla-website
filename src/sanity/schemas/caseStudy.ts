@@ -313,8 +313,20 @@ export default defineType({
                             name: 'url',
                             title: 'Video URL',
                             type: 'url',
-                            description: 'YouTube, Vimeo, or Loom URL',
+                            description: 'YouTube, Vimeo, Loom, or Wistia URL',
                             validation: (Rule) => Rule.required(),
+                        }),
+                        defineField({
+                            name: 'orientation',
+                            title: 'Orientation',
+                            type: 'string',
+                            options: {
+                                list: [
+                                    { title: 'Horizontal (16:9)', value: 'horizontal' },
+                                    { title: 'Vertical (9:16)', value: 'vertical' },
+                                ],
+                            },
+                            initialValue: 'horizontal',
                         }),
                         defineField({
                             name: 'caption',
@@ -323,9 +335,10 @@ export default defineType({
                         }),
                     ],
                     preview: {
-                        select: { url: 'url', caption: 'caption' },
-                        prepare({ url, caption }) {
-                            return { title: caption || 'Video Embed', subtitle: url };
+                        select: { url: 'url', caption: 'caption', orientation: 'orientation' },
+                        prepare({ url, caption, orientation }) {
+                            const orient = orientation === 'vertical' ? '(Vertical)' : '';
+                            return { title: caption || `Video Embed ${orient}`, subtitle: url };
                         },
                     },
                 },

@@ -86,7 +86,8 @@ export const PortableTextComponents: PortableTextComponentsType = {
       );
     },
     videoEmbed: ({ value }) => {
-      const { url, caption } = value;
+      const { url, caption, orientation } = value;
+      const isVertical = orientation === 'vertical';
 
       // Extract video ID and platform
       let embedUrl = '';
@@ -120,8 +121,12 @@ export const PortableTextComponents: PortableTextComponentsType = {
       }
 
       return (
-        <figure className="my-8">
-          <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-white/5">
+        <figure className={`my-8 ${isVertical ? 'flex justify-center' : ''}`}>
+          <div
+            className={`relative rounded-xl overflow-hidden bg-white/5 ${
+              isVertical ? 'w-full max-w-sm aspect-9/16' : 'w-full aspect-video'
+            }`}
+          >
             <iframe
               src={embedUrl}
               className="absolute inset-0 w-full h-full"
