@@ -180,13 +180,17 @@ const enhancedContent = [
         'Configured intelligent alerting that escalates only true emergencies',
     ]),
 
-    // Tech Stack callout
+    // Tech Stack
     {
-        _type: 'callout',
+        _type: 'techStack',
         _key: generateKey(),
-        type: 'tip',
-        title: 'Tech Stack',
-        content: 'AWS (EC2, S3, Lambda, CloudWatch), Selenium Hub, Python (multi-threaded), Tesseract + EasyOCR, PIL image preprocessing, Message queues',
+        tools: [
+            { _key: generateKey(), name: 'AWS (EC2, S3, Lambda)' },
+            { _key: generateKey(), name: 'Selenium Hub' },
+            { _key: generateKey(), name: 'Python' },
+            { _key: generateKey(), name: 'Tesseract OCR' },
+            { _key: generateKey(), name: 'EasyOCR' },
+        ],
     },
 
     // Client testimonial

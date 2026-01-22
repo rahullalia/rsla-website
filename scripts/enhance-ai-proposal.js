@@ -180,13 +180,16 @@ const enhancedContent = [
         'Investment summary and clear next steps',
     ]),
 
-    // Tech Stack callout
+    // Tech Stack
     {
-        _type: 'callout',
+        _type: 'techStack',
         _key: generateKey(),
-        type: 'tip',
-        title: 'Tech Stack',
-        content: 'Typeform (discovery capture), Make.com (automation), Claude Opus 4 (content generation), Google Docs API (template population)',
+        tools: [
+            { _key: generateKey(), name: 'Typeform' },
+            { _key: generateKey(), name: 'Make.com' },
+            { _key: generateKey(), name: 'Claude Opus 4' },
+            { _key: generateKey(), name: 'Google Docs API' },
+        ],
     },
 
     // Divider

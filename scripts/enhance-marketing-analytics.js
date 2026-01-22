@@ -194,13 +194,18 @@ const enhancedContent = [
         'Created self-serve troubleshooting guides',
     ]),
 
-    // Tech Stack callout
+    // Tech Stack
     {
-        _type: 'callout',
+        _type: 'techStack',
         _key: generateKey(),
-        type: 'tip',
-        title: 'Tech Stack',
-        content: 'Google Sheets, Google Apps Script, Facebook Ads API, Slack (alerting), Landing page tracking (HTML/CSS/JS), Notion (SOPs)',
+        tools: [
+            { _key: generateKey(), name: 'Google Sheets' },
+            { _key: generateKey(), name: 'Google Apps Script' },
+            { _key: generateKey(), name: 'Facebook Ads API' },
+            { _key: generateKey(), name: 'Slack' },
+            { _key: generateKey(), name: 'HTML/CSS/JS' },
+            { _key: generateKey(), name: 'Notion' },
+        ],
     },
 
     // Divider

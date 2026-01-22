@@ -190,13 +190,17 @@ const enhancedContent = [
         content: 'This integration became the foundation for the manufacturer\'s smart factory monitoring infrastructure. OAuth-based authentication and comprehensive documentation reduced vendor onboarding from weeks to days.',
     },
 
-    // Tech Stack callout
+    // Tech Stack
     {
-        _type: 'callout',
+        _type: 'techStack',
         _key: generateKey(),
-        type: 'tip',
-        title: 'Tech Stack',
-        content: 'MQTT (real-time streaming), REST APIs (control commands), OAuth 2.0 (per-device authentication), Twinzo digital twin, Python multi-threaded processing',
+        tools: [
+            { _key: generateKey(), name: 'MQTT Protocol' },
+            { _key: generateKey(), name: 'REST APIs' },
+            { _key: generateKey(), name: 'OAuth 2.0' },
+            { _key: generateKey(), name: 'Twinzo Digital Twin' },
+            { _key: generateKey(), name: 'Python' },
+        ],
     },
 
     // Divider

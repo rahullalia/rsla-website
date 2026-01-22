@@ -215,13 +215,19 @@ const enhancedContent = [
         content: 'These aren\'t prototypes. They\'re production systems handling daily operations for a scaling media company. Every system was engineered with error handling, quality validation, and team workflows baked in.',
     },
 
-    // Tech Stack callout
+    // Tech Stack
     {
-        _type: 'callout',
+        _type: 'techStack',
         _key: generateKey(),
-        type: 'tip',
-        title: 'Tech Stack',
-        content: 'OpenAI GPT-4 (500+ line prompts), Playwright + Pillow (computer vision), Python, AirTable API, Chrome Extension (JavaScript), YouTube Studio API',
+        tools: [
+            { _key: generateKey(), name: 'OpenAI GPT-4' },
+            { _key: generateKey(), name: 'Playwright' },
+            { _key: generateKey(), name: 'Pillow' },
+            { _key: generateKey(), name: 'Python' },
+            { _key: generateKey(), name: 'AirTable API' },
+            { _key: generateKey(), name: 'Chrome Extension (JavaScript)' },
+            { _key: generateKey(), name: 'YouTube Studio API' },
+        ],
     },
 
     // Divider

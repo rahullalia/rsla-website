@@ -261,11 +261,16 @@ const enhancedContent = [
 
     // Tech Stack
     {
-        _type: 'callout',
+        _type: 'techStack',
         _key: generateKey(),
-        type: 'tip',
-        title: 'Tech Stack',
-        content: 'Make.com (automation), GPT-4 (content generation), Typeform (input), Google Sheets (tracking), Google Drive (storage), WordPress/Sanity (publishing)',
+        tools: [
+            { _key: generateKey(), name: 'Make.com' },
+            { _key: generateKey(), name: 'OpenAI GPT-4' },
+            { _key: generateKey(), name: 'Typeform' },
+            { _key: generateKey(), name: 'Google Sheets' },
+            { _key: generateKey(), name: 'Google Drive' },
+            { _key: generateKey(), name: 'WordPress/Sanity' },
+        ],
     },
 
     // Closing

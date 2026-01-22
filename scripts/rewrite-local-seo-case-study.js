@@ -256,13 +256,17 @@ const enhancedContent = [
     // Divider
     { _type: 'divider', _key: generateKey(), style: 'line' },
 
-    // Tech stack callout
+    // Tech Stack
     {
-        _type: 'callout',
+        _type: 'techStack',
         _key: generateKey(),
-        type: 'tip',
-        title: 'Tech Stack',
-        content: 'GoHighLevel CRM, Google Business Profile, SMS automation, Email sequences, Lead capture forms',
+        tools: [
+            { _key: generateKey(), name: 'GoHighLevel CRM' },
+            { _key: generateKey(), name: 'Google Business Profile' },
+            { _key: generateKey(), name: 'SMS Automation' },
+            { _key: generateKey(), name: 'Email Sequences' },
+            { _key: generateKey(), name: 'Lead Capture Forms' },
+        ],
     },
 
     // Closing section

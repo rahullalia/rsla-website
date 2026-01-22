@@ -263,11 +263,16 @@ const enhancedContent = [
 
     // Tech Stack
     {
-        _type: 'callout',
+        _type: 'techStack',
         _key: generateKey(),
-        type: 'tip',
-        title: 'Tech Stack',
-        content: 'Meta Ads (Facebook/Instagram), GoHighLevel CRM, SMS automation, Email sequences, Calendar booking, Lead scoring',
+        tools: [
+            { _key: generateKey(), name: 'Meta Ads (Facebook/Instagram)' },
+            { _key: generateKey(), name: 'GoHighLevel CRM' },
+            { _key: generateKey(), name: 'SMS Automation' },
+            { _key: generateKey(), name: 'Email Sequences' },
+            { _key: generateKey(), name: 'Calendar Booking' },
+            { _key: generateKey(), name: 'Lead Scoring' },
+        ],
     },
 
     // Closing

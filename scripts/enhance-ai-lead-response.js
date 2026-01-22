@@ -175,13 +175,15 @@ const enhancedContent = [
         [bold('Bypasses spam filters:'), plain(' Slight delays reduce automated flagging')],
     ]),
 
-    // Tech Stack callout
+    // Tech Stack
     {
-        _type: 'callout',
+        _type: 'techStack',
         _key: generateKey(),
-        type: 'tip',
-        title: 'Tech Stack',
-        content: 'Email (IMAP/Gmail), Make.com (5 modules), OpenAI GPT-4 (dual AI calls), Smart delay function (30-90 second randomization)',
+        tools: [
+            { _key: generateKey(), name: 'Gmail / IMAP' },
+            { _key: generateKey(), name: 'Make.com' },
+            { _key: generateKey(), name: 'OpenAI GPT-4' },
+        ],
     },
 
     // Divider

@@ -196,13 +196,17 @@ const enhancedContent = [
         'Consistent quality at infinite scale',
     ]),
 
-    // Tech Stack callout
+    // Tech Stack
     {
-        _type: 'callout',
+        _type: 'techStack',
         _key: generateKey(),
-        type: 'tip',
-        title: 'Tech Stack',
-        content: 'Google Sheets (lead database), Make.com (automation), OpenAI GPT-4 (icebreaker generation), Apollo.io/LinkedIn (enrichment data)',
+        tools: [
+            { _key: generateKey(), name: 'Google Sheets' },
+            { _key: generateKey(), name: 'Make.com' },
+            { _key: generateKey(), name: 'OpenAI GPT-4' },
+            { _key: generateKey(), name: 'Apollo.io' },
+            { _key: generateKey(), name: 'LinkedIn Sales Navigator' },
+        ],
     },
 
     // Divider

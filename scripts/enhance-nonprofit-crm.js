@@ -183,13 +183,17 @@ const enhancedContent = [
         'Impact tracking tied directly to volunteer contributions',
     ]),
 
-    // Tech Stack callout
+    // Tech Stack
     {
-        _type: 'callout',
+        _type: 'techStack',
         _key: generateKey(),
-        type: 'tip',
-        title: 'Tech Stack',
-        content: 'GoHighLevel CRM, conditional forms, email/SMS automation, calendar integration, custom dashboards, role-based access control',
+        tools: [
+            { _key: generateKey(), name: 'GoHighLevel CRM' },
+            { _key: generateKey(), name: 'Conditional Forms' },
+            { _key: generateKey(), name: 'Email/SMS Automation' },
+            { _key: generateKey(), name: 'Calendar Integration' },
+            { _key: generateKey(), name: 'Custom Dashboards' },
+        ],
     },
 
     // Client testimonial

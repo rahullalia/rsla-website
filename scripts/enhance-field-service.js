@@ -173,13 +173,16 @@ const enhancedContent = [
         'Team task automation: quality checks and special requests routed automatically',
     ]),
 
-    // Tech Stack callout
+    // Tech Stack
     {
-        _type: 'callout',
+        _type: 'techStack',
         _key: generateKey(),
-        type: 'tip',
-        title: 'Tech Stack',
-        content: 'GoHighLevel CRM, Housecall Pro (bidirectional API sync via Make.com), AI Chat Widget, SMS/Email automation, Custom dashboards',
+        tools: [
+            { _key: generateKey(), name: 'GoHighLevel CRM' },
+            { _key: generateKey(), name: 'Housecall Pro' },
+            { _key: generateKey(), name: 'Make.com' },
+            { _key: generateKey(), name: 'AI Chat Widget' },
+        ],
     },
 
     // Client testimonial
