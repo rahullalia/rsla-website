@@ -124,7 +124,7 @@ export const PortableTextComponents: PortableTextComponentsType = {
         <figure className="my-8 flex flex-col items-center">
           <div
             className={`relative rounded-xl overflow-hidden bg-white/5 ${
-              isVertical ? 'w-full max-w-sm aspect-9/16' : 'w-full max-w-3xl aspect-video'
+              isVertical ? 'w-full max-w-sm aspect-[9/16]' : 'w-full max-w-3xl aspect-video'
             }`}
           >
             <iframe
