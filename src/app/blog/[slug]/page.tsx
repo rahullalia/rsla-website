@@ -220,6 +220,7 @@ export default async function BlogPostPage({
       <BlogPostContent
         post={transformedPost}
         recentPosts={transformedRecentPosts}
+        faqs={blogFAQs[slug]}
       />
     </>
   );

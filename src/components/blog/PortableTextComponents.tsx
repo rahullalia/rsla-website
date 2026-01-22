@@ -254,8 +254,8 @@ export const PortableTextComponents: PortableTextComponentsType = {
               <h4 className="text-lg font-semibold text-white mb-3">Tech Stack</h4>
               <ul className="space-y-2">
                 {tools.map((tool: { name: string; url?: string; promo?: string }, idx: number) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="text-brand-blue mt-1.5">•</span>
+                  <li key={idx} className="flex items-baseline gap-2">
+                    <span className="text-brand-blue">•</span>
                     <div>
                       {tool.url ? (
                         <a

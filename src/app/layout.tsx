@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: "RSL/A | Intelligent Marketing Systems",
   description: "We architect intelligent marketing systems. Paid Ads, AI Automation, and Smart Infrastructure for scaling businesses.",
+  applicationName: "RSL/A",
   keywords: [
     'marketing automation',
     'AI automation',

@@ -8,6 +8,7 @@ import ShareButton from '@/components/blog/ShareButton';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { AuroraBackground } from '@/components/animations';
+import FAQ from '@/components/blog/FAQ';
 
 interface BlogPost {
   _id: string;
@@ -35,12 +36,18 @@ interface RecentPost {
   featuredImage?: { url: string; alt: string };
 }
 
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 interface BlogPostContentProps {
   post: BlogPost;
   recentPosts: RecentPost[];
+  faqs?: FAQItem[];
 }
 
-export default function BlogPostContent({ post, recentPosts }: BlogPostContentProps) {
+export default function BlogPostContent({ post, recentPosts, faqs }: BlogPostContentProps) {
   return (
     <main className="min-h-screen bg-brand-black text-white relative">
       <Navigation />
@@ -92,6 +99,8 @@ export default function BlogPostContent({ post, recentPosts }: BlogPostContentPr
             <div className="prose prose-invert prose-lg max-w-none">
               <PortableText value={post.body} components={PortableTextComponents} />
             </div>
+
+            {faqs && faqs.length > 0 && <FAQ faqs={faqs} />}
 
             {post.author.bio && (
               <div className="mt-16 p-8 bg-white/5 border border-white/10 rounded-2xl">
