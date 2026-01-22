@@ -85,7 +85,7 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'info',
         title: 'The Scale of the Problem',
-        content: '320 person-months of work annually. That\'s enough labor to fund an entire department—spent copying data from government databases into spreadsheets.',
+        content: '320 person-months of work annually. That\'s enough labor to fund an entire department, all spent copying data from government databases into spreadsheets.',
     },
 
     textBlock('The bleeding was severe:', 'h3'),
@@ -132,7 +132,7 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'warning',
         title: 'The CAPTCHA Challenge',
-        content: 'Government databases use image CAPTCHAs specifically designed to block automation. We achieved 97% solve rate using dual-engine OCR with preprocessing—matching or exceeding human accuracy.',
+        content: 'Government databases use image CAPTCHAs specifically designed to block automation. We achieved 97% solve rate using dual-engine OCR with preprocessing, matching or exceeding human accuracy.',
     },
 
     textBlock('Phase 1: Architected Scalable Cloud Infrastructure', 'h3'),
@@ -234,7 +234,7 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'success',
         title: 'The Compound Effect',
-        content: 'Six-figure savings from one automation project isn\'t exceptional—it\'s expected when you target the right process. The platform is now a reusable asset deployed across multiple data collection initiatives.',
+        content: 'Six-figure savings from one automation project isn\'t exceptional. It\'s expected when you target the right process. The platform is now a reusable asset deployed across multiple data collection initiatives.',
     },
 
     // Executive insight

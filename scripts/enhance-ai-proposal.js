@@ -86,7 +86,7 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'info',
         title: 'The Proposal Bottleneck',
-        content: 'At $133/hour agency rate, every 2-hour proposal costs $267 in direct labor. But the real cost is pipeline velocity—multi-day delays between discovery calls and proposal delivery let competitors swoop in.',
+        content: 'At $133/hour agency rate, every 2-hour proposal costs $267 in direct labor. But the real cost is pipeline velocity. Multi-day delays between discovery calls and proposal delivery let competitors swoop in.',
     },
 
     textBlock('The damage was quantifiable:', 'h3'),
@@ -133,7 +133,7 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'tip',
         title: 'Why Claude Opus 4',
-        content: 'Claude excels at understanding business context and writing persuasive, professional content. It generates complete proposal narratives—not just bullet points—from structured discovery notes.',
+        content: 'Claude excels at understanding business context and writing persuasive, professional content. It generates complete proposal narratives (not just bullet points) from structured discovery notes.',
     },
 
     textBlock('Phase 1: Structured Discovery Call Capture', 'h3'),

@@ -92,7 +92,7 @@ const enhancedContent = [
     richBlock([
         plain('Spice on a Slice made excellent pizza. Their regulars loved them. But online? They were invisible. With only '),
         bold('14 Google reviews'),
-        plain(', they were buried beyond page two of local search results—effectively nonexistent to anyone discovering restaurants online.'),
+        plain(', they were buried beyond page two of local search results. Effectively nonexistent to anyone discovering restaurants online.'),
     ]),
 
     textBlock('Every day, potential customers searched "pizza near me" and found their competitors instead. The shop\'s lack of digital social proof was strangling growth and leaving thousands of dollars on the table each month.'),
@@ -133,7 +133,7 @@ const enhancedContent = [
     // Solution Section
     textBlock('The Solution: Automated Review Generation Engine', 'h2'),
 
-    textBlock('We engineered a complete local SEO system combining Google Business Profile optimization with automated review generation that converts happy customers into online advocates—without requiring any manual effort from the shop owner.'),
+    textBlock('We engineered a complete local SEO system combining Google Business Profile optimization with automated review generation that converts happy customers into online advocates, without requiring any manual effort from the shop owner.'),
 
     // Phase 1
     textBlock('Phase 1: Google Business Profile Optimization', 'h3'),
@@ -177,11 +177,11 @@ const enhancedContent = [
     // Phase 3
     textBlock('Phase 3: Automated Review Request Sequences', 'h3'),
 
-    textBlock('The system ran autonomously—no manual work required from the shop owner.'),
+    textBlock('The system ran autonomously. No manual work required from the shop owner.'),
 
     ...bulletList([
         [bold('Timing optimization'), plain(': Review requests sent 2 hours after visit when satisfaction is highest')],
-        [bold('Multi-channel approach'), plain(': SMS for speed, email for detail—customers chose their preference')],
+        [bold('Multi-channel approach'), plain(': SMS for speed, email for detail. Customers chose their preference')],
         [bold('Polite persistence'), plain(': Non-responders received one gentle follow-up, then stopped')],
         [bold('Direct link'), plain(': One-tap review submission eliminated friction')],
     ]),
@@ -196,7 +196,7 @@ const enhancedContent = [
 
     ...bulletList([
         [bold('Weekly specials'), plain(': Automated SMS with rotating promotions')],
-        [bold('Birthday rewards'), plain(': Free meal on customer birthdays—high redemption rate')],
+        [bold('Birthday rewards'), plain(': Free meal on customer birthdays with high redemption rate')],
         [bold('Seasonal campaigns'), plain(': Holiday-themed offers drove traffic during slow periods')],
         [bold('Re-engagement'), plain(': Customers inactive 30+ days received a "we miss you" offer')],
     ]),
@@ -227,7 +227,7 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'success',
         title: 'Key Achievement',
-        content: 'The shop went from buried on page 2 to ranking #1 for "pizza near me" in their neighborhood—capturing walk-in traffic that was previously going to competitors.',
+        content: 'The shop went from buried on page 2 to ranking #1 for "pizza near me" in their neighborhood, capturing walk-in traffic that was previously going to competitors.',
     },
 
     // Client testimonial
@@ -246,11 +246,11 @@ const enhancedContent = [
     textBlock('What Changed', 'h3'),
 
     ...bulletList([
-        [bold('Reviews exploded from 14 to 132'), plain('—undeniable social proof that converts browsers to customers')],
+        [bold('Reviews exploded from 14 to 132'), plain(': Undeniable social proof that converts browsers to customers')],
         [bold('$25,000 in new revenue'), plain(' from increased visibility and repeat visits')],
         [bold('First page Google Maps ranking'), plain(' for key local searches, capturing walk-in traffic')],
         [bold('Repeat business compounding'), plain(' from automated nurture sequences')],
-        [bold('Owner time saved'), plain('—system runs autonomously, no daily management needed')],
+        [bold('Owner time saved'), plain(': System runs autonomously, no daily management needed')],
     ]),
 
     // Divider
@@ -270,7 +270,7 @@ const enhancedContent = [
 
     textBlock('Every day without reviews is a day competitors capture your potential customers. The math is simple: more reviews = more visibility = more revenue.'),
 
-    textBlock('We build automated review generation systems that turn your satisfied customers into your marketing engine—without requiring any ongoing effort from you.'),
+    textBlock('We build automated review generation systems that turn your satisfied customers into your marketing engine, without requiring any ongoing effort from you.'),
 
     // Final CTAs
     {

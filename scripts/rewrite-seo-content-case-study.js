@@ -90,14 +90,14 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'info',
         title: 'The Content Cost Crisis',
-        content: 'Companies publishing 16+ blog posts per month get 3.5X more traffic than those publishing 0-4. But at $75-150 per article, that level of output costs $15,000-30,000/year—often more than the ROI justifies.',
+        content: 'Companies publishing 16+ blog posts per month get 3.5X more traffic than those publishing 0-4. But at $75-150 per article, that level of output costs $15,000-30,000/year. Often more than the ROI justifies.',
     },
 
     textBlock('Beyond cost, two critical factors were failing:', 'h3'),
 
     ...bulletList([
         [bold('Time drain'), plain(': Manual editing and publishing choked the content pipeline, taking 2-3 hours per post')],
-        [bold('Consistency collapse'), plain(': Weekly publishing schedules were aspirational, not operational—we\'d miss weeks at a time')],
+        [bold('Consistency collapse'), plain(': Weekly publishing schedules were aspirational, not operational. We\'d miss weeks at a time')],
         [bold('Quality variance'), plain(': Different writers meant inconsistent brand voice and SEO optimization')],
         [bold('Scalability ceiling'), plain(': Adding more content meant adding more cost linearly')],
     ]),
@@ -234,7 +234,7 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'success',
         title: 'The Bottom Line',
-        content: 'What used to cost the same as a part-time employee now runs for less than the cost of a single outsourced article. We don\'t just sell automation—we run on it.',
+        content: 'What used to cost the same as a part-time employee now runs for less than the cost of a single outsourced article. We don\'t just sell automation. We run on it.',
     },
 
     textBlock('Breakdown of Impact', 'h3'),
@@ -242,7 +242,7 @@ const enhancedContent = [
     ...bulletList([
         [bold('$18,000 annual savings'), plain(': Compared to fully-burdened manual copywriting costs')],
         [bold('4X content velocity'), plain(': Weekly publishing now operational, not aspirational')],
-        [bold('99% manual work eliminated'), plain(': Data entry, writing, formatting, scheduling—all automated')],
+        [bold('99% manual work eliminated'), plain(': Data entry, writing, formatting, scheduling. All automated')],
         [bold('Consistent quality'), plain(': Every post follows SEO best practices and brand voice guidelines')],
         [bold('Scalable infrastructure'), plain(': Adding more content costs pennies, not dollars')],
     ]),
@@ -273,7 +273,7 @@ const enhancedContent = [
 
     textBlock('If you\'re paying $50-150 per article, or worse, not publishing consistently because it\'s too expensive, the math is broken. Every month you delay is a month your competitors are building organic traffic that you\'re not.'),
 
-    textBlock('We build AI content systems that fix the economics permanently—custom-tailored to your brand voice, SEO strategy, and publishing workflow.'),
+    textBlock('We build AI content systems that fix the economics permanently, custom-tailored to your brand voice, SEO strategy, and publishing workflow.'),
 
     // Final CTAs
     {

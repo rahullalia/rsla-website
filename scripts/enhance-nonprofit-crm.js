@@ -86,7 +86,7 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'info',
         title: 'Why This Matters',
-        content: 'When disaster strikes, every hour counts. If you can\'t quickly identify and deploy volunteers with the right skills to the right location, lives are at stake. Fragmented data isn\'t just inefficient—it\'s a mission failure waiting to happen.',
+        content: 'When disaster strikes, every hour counts. If you can\'t quickly identify and deploy volunteers with the right skills to the right location, lives are at stake. Fragmented data isn\'t just inefficient. It\'s a mission failure waiting to happen.',
     },
 
     textBlock('The operational bleeding was severe:', 'h3'),
@@ -237,7 +237,7 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'success',
         title: 'Mission Impact',
-        content: 'Every dollar saved on administration is a dollar deployed to disaster relief. Every hour saved on data entry is an hour spent coordinating aid. Automation in nonprofits isn\'t about efficiency—it\'s about impact.',
+        content: 'Every dollar saved on administration is a dollar deployed to disaster relief. Every hour saved on data entry is an hour spent coordinating aid. Automation in nonprofits isn\'t about efficiency. It\'s about impact.',
     },
 
     // Executive insight

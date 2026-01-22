@@ -93,7 +93,7 @@ const enhancedContent = [
 
     ...bulletList([
         [bold('Multi-account data exports:'), plain(' Multiple clients, multiple campaigns, every day')],
-        [bold('Manual metric transfers:'), plain(' Spend, impressions, clicks, conversions, CPL, ROAS—all copied by hand')],
+        [bold('Manual metric transfers:'), plain(' Spend, impressions, clicks, conversions, CPL, ROAS. All copied by hand')],
         [bold('Derived calculations:'), plain(' Week-over-week changes, running averages, client-specific KPIs')],
         [bold('Report formatting:'), plain(' Each client demanded their data in specific formats')],
         [bold('Landing page cross-referencing:'), plain(' Manual lookup of conversion events across systems')],

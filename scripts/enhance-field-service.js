@@ -226,7 +226,7 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'success',
         title: 'The Compound Effect',
-        content: 'The right operations platform doesn\'t just save time—it unlocks revenue you didn\'t know was leaking. Automated rebooking recovered 23 dormant clients. Review automation built social proof. AI chat captured leads 24/7.',
+        content: 'The right operations platform doesn\'t just save time. It unlocks revenue you didn\'t know was leaking. Automated rebooking recovered 23 dormant clients. Review automation built social proof. AI chat captured leads 24/7.',
     },
 
     // Executive insight

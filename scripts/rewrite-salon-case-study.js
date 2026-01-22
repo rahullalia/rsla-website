@@ -75,7 +75,7 @@ const enhancedContent = [
     textBlock('The Challenge: Two Years of Empty Rooms Bleeding Money', 'h2'),
 
     richBlock([
-        plain('Two vacant suites. Two years of trying. Zero results. That was Laiz\'s reality at Casagrande Salon in Manhattan. Premium space sitting idle wasn\'t just an inconvenience—it was a '),
+        plain('Two vacant suites. Two years of trying. Zero results. That was Laiz\'s reality at Casagrande Salon in Manhattan. Premium space sitting idle wasn\'t just an inconvenience. It was a '),
         bold('$3,000/month wound'),
         plain(' that wouldn\'t stop bleeding.'),
     ]),
@@ -88,7 +88,7 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'info',
         title: 'The Hidden Cost of Empty Space',
-        content: 'Vacant commercial space doesn\'t just cost rent—it costs opportunity. Every month a suite sits empty, that\'s revenue a competitor is capturing. In Manhattan, where salon suite rentals average $3,000-5,000/month, two years of vacancy represents $72,000-120,000 in lost income.',
+        content: 'Vacant commercial space doesn\'t just cost rent. It costs opportunity. Every month a suite sits empty, that\'s revenue a competitor is capturing. In Manhattan, where salon suite rentals average $3,000-5,000/month, two years of vacancy represents $72,000-120,000 in lost income.',
     },
 
     textBlock('The real problem wasn\'t marketing. It was systems.', 'h3'),
@@ -138,7 +138,7 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'tip',
         title: 'Why Performance-Based Works',
-        content: 'When the agency only gets paid on results, incentives align. We weren\'t interested in vanity metrics—we wanted signed leases.',
+        content: 'When the agency only gets paid on results, incentives align. We weren\'t interested in vanity metrics. We wanted signed leases.',
     },
 
     // Phase 1
@@ -162,7 +162,7 @@ const enhancedContent = [
     textBlock('Getting clicks is useless without capturing and qualifying leads automatically.'),
 
     ...bulletList([
-        [bold('GoHighLevel CRM'), plain(': All leads flowed directly into the system—zero manual data entry')],
+        [bold('GoHighLevel CRM'), plain(': All leads flowed directly into the system with zero manual data entry')],
         [bold('Instant response'), plain(': Automated SMS within 60 seconds of form submission')],
         [bold('Qualification questions'), plain(': Pre-screened for license status, timeline, and budget before human contact')],
         [bold('Calendar integration'), plain(': Qualified leads could self-book salon tours immediately')],
@@ -181,7 +181,7 @@ const enhancedContent = [
     ]),
 
     ...bulletList([
-        [bold('Multi-channel sequences'), plain(': SMS for speed, email for detail—coordinated automatically')],
+        [bold('Multi-channel sequences'), plain(': SMS for speed, email for detail, all coordinated automatically')],
         [bold('Conversation tracking'), plain(': Complete history visible for every lead')],
         [bold('Tour scheduling'), plain(': Self-service booking eliminated back-and-forth')],
         [bold('No leads lost'), plain(': Every inquiry received professional, timely follow-up')],
@@ -252,7 +252,7 @@ const enhancedContent = [
     textBlock('The Numbers That Matter', 'h3'),
 
     ...bulletList([
-        [bold('60X return on ad spend'), plain(': $600 in, $36,000 out—that\'s not marketing, that\'s a money machine')],
+        [bold('60X return on ad spend'), plain(': $600 in, $36,000 out. That\'s not marketing, that\'s a money machine')],
         [bold('Liability → Asset'), plain(': Empty suites transformed into predictable, passive revenue')],
         [bold('Stress → Surplus'), plain(': Laiz went from worrying about rent to counting profit')],
         [bold('Zero ongoing effort'), plain(': System continues generating leads for future vacancies')],
@@ -275,7 +275,7 @@ const enhancedContent = [
 
     textBlock('Whether it\'s salon suites, office space, or rental units, empty rooms are burning money. Every month of vacancy is revenue your competitors are capturing instead of you.'),
 
-    textBlock('We build targeted ad + automated nurture systems that fill vacancies fast and keep them filled—without requiring your time or attention.'),
+    textBlock('We build targeted ad + automated nurture systems that fill vacancies fast and keep them filled, without requiring your time or attention.'),
 
     // Final CTAs
     {

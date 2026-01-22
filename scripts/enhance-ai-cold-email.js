@@ -84,12 +84,12 @@ const enhancedContent = [
     textBlock('The Challenge: 8 Minutes Per Email Was Killing Our Outreach', 'h2'),
 
     richBlock([
-        plain('Here\'s the brutal math every sales team ignores: personalized emails get '),
+        plain('Here\'s the brutal math every sales team ignores. Personalized emails get '),
         bold('5-8X higher response rates'),
         plain(' than templates. But personalizing each email costs 8 minutes of research and writing. At scale, that math breaks completely.'),
     ]),
 
-    textBlock('We were hemorrhaging time. And choosing between quality and volume meant losing either way.'),
+    textBlock('We were hemorrhaging time. Choosing between quality and volume meant losing either way.'),
 
     // Info callout
     {
@@ -97,7 +97,7 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'info',
         title: 'The Personalization Paradox',
-        content: 'Personalized emails get 5-8X higher response rates, but take 8 minutes each. At 50 emails/week, that\'s 350 hours annually—nearly 9 full work weeks burned on research and writing.',
+        content: 'Personalized emails get 5-8X higher response rates, but take 8 minutes each. At 50 emails/week, that\'s 350 hours annually. Nearly 9 full work weeks burned on research and writing.',
     },
 
     textBlock('The Time Drain We Couldn\'t Ignore', 'h3'),
@@ -118,7 +118,7 @@ const enhancedContent = [
 
     ...bulletList([
         [bold('50 emails/week'), plain(' × 8 minutes = 6.7 hours gone every week')],
-        [bold('Annual time burn:'), plain(' 350 hours, nearly 9 full work weeks')],
+        [bold('Annual time burn:'), plain(' 350 hours. Nearly 9 full work weeks.')],
         [bold('Cost at agency rate:'), plain(' $46,725/year vanishing into research')],
     ]),
 
@@ -147,7 +147,7 @@ const enhancedContent = [
     // Solution Section
     textBlock('The Solution: We Built an AI Personalization Engine', 'h2'),
 
-    textBlock('We architected an automated system that ingests LinkedIn enrichment data and deploys GPT-4 to generate custom icebreakers for every prospect. The output: emails that feel hand-crafted, produced in seconds instead of minutes.'),
+    textBlock('We built an automated system that ingests LinkedIn enrichment data and deploys GPT-4 to generate custom icebreakers for every prospect. The output? Emails that feel hand-crafted, produced in seconds instead of minutes.'),
 
     // Tip callout
     {
@@ -155,7 +155,7 @@ const enhancedContent = [
         _key: generateKey(),
         type: 'tip',
         title: 'Why This Works',
-        content: 'AI doesn\'t replace personalization—it scales it. By feeding GPT-4 rich context from LinkedIn, we generate icebreakers that reference specific details about each prospect\'s role, company, and recent activity.',
+        content: 'AI doesn\'t replace personalization. It scales it. By feeding GPT-4 rich context from LinkedIn, we generate icebreakers that reference specific details about each prospect\'s role, company, and recent activity.',
     },
 
     textBlock('Phase 1: Ingested LinkedIn Enrichment Data', 'h3'),
@@ -163,7 +163,7 @@ const enhancedContent = [
     textBlock('We configured a Google Sheet pipeline fed by enriched prospect data:'),
 
     ...bulletList([
-        [bold('Core identifiers:'), plain(' Name, email, company (the basics)')],
+        [bold('Core identifiers:'), plain(' Name, email, company. The basics.')],
         [bold('LinkedIn intelligence:'), plain(' Job title, headline, profile URL, recent activity')],
         [bold('Business signals:'), plain(' Industry, company size, growth trajectory')],
         [bold('Enrichment depth:'), plain(' Tech stack, funding status, hiring patterns')],
@@ -229,7 +229,7 @@ const enhancedContent = [
         [bold('Before:'), plain(' 8 minutes per email (research + writing)')],
         [bold('After:'), plain(' 30 seconds per email (quick review, copy, send)')],
         [bold('Per-email savings:'), plain(' 7.5 minutes eliminated (94% reduction)')],
-        [bold('Annual recovery:'), plain(' 325 hours, over 8 full work weeks returned')],
+        [bold('Annual recovery:'), plain(' 325 hours. Over 8 full work weeks returned.')],
     ]),
 
     // Success callout
