@@ -15,13 +15,22 @@ function slugify(text: string): string {
 
 export const PortableTextComponents: PortableTextComponentsType = {
   types: {
-    // Enhanced case study image with SEO fields
+    // Enhanced case study image with SEO fields and size options
     caseStudyImage: ({ value }) => {
       const asset = value?.asset?.asset || value?.asset;
       if (!asset?._ref) return null;
 
+      // Size-based width classes
+      const sizeClasses: Record<string, string> = {
+        full: 'w-full',
+        large: 'w-3/4 mx-auto',
+        medium: 'w-1/2 mx-auto',
+        small: 'w-1/4',
+      };
+      const sizeClass = sizeClasses[value.size] || sizeClasses.full;
+
       return (
-        <figure className="my-8">
+        <figure className={`my-8 ${sizeClass}`}>
           <img
             src={urlForImage(asset)?.width(1200).fit('max').url() || ''}
             alt={value.alt || 'Case study image'}

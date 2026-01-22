@@ -34,14 +34,14 @@ export default defineType({
             title: 'Client Name',
             type: 'string',
             group: 'content',
-            description: 'Name of the client (e.g., "Casagrande Salon")',
+            description: 'Name of the client or project',
         }),
         defineField({
             name: 'tag',
             title: 'Tag / Service Line',
             type: 'string',
             group: 'content',
-            description: 'e.g., "AI Automation & Cold Email"',
+            description: 'Primary service category',
             validation: (Rule) => Rule.required(),
         }),
         defineField({
@@ -65,13 +65,13 @@ export default defineType({
                             name: 'value',
                             title: 'Value',
                             type: 'string',
-                            description: 'e.g., "$136K" or "94%"',
+                            description: 'Metric value',
                         }),
                         defineField({
                             name: 'label',
                             title: 'Label',
                             type: 'string',
-                            description: 'e.g., "Annual Savings"',
+                            description: 'Metric label',
                         }),
                     ],
                 },
@@ -273,7 +273,21 @@ export default defineType({
                             name: 'credit',
                             title: 'Credit/Attribution',
                             type: 'string',
-                            description: 'e.g., "© 2025 RSL/A" or "Screenshot from GHL"',
+                            description: 'Image attribution or source',
+                        }),
+                        defineField({
+                            name: 'size',
+                            title: 'Display Size',
+                            type: 'string',
+                            options: {
+                                list: [
+                                    { title: 'Full Width', value: 'full' },
+                                    { title: 'Large (75%)', value: 'large' },
+                                    { title: 'Medium (50%)', value: 'medium' },
+                                    { title: 'Small (25%)', value: 'small' },
+                                ],
+                            },
+                            initialValue: 'full',
                         }),
                     ],
                     preview: {
@@ -283,7 +297,11 @@ export default defineType({
                         },
                     },
                 },
-                { type: 'image' }, // Keep basic image for backwards compatibility
+                {
+                    type: 'image',
+                    title: 'Basic Image (Legacy)',
+                    description: 'Use "Image" block instead for alt text and captions.',
+                },
                 { type: 'code' },
                 // Video Embed
                 {
