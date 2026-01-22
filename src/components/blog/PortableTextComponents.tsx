@@ -90,6 +90,7 @@ export const PortableTextComponents: PortableTextComponentsType = {
 
       // Extract video ID and platform
       let embedUrl = '';
+
       if (url.includes('youtube.com') || url.includes('youtu.be')) {
         const videoId = url.includes('youtu.be')
           ? url.split('youtu.be/')[1]?.split('?')[0]
@@ -101,6 +102,13 @@ export const PortableTextComponents: PortableTextComponentsType = {
       } else if (url.includes('loom.com')) {
         const videoId = url.split('/share/')[1]?.split('?')[0];
         embedUrl = `https://www.loom.com/embed/${videoId}`;
+      } else if (url.includes('wistia.net') || url.includes('wistia.com')) {
+        // Wistia embed - extract media ID from various URL formats
+        const match = url.match(/(?:embed\/iframe\/|medias\/|embed\/)([a-z0-9]+)/i);
+        const mediaId = match?.[1] || '';
+        if (mediaId) {
+          embedUrl = `https://fast.wistia.net/embed/iframe/${mediaId}?videoFoam=true`;
+        }
       }
 
       if (!embedUrl) {
@@ -155,9 +163,8 @@ export const PortableTextComponents: PortableTextComponentsType = {
     testimonial: ({ value }) => {
       const { quote, author, role } = value;
       return (
-        <blockquote className="my-10 relative">
-          <div className="absolute -top-4 -left-2 text-6xl text-brand-blue/20 font-serif">"</div>
-          <div className="bg-white/5 border border-white/10 rounded-xl p-8 pl-10">
+        <blockquote className="my-10">
+          <div className="bg-white/5 border border-white/10 rounded-xl p-8">
             <p className="text-xl text-white/90 italic leading-relaxed mb-4">{quote}</p>
             {(author || role) && (
               <footer className="flex items-center gap-3">
