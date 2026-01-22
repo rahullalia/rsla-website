@@ -167,15 +167,14 @@ export const PortableTextComponents: PortableTextComponentsType = {
     },
     testimonial: ({ value }) => {
       const { quote, author, role } = value;
+      const isExecutiveAxiom = author?.toLowerCase().includes('executive axiom');
+
       return (
         <blockquote className="my-10">
           <div className="bg-white/5 border border-white/10 rounded-xl p-8">
-            <p className="text-xl text-white/90 italic leading-relaxed mb-4">{quote}</p>
-            {(author || role) && (
-              <footer className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-brand-blue/20 flex items-center justify-center text-brand-blue font-bold">
-                  {author?.charAt(0) || '?'}
-                </div>
+            <p className="text-xl text-white/90 italic leading-relaxed mb-4">&ldquo;{quote}&rdquo;</p>
+            {!isExecutiveAxiom && (author || role) && (
+              <footer>
                 <div>
                   {author && <cite className="text-white font-semibold not-italic block">{author}</cite>}
                   {role && <span className="text-white/50 text-sm">{role}</span>}
@@ -242,6 +241,45 @@ export const PortableTextComponents: PortableTextComponentsType = {
 
       // Default: line
       return <hr className="my-12 border-t border-white/10" />;
+    },
+    techStack: ({ value }) => {
+      const { tools } = value;
+      if (!tools || tools.length === 0) return null;
+
+      return (
+        <div className="my-8 p-6 rounded-xl border bg-brand-blue/10 border-brand-blue/30">
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">🔧</span>
+            <div className="flex-1">
+              <h4 className="text-lg font-semibold text-white mb-3">Tech Stack</h4>
+              <ul className="space-y-2">
+                {tools.map((tool: { name: string; url?: string; promo?: string }, idx: number) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="text-brand-blue mt-1.5">•</span>
+                    <div>
+                      {tool.url ? (
+                        <a
+                          href={tool.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-brand-blue hover:underline font-medium"
+                        >
+                          {tool.name}
+                        </a>
+                      ) : (
+                        <span className="text-white/70">{tool.name}</span>
+                      )}
+                      {tool.promo && (
+                        <span className="text-green-400 text-sm ml-2">({tool.promo})</span>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      );
     },
   },
   block: {

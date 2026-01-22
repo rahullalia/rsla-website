@@ -505,6 +505,40 @@ export default defineType({
                         },
                     },
                 },
+                // Tech Stack
+                {
+                    type: 'object',
+                    name: 'techStack',
+                    title: 'Tech Stack',
+                    fields: [
+                        defineField({
+                            name: 'tools',
+                            title: 'Tools',
+                            type: 'array',
+                            of: [{
+                                type: 'object',
+                                fields: [
+                                    defineField({ name: 'name', title: 'Tool Name', type: 'string', validation: (Rule) => Rule.required() }),
+                                    defineField({ name: 'url', title: 'URL (Affiliate Link)', type: 'url' }),
+                                    defineField({ name: 'promo', title: 'Promo Text', type: 'string', description: 'e.g., "Free snapshot included"' }),
+                                ],
+                                preview: {
+                                    select: { name: 'name', promo: 'promo' },
+                                    prepare({ name, promo }) {
+                                        return { title: name, subtitle: promo };
+                                    },
+                                },
+                            }],
+                        }),
+                    ],
+                    preview: {
+                        select: { tools: 'tools' },
+                        prepare({ tools }) {
+                            const names = tools?.map((t: { name: string }) => t.name).join(', ') || '';
+                            return { title: '🔧 Tech Stack', subtitle: names.slice(0, 60) };
+                        },
+                    },
+                },
             ],
         }),
     ],
