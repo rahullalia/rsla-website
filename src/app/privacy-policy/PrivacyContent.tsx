@@ -72,12 +72,17 @@ export default function PrivacyContent() {
             <li><strong className="text-white">Business Transfers:</strong> In connection with mergers or acquisitions.</li>
           </ul>
 
-          <h2 className="text-2xl mt-12 mb-5 text-white font-bold">5. Data Security</h2>
+          <h2 className="text-2xl mt-12 mb-5 text-white font-bold">5. SMS/Text Messaging</h2>
+          <p className="text-lg leading-relaxed text-white/60 mb-6">
+            No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. SMS consent data is only shared with SMS service providers for message delivery purposes.
+          </p>
+
+          <h2 className="text-2xl mt-12 mb-5 text-white font-bold">6. Data Security</h2>
           <p className="text-lg leading-relaxed text-white/60 mb-6">
             We implement reasonable security measures to protect your information. However, no method of transmission over the Internet is 100% secure.
           </p>
 
-          <h2 className="text-2xl mt-12 mb-5 text-white font-bold">6. Your Privacy Rights</h2>
+          <h2 className="text-2xl mt-12 mb-5 text-white font-bold">7. Your Privacy Rights</h2>
           <p className="text-lg leading-relaxed text-white/60 mb-6">
             Depending on your jurisdiction, you may have rights to access, correct, delete, or opt out of certain uses of your information. Contact us at{' '}
             <a
@@ -89,7 +94,7 @@ export default function PrivacyContent() {
             to exercise these rights.
           </p>
 
-          <h2 className="text-2xl mt-12 mb-5 text-white font-bold">7. Contact Us</h2>
+          <h2 className="text-2xl mt-12 mb-5 text-white font-bold">8. Contact Us</h2>
           <p className="text-lg leading-relaxed text-white/60 mb-6">
             <strong className="text-white">RSL/A</strong><br />
             Email:{' '}
