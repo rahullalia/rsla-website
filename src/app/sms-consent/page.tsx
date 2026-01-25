@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import SmsConsentContent from './SmsConsentContent';
 
 export const metadata: Metadata = {
-  title: 'SMS Consent | RSL/A',
-  description: 'Opt-in to receive SMS communications from RSL/A.',
+  title: 'SMS Consent | RSLA',
+  description: 'Opt-in to receive SMS communications from RSLA.',
   robots: 'noindex, nofollow',
 };
 

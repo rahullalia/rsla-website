@@ -137,7 +137,7 @@ export default function SmsConsentContent() {
             <Link href="/">
               <img
                 src="/lockup.png"
-                alt="RSL/A"
+                alt="RSLA"
                 className="h-16 w-auto"
               />
             </Link>
@@ -145,7 +145,7 @@ export default function SmsConsentContent() {
 
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-white mb-3 font-display">SMS Preferences</h1>
-            <p className="text-base text-gray-400">Choose how you&apos;d like to receive updates from RSL/A.</p>
+            <p className="text-base text-gray-400">Choose how you&apos;d like to receive updates from RSLA.</p>
           </div>
 
           <div className="bg-white/5 border border-white/10 rounded-[20px] p-8 backdrop-blur-md">
@@ -214,7 +214,7 @@ export default function SmsConsentContent() {
                     className="w-4 h-4 mt-1 mr-3 accent-brand-blue shrink-0"
                   />
                   <label htmlFor="sms_service" className="text-sm text-gray-400 leading-relaxed">
-                    I agree to receive appointment reminders, service notifications, and follow-up messages via SMS from RSL/A. Message frequency varies. Message and data rates may apply. Reply HELP for help, STOP to opt out.
+                    I agree to receive appointment reminders, service notifications, and follow-up messages via SMS from RSLA. Message frequency varies. Message and data rates may apply. Reply HELP for help, STOP to opt out.
                   </label>
                 </div>
 
@@ -228,7 +228,7 @@ export default function SmsConsentContent() {
                     className="w-4 h-4 mt-1 mr-3 accent-brand-blue shrink-0"
                   />
                   <label htmlFor="sms_marketing" className="text-sm text-gray-400 leading-relaxed">
-                    I agree to receive promotional offers and marketing messages via SMS from RSL/A. Message frequency varies. Message and data rates may apply. Reply HELP for help, STOP to opt out.
+                    I agree to receive promotional offers and marketing messages via SMS from RSLA. Message frequency varies. Message and data rates may apply. Reply HELP for help, STOP to opt out.
                   </label>
                 </div>
               </div>
