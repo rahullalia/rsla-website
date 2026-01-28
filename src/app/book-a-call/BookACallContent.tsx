@@ -22,9 +22,7 @@ export default function BookACallContent() {
               style={{
                 width: '100%',
                 border: 'none',
-                overflow: 'hidden',
               }}
-              scrolling="no"
               id="client-booking-calendar"
               title="Client Booking Calendar"
               className="rounded-2xl h-[700px] md:h-[1100px]"
@@ -37,7 +35,7 @@ export default function BookACallContent() {
 
       <Script
         src="https://link.msgsndr.com/js/form_embed.js"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
       />
     </main>
   );
