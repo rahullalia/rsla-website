@@ -4,6 +4,33 @@ export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // ============================================
+  // AI CRAWLER DETECTION - Serve markdown for AI bots
+  // These bots get raw markdown instead of HTML for better parsing
+  // ============================================
+  const AI_BOT_PATTERNS = [
+    'GPTBot',           // OpenAI
+    'ChatGPT-User',     // ChatGPT browsing
+    'Claude-Web',       // Anthropic
+    'Perplexity',       // Perplexity AI
+    'Bytespider',       // ByteDance AI
+    'CCBot',            // Common Crawl (used by AI training)
+    'anthropic-ai',     // Anthropic
+    'Google-Extended',  // Google AI training
+    'cohere-ai',        // Cohere
+  ];
+
+  const userAgent = request.headers.get('user-agent') || '';
+  const isAIBot = AI_BOT_PATTERNS.some(bot =>
+    userAgent.toLowerCase().includes(bot.toLowerCase())
+  );
+
+  // Rewrite case study pages to markdown API for AI bots
+  if (isAIBot && pathname.match(/^\/work\/[\w-]+$/) && !pathname.includes('.')) {
+    const slug = pathname.replace('/work/', '');
+    return NextResponse.rewrite(new URL(`/api/work/${slug}`, request.url));
+  }
+
+  // ============================================
   // LEGACY WORDPRESS URL REDIRECTS (301 Permanent)
   // These clean up old URLs from the previous WordPress site
   // ============================================
@@ -196,6 +223,8 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
+    // AI bot detection for case studies
+    '/work/:slug',
     // Legacy WordPress redirects
     '/category/:path*',
     '/tag/:path*',
