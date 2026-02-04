@@ -79,6 +79,50 @@ export default defineType({
             validation: (Rule) => Rule.required().min(1).max(3),
         }),
 
+        // ===== LLM-FRIENDLY STRUCTURED CONTENT =====
+        defineField({
+            name: 'tldr',
+            title: 'TL;DR Summary',
+            type: 'text',
+            group: 'content',
+            rows: 3,
+            description: 'Executive summary (40-60 words). Front-load the key outcome. Appears at top for quick scanning.',
+            validation: (Rule) => Rule.max(400),
+        }),
+        defineField({
+            name: 'keyTakeaways',
+            title: 'Key Takeaways',
+            type: 'array',
+            group: 'content',
+            description: '3-5 actionable insights readers should remember. Start each with a verb.',
+            of: [{ type: 'string' }],
+            validation: (Rule) => Rule.max(5),
+        }),
+        defineField({
+            name: 'problemStatement',
+            title: 'The Problem',
+            type: 'text',
+            group: 'content',
+            rows: 4,
+            description: 'Clear statement of the challenge (100-200 words). Be visceral about the pain point.',
+        }),
+        defineField({
+            name: 'solutionApproach',
+            title: 'The Solution',
+            type: 'text',
+            group: 'content',
+            rows: 4,
+            description: 'How we solved it (100-200 words). Focus on methodology and approach.',
+        }),
+        defineField({
+            name: 'resultsOutcome',
+            title: 'The Results',
+            type: 'text',
+            group: 'content',
+            rows: 4,
+            description: 'Outcomes achieved (100-200 words). Lead with numbers and specific metrics.',
+        }),
+
         // ===== SEO & METADATA GROUP =====
         defineField({
             name: 'seo',
@@ -133,6 +177,24 @@ export default defineType({
                 ],
             },
             description: 'Industry vertical for topic clustering',
+        }),
+        defineField({
+            name: 'servicesUsed',
+            title: 'Services Used',
+            type: 'array',
+            group: 'meta',
+            description: 'RSL/A services applied in this project (for filtering and clustering)',
+            of: [{ type: 'string' }],
+            options: {
+                list: [
+                    { title: 'AI Automation', value: 'ai-automation' },
+                    { title: 'Paid Acquisition', value: 'paid-acquisition' },
+                    { title: 'CRM Infrastructure', value: 'crm-infrastructure' },
+                    { title: 'Smart Websites', value: 'smart-websites' },
+                    { title: 'Local SEO', value: 'local-seo' },
+                    { title: 'Content Marketing', value: 'content-marketing' },
+                ],
+            },
         }),
         defineField({
             name: 'timeframe',

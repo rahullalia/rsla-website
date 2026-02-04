@@ -22,6 +22,13 @@ interface CaseStudy {
     category: string;
     publishedAt?: string;
     content: PortableTextBlock[];
+    // LLM-friendly structured fields
+    tldr?: string;
+    keyTakeaways?: string[];
+    problemStatement?: string;
+    solutionApproach?: string;
+    resultsOutcome?: string;
+    servicesUsed?: string[];
 }
 
 interface CaseStudyContentProps {
@@ -127,6 +134,38 @@ export default function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                                     </div>
                                 );
                             })}
+                        </div>
+                    )}
+
+                    {/* TL;DR Box */}
+                    {caseStudy.tldr && (
+                        <div className="bg-brand-blue/10 border border-brand-blue/30 rounded-xl p-6 mb-8">
+                            <h2 className="text-sm font-semibold text-brand-blue uppercase tracking-wider mb-3">
+                                TL;DR
+                            </h2>
+                            <p className="text-lg text-white/80 leading-relaxed">
+                                {caseStudy.tldr}
+                            </p>
+                        </div>
+                    )}
+
+                    {/* Key Takeaways */}
+                    {caseStudy.keyTakeaways && caseStudy.keyTakeaways.length > 0 && (
+                        <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-8">
+                            <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                                <svg className="w-5 h-5 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Key Takeaways
+                            </h2>
+                            <ul className="space-y-3">
+                                {caseStudy.keyTakeaways.map((takeaway, idx) => (
+                                    <li key={idx} className="flex items-start gap-3">
+                                        <span className="text-brand-blue font-bold min-w-[1.5rem]">{idx + 1}.</span>
+                                        <span className="text-white/70">{takeaway}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     )}
 

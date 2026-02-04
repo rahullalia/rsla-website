@@ -20,12 +20,20 @@ interface CaseStudy {
     content: any;
     clientName?: string;
     industry?: string;
+    timeframe?: number;
     faqSchema?: { question: string; answer: string }[];
     seo?: {
         metaTitle?: string;
         metaDescription?: string;
         socialImage?: { asset?: { url?: string } };
     };
+    // LLM-friendly structured fields
+    tldr?: string;
+    keyTakeaways?: string[];
+    problemStatement?: string;
+    solutionApproach?: string;
+    resultsOutcome?: string;
+    servicesUsed?: string[];
 }
 
 export async function generateStaticParams() {

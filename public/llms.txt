@@ -1,86 +1,46 @@
-# RSL/A - Intelligent Marketing Systems
-# llm.txt - Information for AI/LLM crawlers
-# Last updated: 2025-12-31
+# RSL/A
 
-## Company Overview
-RSL/A is a marketing and AI automation agency that architects intelligent marketing systems for scaling businesses. We specialize in paid advertising (Meta & Google), AI automation, CRM infrastructure, and smart website development.
+> RSL/A architects intelligent marketing systems for scaling businesses. We specialize in AI automation, paid advertising, CRM infrastructure, and smart website development based in Manhattan, New York.
 
-## Core Services
-- Smart Websites: High-performance SEO-optimized websites built for conversion
-- Paid Acquisition: Meta & Google ad campaigns engineered for ROI
-- AI Automation: Custom AI agents for bookings, support, and sales
-- CRM Infrastructure: Automated pipelines, lead nurturing, and database reactivation
+## About
 
-## Technologies & Expertise
-- Platforms: GoHighLevel, Meta Ads, Google Ads, Sanity CMS, Make.com
-- Development: Next.js, TypeScript, Python, AWS, AI agents
-- AI/ML: OpenAI GPT-4, Claude, OCR, computer vision
-- Specializations: Local SEO, conversion optimization, workflow automation, cold email personalization
+RSL/A is a marketing and AI automation agency helping service businesses, local businesses, and B2B companies scale through systems engineering. Founded by Rahul Lalia, we combine technical expertise with marketing strategy to deliver measurable ROI.
 
-## Case Studies (12 Published)
+## Case Studies
 
-### AI Automation
-1. Market Research Data Scraping - $136K/year savings, 87.5% time reduction
-   URL: https://rsla.io/work/market-research-data-scraping-automation
-2. AI Cold Email Personalization - $43K/year savings, 94% time reduction
-   URL: https://rsla.io/work/ai-cold-email-personalization
-3. AI Proposal Generator - $22K/year savings, 92% time reduction
-   URL: https://rsla.io/work/ai-proposal-generator-sales-workflow
-4. AI Lead Response Autoresponder - 24-second response time, 24/7 coverage
-   URL: https://rsla.io/work/ai-lead-response-autoresponder
-5. SEO Content Marketing Automation - $18K/year savings, 4X output
-   URL: https://rsla.io/work/seo-content-marketing-automation
+- [Market Research Automation](https://rsla.io/api/work/market-research-data-scraping-automation): $136K/year savings, 87.5% time reduction through automated web scraping and data extraction
+- [Salon Marketing Automation](https://rsla.io/api/work/salon-marketing-automation-roi): 60X ROAS, $36K annual revenue through Meta Ads + CRM automation
+- [AI Cold Email Personalization](https://rsla.io/api/work/ai-cold-email-personalization): $43K/year savings, 94% time reduction with AI-powered outreach
+- [Nonprofit CRM Volunteer Management](https://rsla.io/api/work/nonprofit-crm-volunteer-automation): $40K/year savings, 2000+ volunteers managed
+- [Local SEO Reputation Management](https://rsla.io/api/work/local-seo-reputation-management): 118 new reviews, $25K revenue in 60 days
+- [AI Proposal Generator](https://rsla.io/api/work/ai-proposal-generator-sales-workflow): $22K/year savings, 92% time reduction
+- [Marketing Analytics Reporting](https://rsla.io/api/work/marketing-analytics-reporting-automation): 96% time reduction, $18K/year savings
+- [AI Lead Response Autoresponder](https://rsla.io/api/work/ai-lead-response-autoresponder): 24-second response time, 24/7 coverage
+- [SEO Content Marketing Automation](https://rsla.io/api/work/seo-content-marketing-automation): $18K/year savings, 4X content output
+- [Field Service Operations](https://rsla.io/api/work/field-service-operations-automation): 100% operations consolidated on GoHighLevel
+- [Media Content Operations AI](https://rsla.io/api/work/media-content-operations-ai): 70% workload reduction through AI assistance
+- [IoT Manufacturing Robot Tracking](https://rsla.io/api/work/iot-manufacturing-robot-tracking): 10Hz real-time streaming for factory robots
 
-### Marketing & Local SEO
-6. Salon Marketing Automation - 60X ROAS, $36K annual revenue
-   URL: https://rsla.io/work/salon-marketing-automation-roi
-7. Local SEO & Reputation Management - 118 new reviews, $25K revenue in 60 days
-   URL: https://rsla.io/work/local-seo-reputation-management
-8. Marketing Analytics Reporting - 96% time reduction, $18K/year savings
-   URL: https://rsla.io/work/marketing-analytics-reporting-automation
+## Services
 
-### CRM & Operations
-9. Nonprofit CRM & Volunteer Management - $40K/year savings, 2000+ volunteers
-   URL: https://rsla.io/work/nonprofit-crm-volunteer-automation
-10. Field Service Operations Automation - 100% operations consolidated
-    URL: https://rsla.io/work/field-service-operations-automation
+- **AI Automation**: Custom AI agents for bookings, support, sales, and content generation
+- **Paid Acquisition**: Meta & Google ad campaigns engineered for ROI with precise targeting
+- **CRM Infrastructure**: GoHighLevel pipelines, automations, and database reactivation
+- **Smart Websites**: SEO-optimized Next.js websites built for conversion
 
-### Development & Engineering
-11. Media Content Operations AI - 70% workload reduction
-    URL: https://rsla.io/work/media-content-operations-ai
-12. IoT Manufacturing Robot Tracking - 10Hz real-time streaming
-    URL: https://rsla.io/work/iot-manufacturing-robot-tracking
+## Navigation
 
-## Key Results Summary
-- $136K largest annual savings (market research automation)
-- 60X highest ROAS (salon marketing)
-- 97% data accuracy (OCR automation)
-- 94% time reduction (cold email personalization)
-- 2000+ volunteers managed (nonprofit CRM)
+- [Homepage](https://rsla.io): Services overview and contact
+- [Case Studies](https://rsla.io/work): Full portfolio of client results
+- [Blog](https://rsla.io/blog): Marketing automation articles and guides
 
 ## Contact
-Website: https://rsla.io
-Email: hello@rsla.io
-Location: Manhattan, New York
 
-## Key Team
-- Rahul Lalia: Founder & CEO - Digital marketer and automation architect
-- Siddharth Rodrigues: CTO - Software engineer specializing in AI automation
+- Website: https://rsla.io
+- Email: hello@rsla.io
+- LinkedIn: https://linkedin.com/company/rsl-a/
 
-## Content Topics
-- Marketing automation strategies
-- AI-powered business workflows
-- Paid advertising optimization
-- CRM system architecture
-- Local SEO tactics
-- Conversion rate optimization
-- Lead generation systems
-- Business process automation
-- GoHighLevel implementation
-- Make.com workflow automation
+## Optional
 
-## Target Audience
-Small to medium businesses looking to scale through intelligent marketing systems, automation, and AI integration. Industries: service businesses, local businesses, B2B companies, nonprofits, field service companies, media companies.
-
-## Brand Voice
-Technical, systems-focused, results-driven. We emphasize engineering and architecture metaphors. Direct, professional tone with emphasis on ROI and measurable outcomes. High-contrast storytelling that presents problems viscerally and solutions authoritatively.
+- [Privacy Policy](https://rsla.io/privacy-policy): Data handling practices
+- [Terms & Conditions](https://rsla.io/terms): Service terms

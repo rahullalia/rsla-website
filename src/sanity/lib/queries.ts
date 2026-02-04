@@ -115,7 +115,17 @@ export const caseStudyBySlugQuery = groq`
     annualSavings,
     publishedAt,
     content,
-    "seo": seo
+    "seo": seo,
+    clientName,
+    industry,
+    timeframe,
+    faqSchema,
+    tldr,
+    keyTakeaways,
+    problemStatement,
+    solutionApproach,
+    resultsOutcome,
+    servicesUsed
   }
 `;
 
