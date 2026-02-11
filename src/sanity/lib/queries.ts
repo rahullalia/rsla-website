@@ -85,6 +85,19 @@ export const recentBlogPostsQuery = groq`
   }
 `;
 
+// Get featured case studies for homepage (ordered by priority)
+export const featuredCaseStudiesQuery = groq`
+  *[_type == "caseStudy" && featured == true] | order(priority asc) [0...3] {
+    title,
+    "slug": slug.current,
+    tag,
+    description,
+    metrics,
+    featured,
+    priority
+  }
+`;
+
 // Get all case studies (ordered by priority)
 export const caseStudiesQuery = groq`
   *[_type == "caseStudy"] | order(priority asc) {
@@ -125,7 +138,25 @@ export const caseStudyBySlugQuery = groq`
     problemStatement,
     solutionApproach,
     resultsOutcome,
-    servicesUsed
+    servicesUsed,
+    relatedCases[]->{
+      title,
+      "slug": slug.current,
+      tag,
+      description,
+      metrics
+    }
+  }
+`;
+
+// Get related case studies by category (fallback when relatedCases is empty)
+export const relatedCaseStudiesQuery = groq`
+  *[_type == "caseStudy" && slug.current != $slug && category == $category] | order(priority asc) [0...3] {
+    title,
+    "slug": slug.current,
+    tag,
+    description,
+    metrics
   }
 `;
 

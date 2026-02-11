@@ -20,12 +20,23 @@ import {
 } from "@/components/animations";
 import Link from "next/link";
 import { ArrowRight, Cpu, Globe, Rocket, Terminal } from "lucide-react";
+import { client } from "@/sanity/lib/client";
+import { featuredCaseStudiesQuery } from "@/sanity/lib/queries";
 
 /**
- * Homepage - Pure static rendering, no client-side state
- * All useEffect hooks removed to prevent hydration issues on iOS Safari
+ * Homepage - Server component, fetches featured case studies from Sanity
  */
-export default function Home() {
+export default async function Home() {
+
+  const sanityStudies = await client.fetch(featuredCaseStudiesQuery);
+
+  const caseStudies: { tag: string; title: string; description: string; href: string; metrics: { value: string; label: string }[] }[] = sanityStudies.map((study: { slug: string; tag: string; title: string; description: string; metrics: { value: string; label: string }[] }) => ({
+    tag: study.tag,
+    title: study.title,
+    description: study.description,
+    href: `/work/${study.slug}`,
+    metrics: study.metrics?.slice(0, 2) || [],
+  }));
 
   const team = [
     {
@@ -40,39 +51,6 @@ export default function Home() {
       image: '/images/siddharth.png',
       bio: 'As a software engineer, Siddharth translates complex business logic into powerful software. His expertise in prompt engineering and AI automation is what gives our clients a critical, custom advantage.'
     }
-  ];
-
-  const caseStudies = [
-    {
-      tag: 'Digital Marketing & Lead Nurture',
-      title: '$600 in Meta Ads Drove $36K in Rental Income',
-      description: 'Helped a Manhattan salon owner fill vacant suites, turning unused space into a reliable, passive revenue stream with a 60X return on ad spend.',
-      href: '/work/casagrande-salon',
-      metrics: [
-        { value: '+60X', label: 'Return on Ad Spend' },
-        { value: '$36K', label: 'Annual Income' },
-      ],
-    },
-    {
-      tag: 'AI Automation & Cold Email',
-      title: 'AI Cold Email Personalization Saves 325 Hours Annually',
-      description: 'Automated cold email personalization with AI, reducing research and writing time from 8 minutes to 30 seconds per email using LinkedIn enrichment data.',
-      href: '/work/email-ice-breaker-automation',
-      metrics: [
-        { value: '94%', label: 'Time Reduction' },
-        { value: '$43K+', label: 'Annual Savings' },
-      ],
-    },
-    {
-      tag: 'AI Automation & Workflow',
-      title: 'AI Proposal Generator Saves $22K Annually',
-      description: 'Automated proposal creation with AI, reducing production time from 2 hours to 10 minutes and recovering 165 hours annually.',
-      href: '/work/proposal-generator-automation',
-      metrics: [
-        { value: '92%', label: 'Time Reduction' },
-        { value: '$22K+', label: 'Annual Savings' },
-      ],
-    },
   ];
 
   return (
