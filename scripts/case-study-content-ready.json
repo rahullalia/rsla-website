@@ -1,0 +1,94 @@
+{
+  "instructions": "Run: SANITY_API_TOKEN=<your-new-token> node scripts/update-case-studies-batch.js",
+  "tokenUrl": "https://manage.sanity.io/projects/36wenybq/api#tokens",
+  "caseStudies": [
+    {
+      "slug": "ai-cold-email-personalization",
+      "tldr": "We built an AI system that reads LinkedIn data and writes personalized cold email icebreakers in 30 seconds instead of 8 minutes. The automation uses Make.com, GPT-4, and Google Sheets to generate context-aware opening lines at scale—saving 325 hours and $43K annually while maintaining the quality of hand-written outreach.",
+      "keyTakeaways": [
+        "Automate the research, not just the sending—GPT-4 reads LinkedIn context and writes icebreakers that reference specific roles, companies, and recent activity",
+        "Build enrichment-first pipelines where Apollo, Clay, or Sales Navigator data feeds directly into AI prompts",
+        "Break the quality-vs-volume tradeoff by engineering systems that scale personalization infinitely",
+        "Calculate your real cost—8 minutes per email at agency rates is $46K/year in hidden labor",
+        "Test with 50 emails/week first, then scale once you validate response rate lift"
+      ]
+    },
+    {
+      "slug": "nonprofit-crm-volunteer-automation",
+      "tldr": "We unified 2,000+ volunteers scattered across 15 regional databases into a single GoHighLevel CRM, then automated the entire onboarding pipeline—from intake forms to background checks to training delivery. The nonprofit eliminated $40K in annual admin costs, redeployed a full-time coordinator to program work, and cut emergency volunteer deployment from days to hours.",
+      "keyTakeaways": [
+        "Consolidate fragmented databases first—you can't automate chaos, you need a single source of truth",
+        "Build smart intake forms with conditional logic that routes volunteers by type, location, and availability",
+        "Automate the compliance paper trail—waivers, NDAs, background checks should fire automatically",
+        "Deploy skill-based matching for rapid emergency response when you need specific volunteers fast",
+        "Create one-click reporting for grant applications—funders want data, not excuses about manual compilation"
+      ]
+    },
+    {
+      "slug": "ai-proposal-generator-sales-workflow",
+      "tldr": "We built an AI system that transforms discovery call notes into polished, branded proposals in 10 minutes instead of 2 hours. Using Make.com, Claude Opus 4, and Google Docs, the automation generates compelling narratives, detailed scope items, and milestone timelines—recovering 165 hours and $22K annually while eliminating same-day delivery delays.",
+      "keyTakeaways": [
+        "Capture discovery calls in structured Typeform inputs—garbage in, garbage out applies to AI too",
+        "Use Claude for proposal narrative generation—it writes persuasive problem/solution copy that sounds human",
+        "Build template injection, not template replacement—AI populates your existing branded docs",
+        "Eliminate the perfectionism rabbit hole by constraining inputs to specific fields",
+        "Measure break-even in proposals, not months—ours hit ROI at 2 proposals"
+      ]
+    },
+    {
+      "slug": "marketing-analytics-reporting-automation",
+      "tldr": "We automated a 4-hour daily Facebook Ads reporting process down to 10 minutes using Google Sheets and custom Apps Script. The system pulls data via API, calculates derived metrics automatically, and surfaces optimization opportunities—saving 990+ hours and $18K annually while uncovering tracking gaps that delivered a 4% conversion lift.",
+      "keyTakeaways": [
+        "Automate data ingestion first—manual copy-paste from Facebook Ads Manager is a symptom, not the disease",
+        "Build derived metric calculations into the pipeline—CPL, ROAS, week-over-week deltas should calculate automatically",
+        "Add error handling with Slack alerts so failed data pulls don't poison your reports",
+        "Look for tracking gaps during automation builds—the 4% conversion lift came from finally seeing metrics that were always available",
+        "Document everything in SOPs so the system survives team changes"
+      ]
+    },
+    {
+      "slug": "ai-lead-response-autoresponder",
+      "tldr": "We built an AI email auto-responder that actually reads every message and crafts personalized replies in 24 seconds—not 24 hours. Using Make.com and GPT-4, the system analyzes sender context, identifies the specific question asked, and generates responses that feel human-written. Running 24/7, it captures leads while competitors sleep.",
+      "keyTakeaways": [
+        "Deploy dual-stage AI analysis—first call extracts the question, second call generates the personalized response",
+        "Engineer psychological timing with 30-90 second random delays—instant replies scream 'bot'",
+        "Reference specific details from their message—'your 3-location dental practice' beats 'your inquiry'",
+        "Build different response templates for different inquiry types—sales vs support vs partnership",
+        "Remember: feeling heard matters more than knowing whether a human or AI did the hearing"
+      ]
+    },
+    {
+      "slug": "field-service-operations-automation",
+      "tldr": "We rebuilt a cleaning company's entire operations in GoHighLevel, consolidating 4 fragmented systems into one command center with bidirectional Housecall Pro sync. AI-powered communications handle confirmations, review requests, and rebooking automatically. Results: 2 admin positions eliminated, 99% confirmation rate, 14 to 132 Google reviews in 60 days, $15K in recovered revenue.",
+      "keyTakeaways": [
+        "Build bidirectional sync when clients can't abandon existing tools—Housecall Pro stayed, but GoHighLevel became the brain",
+        "Automate the communication cascade—confirmations at 48hr, 24hr, and morning-of eliminate no-shows",
+        "Deploy AI chat widgets for after-hours lead capture—37 leads captured, 18 converted while the team slept",
+        "Send review requests 2 hours post-completion with service-specific messaging—timing matters",
+        "Run rebooking workflows based on service frequency—weekly, bi-weekly, monthly triggers prevent revenue leakage"
+      ]
+    },
+    {
+      "slug": "media-content-operations-ai",
+      "tldr": "As Founding Engineer for a Singapore media company, we built three production AI systems from scratch: video QC automation (60 min → 5 min), podcast-to-social content pipeline (6 hours → 20 min), and YouTube analytics Chrome extension (2 hours → 5 min). Total impact: 70% workload reduction, enabling 10x content multiplication with the same team.",
+      "keyTakeaways": [
+        "Engineer multi-stage AI pipelines—chunking → interpretation → transformation → editing beats single-prompt approaches",
+        "Write 500+ line prompts for consistent brand voice—LLMs need exhaustive context for production-quality output",
+        "Build compliance into automation—Netflix-level standards enforced automatically, not dependent on human vigilance",
+        "Create content multiplication workflows—one 60-minute podcast becomes 10+ platform-specific pieces",
+        "Remember: 70% workload reduction doesn't mean 70% fewer people—it means 10x more output"
+      ]
+    },
+    {
+      "slug": "iot-manufacturing-robot-tracking",
+      "tldr": "We engineered bidirectional IoT integration between autonomous mobile robots and a digital twin platform for automotive manufacturing. MQTT handles 10Hz real-time position streaming while REST APIs manage control commands. OAuth 2.0 per-device authentication meets enterprise security requirements. The system now monitors multi-million dollar robots across multiple factory plants in real-time.",
+      "keyTakeaways": [
+        "Design hybrid protocol architecture—MQTT for high-frequency data streaming, REST for command-and-control operations",
+        "Implement OAuth 2.0 per-device authentication for enterprise-grade IoT security—one compromised device shouldn't compromise the network",
+        "Build coordinate transformation pipelines when integrating systems with different spatial references",
+        "Create vendor onboarding documentation that reduces integration time from weeks to days",
+        "Engineer failover mechanisms—network interruptions happen, your monitoring can't go blind"
+      ]
+    }
+  ]
+}
