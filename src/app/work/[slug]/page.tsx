@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
-import { caseStudyBySlugQuery, caseStudySlugsQuery } from '@/sanity/lib/queries';
+import { caseStudyBySlugQuery, caseStudySlugsQuery, relatedCaseStudiesQuery } from '@/sanity/lib/queries';
 import CaseStudyContent from './CaseStudyContent';
 import { CaseStudySchema, BreadcrumbSchema, FAQSchema } from '@/components/JsonLd';
 
@@ -34,6 +34,15 @@ interface CaseStudy {
     solutionApproach?: string;
     resultsOutcome?: string;
     servicesUsed?: string[];
+    relatedCases?: RelatedCaseStudy[];
+}
+
+interface RelatedCaseStudy {
+    title: string;
+    slug: string;
+    tag: string;
+    description: string;
+    metrics: { value: string; label: string }[];
 }
 
 export async function generateStaticParams() {
@@ -91,6 +100,15 @@ export default async function CaseStudyPage({
         notFound();
     }
 
+    // Fetch fallback related cases if none are manually set
+    let relatedCases = caseStudy.relatedCases;
+    if (!relatedCases || relatedCases.length === 0) {
+        relatedCases = await client.fetch<RelatedCaseStudy[]>(relatedCaseStudiesQuery, {
+            slug,
+            category: caseStudy.category,
+        });
+    }
+
     return (
         <>
             <CaseStudySchema
@@ -113,7 +131,7 @@ export default async function CaseStudyPage({
             {caseStudy.faqSchema && caseStudy.faqSchema.length > 0 && (
                 <FAQSchema faqs={caseStudy.faqSchema} />
             )}
-            <CaseStudyContent caseStudy={caseStudy} />
+            <CaseStudyContent caseStudy={caseStudy} relatedCases={relatedCases || []} />
         </>
     );
 }

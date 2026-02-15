@@ -12,6 +12,14 @@ interface Metric {
     label: string;
 }
 
+interface RelatedCaseStudy {
+    title: string;
+    slug: string;
+    tag: string;
+    description: string;
+    metrics: Metric[];
+}
+
 interface CaseStudy {
     title: string;
     slug: string;
@@ -22,6 +30,8 @@ interface CaseStudy {
     category: string;
     publishedAt?: string;
     content: PortableTextBlock[];
+    industry?: string;
+    timeframe?: number;
     // LLM-friendly structured fields
     tldr?: string;
     keyTakeaways?: string[];
@@ -33,9 +43,36 @@ interface CaseStudy {
 
 interface CaseStudyContentProps {
     caseStudy: CaseStudy;
+    relatedCases: RelatedCaseStudy[];
 }
 
-export default function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
+const SERVICE_LABELS: Record<string, string> = {
+    'ai-automation': 'AI Automation',
+    'paid-acquisition': 'Paid Acquisition',
+    'crm-infrastructure': 'CRM Infrastructure',
+    'smart-websites': 'Smart Websites',
+    'local-seo': 'Local SEO',
+    'content-marketing': 'Content Marketing',
+};
+
+const INDUSTRY_LABELS: Record<string, string> = {
+    'salon-spa': 'Salon/Spa',
+    'restaurant': 'Restaurant',
+    'auto-detailing': 'Auto Detailing',
+    'real-estate': 'Real Estate',
+    'contractor': 'Contractor/Home Services',
+    'medical': 'Medical/Dental',
+    'legal': 'Legal',
+    'fitness': 'Fitness/Gym',
+    'ecommerce': 'E-commerce',
+    'saas': 'SaaS',
+    'agency': 'Agency',
+    'nonprofit': 'Non-Profit',
+    'media': 'Media/Content',
+    'manufacturing': 'Manufacturing',
+};
+
+export default function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentProps) {
 
     // Parse stat value for NumberCounter - ported from CaseStudyLayout
     const parseStatValue = (value: string) => {
@@ -137,6 +174,30 @@ export default function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                         </div>
                     )}
 
+                    {/* At a Glance Badges */}
+                    {(caseStudy.servicesUsed?.length || caseStudy.timeframe || caseStudy.industry) && (
+                        <div className="flex flex-wrap gap-2 mb-8">
+                            {caseStudy.industry && (
+                                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/5 border border-white/10 text-white/60">
+                                    {INDUSTRY_LABELS[caseStudy.industry] || caseStudy.industry}
+                                </span>
+                            )}
+                            {caseStudy.timeframe && (
+                                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/5 border border-white/10 text-white/60">
+                                    {caseStudy.timeframe} days
+                                </span>
+                            )}
+                            {caseStudy.servicesUsed?.map((service) => (
+                                <span
+                                    key={service}
+                                    className="px-3 py-1 rounded-full text-xs font-semibold bg-white/5 border border-white/10 text-white/60"
+                                >
+                                    {SERVICE_LABELS[service] || service}
+                                </span>
+                            ))}
+                        </div>
+                    )}
+
                     {/* TL;DR Box */}
                     {caseStudy.tldr && (
                         <div className="bg-brand-blue/10 border border-brand-blue/30 rounded-xl p-6 mb-8">
@@ -179,6 +240,52 @@ export default function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     </div>
                 </article>
             </div>
+
+            {/* Related Case Studies */}
+            {relatedCases.length > 0 && (
+                <section className="border-t border-white/10 relative z-10">
+                    <div className="max-w-7xl mx-auto py-20 px-6">
+                        <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-10">
+                            More Case Studies
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {relatedCases.map((related) => (
+                                <Link
+                                    key={related.slug}
+                                    href={`/work/${related.slug}`}
+                                    className="group flex flex-col justify-between rounded-[20px] overflow-hidden border border-white/10 bg-white/5 p-8 transition-all duration-300 hover:border-brand-blue"
+                                >
+                                    <div>
+                                        <span className="text-[0.8rem] text-brand-blue uppercase tracking-[1.5px] mb-4 block font-bold">
+                                            {related.tag}
+                                        </span>
+                                        <h3 className="text-xl leading-tight text-white mb-3 group-hover:text-brand-blue transition-colors line-clamp-2">
+                                            {related.title}
+                                        </h3>
+                                        <p className="text-sm text-gray-400 mb-6 line-clamp-2">
+                                            {related.description}
+                                        </p>
+                                    </div>
+                                    {related.metrics && related.metrics.length > 0 && (
+                                        <div className="pt-4 border-t border-white/10 flex justify-between gap-4">
+                                            {related.metrics.slice(0, 2).map((metric, idx) => (
+                                                <div key={idx} className="text-center flex-1">
+                                                    <strong className="block text-lg text-white">
+                                                        {metric.value}
+                                                    </strong>
+                                                    <span className="block text-[0.7rem] text-brand-blue uppercase mt-1">
+                                                        {metric.label}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
 
             <Footer />
         </main>

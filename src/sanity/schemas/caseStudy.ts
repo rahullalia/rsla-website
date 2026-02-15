@@ -204,13 +204,6 @@ export default defineType({
             description: 'How many days to achieve results (e.g., 90)',
         }),
         defineField({
-            name: 'readingTime',
-            title: 'Reading Time (minutes)',
-            type: 'number',
-            group: 'meta',
-            description: 'Estimated read time (auto-calculated: ~200 words/min)',
-        }),
-        defineField({
             name: 'faqSchema',
             title: 'FAQ Schema',
             type: 'array',
