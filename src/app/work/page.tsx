@@ -1,6 +1,8 @@
 
+import type { Metadata } from 'next';
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { BreadcrumbSchema } from '@/components/JsonLd';
 import { ArrowRight } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import {
@@ -15,11 +17,32 @@ import { caseStudiesQuery } from "@/sanity/lib/queries";
 
 export const revalidate = 60; // Revalidate every minute
 
+export const metadata: Metadata = {
+  title: 'Case Studies | RSL/A',
+  description: 'Real results from real clients. See how RSL/A uses AI automation, paid ads, and CRM systems to drive measurable growth.',
+  alternates: {
+    canonical: 'https://rsla.io/work',
+  },
+  openGraph: {
+    title: 'Case Studies | RSL/A',
+    description: 'Real results from real clients. See how RSL/A uses AI automation, paid ads, and CRM systems to drive measurable growth.',
+    url: 'https://rsla.io/work',
+    siteName: 'RSL/A',
+    type: 'website',
+  },
+};
+
 export default async function WorkPage() {
   const caseStudies = await client.fetch<CaseStudy[]>(caseStudiesQuery);
 
   return (
     <main className="min-h-screen bg-brand-black text-white selection:bg-brand-blue selection:text-white relative overflow-hidden">
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "https://rsla.io" },
+          { name: "Case Studies", url: "https://rsla.io/work" },
+        ]}
+      />
       <Navigation />
       <AuroraBackground />
 

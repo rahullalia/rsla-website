@@ -147,11 +147,13 @@ export function CaseStudySchema({
         datePublished: datePublished,
         author: {
             "@type": "Organization",
+            "@id": "https://rsla.io/#organization",
             name: "RSL/A",
             url: "https://rsla.io",
         },
         publisher: {
             "@type": "Organization",
+            "@id": "https://rsla.io/#organization",
             name: "RSL/A",
             logo: {
                 "@type": "ImageObject",
@@ -215,6 +217,30 @@ interface BlogPostSchemaProps {
     categories?: string[];
 }
 
+// Author E-E-A-T profiles for rich Person schema
+const AUTHOR_PROFILES: Record<string, {
+    jobTitle: string;
+    worksFor: { name: string; url: string };
+    sameAs: string[];
+}> = {
+    "Rahul Lalia": {
+        jobTitle: "Founder & CEO",
+        worksFor: { name: "RSL/A", url: "https://rsla.io" },
+        sameAs: [
+            "https://www.linkedin.com/in/rahullalia/",
+            "https://github.com/rahullalia",
+            "https://x.com/rsla_io",
+        ],
+    },
+    "Siddharth Rodrigues": {
+        jobTitle: "Co-Founder & CTO",
+        worksFor: { name: "RSL/A", url: "https://rsla.io" },
+        sameAs: [
+            "https://www.linkedin.com/in/siddharthrodrigues/",
+        ],
+    },
+};
+
 export function BlogPostSchema({
     title,
     description,
@@ -226,6 +252,8 @@ export function BlogPostSchema({
     image = "https://rsla.io/og-image.png",
     categories = [],
 }: BlogPostSchemaProps) {
+    const authorProfile = AUTHOR_PROFILES[authorName];
+
     const schema = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
@@ -237,10 +265,20 @@ export function BlogPostSchema({
         author: {
             "@type": "Person",
             name: authorName,
-            url: authorUrl,
+            url: authorUrl || (authorProfile ? authorProfile.worksFor.url : undefined),
+            ...(authorProfile && {
+                jobTitle: authorProfile.jobTitle,
+                worksFor: {
+                    "@type": "Organization",
+                    name: authorProfile.worksFor.name,
+                    url: authorProfile.worksFor.url,
+                },
+                sameAs: authorProfile.sameAs,
+            }),
         },
         publisher: {
             "@type": "Organization",
+            "@id": "https://rsla.io/#organization",
             name: "RSL/A",
             logo: {
                 "@type": "ImageObject",
@@ -253,6 +291,11 @@ export function BlogPostSchema({
             "@id": url,
         },
         keywords: categories.join(", "),
+        isPartOf: {
+            "@type": "Blog",
+            "@id": "https://rsla.io/blog",
+            name: "RSL/A Blog",
+        },
     };
 
     return (

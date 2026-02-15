@@ -4,6 +4,7 @@ import { blogPostsQuery, blogPostsCountQuery } from '@/sanity/lib/queries';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import BlogContent from './BlogContent';
+import { BreadcrumbSchema } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Blog | RSL/A',
@@ -66,6 +67,12 @@ export default async function BlogPage({
 
   return (
     <main className="min-h-screen bg-brand-black text-white">
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "https://rsla.io" },
+          { name: "Blog", url: "https://rsla.io/blog" },
+        ]}
+      />
       <Navigation />
       <BlogContent
         posts={posts}

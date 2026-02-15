@@ -31,6 +31,9 @@ export const metadata: Metadata = {
     'ROI optimization',
   ],
   metadataBase: new URL('https://rsla.io'),
+  alternates: {
+    canonical: 'https://rsla.io',
+  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '16x16 32x32 48x48 64x64 128x128 256x256' },
@@ -105,6 +108,10 @@ const organizationSchema = {
     "https://www.linkedin.com/company/rsl-a/",
     "https://www.instagram.com/rsla.io",
     "https://www.tiktok.com/@rsla.io",
+    "https://github.com/rahullalia",
+    "https://www.youtube.com/@rsla_io",
+    "https://x.com/rsla_io",
+    "https://www.facebook.com/rsla.io",
   ],
   contactPoint: {
     "@type": "ContactPoint",
@@ -218,6 +225,10 @@ const localBusinessSchema = {
     "https://www.linkedin.com/company/rsl-a/",
     "https://www.instagram.com/rsla.io",
     "https://www.tiktok.com/@rsla.io",
+    "https://github.com/rahullalia",
+    "https://www.youtube.com/@rsla_io",
+    "https://x.com/rsla_io",
+    "https://www.facebook.com/rsla.io",
   ],
 };
 
