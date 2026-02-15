@@ -1,6 +1,6 @@
 # RSL/A Website (rsla.io)
 
-Marketing & AI automation agency website. Rebrand of RSL Media Hub.
+Marketing & AI automation agency website. Rebrand of RSL/A.
 
 ## Tech Stack
 

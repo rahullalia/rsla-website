@@ -760,7 +760,7 @@
                                 "scoped": "true",
                                 "connection": "google"
                             },
-                            "label": "My Google connection (lalia@rslmediahub.com)"
+                            "label": "My Google connection (lalia@rsla.io)"
                         }
                     }
                 },
@@ -983,7 +983,7 @@
                                 "scoped": "true",
                                 "connection": "google"
                             },
-                            "label": "My Google connection (lalia@rslmediahub.com)"
+                            "label": "My Google connection (lalia@rsla.io)"
                         }
                     }
                 },
@@ -2661,7 +2661,7 @@
                                 "scoped": "true",
                                 "connection": "google-restricted"
                             },
-                            "label": "My Google Restricted connection (lalia@rslmediahub.com)"
+                            "label": "My Google Restricted connection (lalia@rsla.io)"
                         }
                     }
                 },
@@ -2775,7 +2775,7 @@
                                 "scoped": "true",
                                 "connection": "google"
                             },
-                            "label": "My Google connection (lalia@rslmediahub.com)"
+                            "label": "My Google connection (lalia@rsla.io)"
                         }
                     }
                 },
@@ -4807,7 +4807,7 @@
                                                 "scoped": "true",
                                                 "connection": "google"
                                             },
-                                            "label": "My Google connection (lalia@rslmediahub.com)"
+                                            "label": "My Google connection (lalia@rsla.io)"
                                         }
                                     }
                                 },
@@ -6047,7 +6047,7 @@
                                                 "scoped": "true",
                                                 "connection": "google"
                                             },
-                                            "label": "My Google connection (lalia@rslmediahub.com)"
+                                            "label": "My Google connection (lalia@rsla.io)"
                                         }
                                     }
                                 },

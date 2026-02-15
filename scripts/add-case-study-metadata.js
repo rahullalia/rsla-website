@@ -179,7 +179,7 @@ const caseStudyMetadata = {
         ]
     },
     'seo-content-marketing-automation': {
-        clientName: 'RSL Media Hub',
+        clientName: 'RSL/A',
         industry: 'agency',
         timeframe: 30,
         seo: {
