@@ -56,7 +56,14 @@ export const blogPostBySlugQuery = groq`
       slug
     },
     body,
-    seo
+    seo,
+    relatedCaseStudies[]->{
+      title,
+      "slug": slug.current,
+      tag,
+      description,
+      metrics
+    }
   }
 `;
 
@@ -145,6 +152,21 @@ export const caseStudyBySlugQuery = groq`
       tag,
       description,
       metrics
+    },
+    relatedBlogPosts[]->{
+      _id,
+      title,
+      slug,
+      excerpt,
+      publishedAt,
+      featuredImage {
+        asset->,
+        alt
+      },
+      categories[]->{
+        name,
+        slug
+      }
     }
   }
 `;
@@ -157,6 +179,63 @@ export const relatedCaseStudiesQuery = groq`
     tag,
     description,
     metrics
+  }
+`;
+
+// Get a related case study for a blog post (match by mapped category names)
+// Pass $categoryNames (array of case study category display names mapped from blog slugs)
+export const relatedCaseStudyForBlogQuery = groq`
+  *[_type == "caseStudy" && category in $categoryNames] | order(featured desc, priority asc) [0] {
+    title,
+    "slug": slug.current,
+    tag,
+    description,
+    metrics
+  }
+`;
+
+// Fallback: get most recent featured case study (when no category match)
+export const featuredCaseStudyFallbackQuery = groq`
+  *[_type == "caseStudy" && featured == true] | order(priority asc) [0] {
+    title,
+    "slug": slug.current,
+    tag,
+    description,
+    metrics
+  }
+`;
+
+// Get related blog posts for a case study page (match by category keywords)
+// Pass $categoryKeywords as an array of lowercase keyword strings derived from the case study category
+export const relatedBlogPostsForCaseStudyQuery = groq`
+  *[_type == "blogPost" && defined(publishedAt) && publishedAt <= now() && count((categories[]->slug.current)[@ in $categoryKeywords]) > 0] | order(publishedAt desc) [0...2] {
+    _id,
+    title,
+    slug,
+    excerpt,
+    publishedAt,
+    featuredImage {
+      asset->,
+      alt
+    },
+    categories[]->{
+      name,
+      slug
+    }
+  }
+`;
+
+// Get related blog posts by category (for sidebar, excluding current post)
+export const relatedBlogPostsByCategoryQuery = groq`
+  *[_type == "blogPost" && defined(publishedAt) && publishedAt <= now() && _id != $currentId && count((categories[]->slug.current)[@ in $categorySlugs]) > 0] | order(publishedAt desc) [0...5] {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    featuredImage {
+      asset->,
+      alt
+    }
   }
 `;
 

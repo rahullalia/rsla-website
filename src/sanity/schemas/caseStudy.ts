@@ -282,6 +282,15 @@ export default defineType({
             group: 'settings',
         }),
         defineField({
+            name: 'relatedBlogPosts',
+            title: 'Related Blog Posts',
+            type: 'array',
+            group: 'settings',
+            description: 'Pick 1-2 blog posts to link from this case study',
+            of: [{ type: 'reference', to: [{ type: 'blogPost' }] }],
+            validation: (Rule) => Rule.max(2),
+        }),
+        defineField({
             name: 'relatedCases',
             title: 'Related Case Studies',
             type: 'array',

@@ -41,9 +41,20 @@ interface CaseStudy {
     servicesUsed?: string[];
 }
 
+interface RelatedBlogPost {
+    _id: string;
+    title: string;
+    slug: { current: string };
+    excerpt?: string;
+    publishedAt: string;
+    featuredImage?: { url: string; alt: string };
+    categories?: Array<{ name: string; slug: { current: string } }>;
+}
+
 interface CaseStudyContentProps {
     caseStudy: CaseStudy;
     relatedCases: RelatedCaseStudy[];
+    relatedBlogPosts?: RelatedBlogPost[];
 }
 
 const SERVICE_LABELS: Record<string, string> = {
@@ -72,7 +83,7 @@ const INDUSTRY_LABELS: Record<string, string> = {
     'manufacturing': 'Manufacturing',
 };
 
-export default function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyContentProps) {
+export default function CaseStudyContent({ caseStudy, relatedCases, relatedBlogPosts = [] }: CaseStudyContentProps) {
 
     // Parse stat value for NumberCounter - ported from CaseStudyLayout
     const parseStatValue = (value: string) => {
@@ -108,6 +119,17 @@ export default function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyC
 
             <div className="max-w-4xl mx-auto py-32 px-6 relative z-10">
                 <article>
+                    {/* Visible Breadcrumbs */}
+                    <nav aria-label="Breadcrumb" className="mb-6">
+                        <ol className="flex items-center gap-2 text-sm text-white/40">
+                            <li><Link href="/" className="hover:text-brand-blue transition-colors">Home</Link></li>
+                            <li>/</li>
+                            <li><Link href="/work" className="hover:text-brand-blue transition-colors">Case Studies</Link></li>
+                            <li>/</li>
+                            <li className="text-white/60 truncate max-w-[300px]">{caseStudy.title}</li>
+                        </ol>
+                    </nav>
+
                     {/* Back Link */}
                     <Link
                         href="/work"
@@ -280,6 +302,57 @@ export default function CaseStudyContent({ caseStudy, relatedCases }: CaseStudyC
                                             ))}
                                         </div>
                                     )}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {/* Related Blog Posts */}
+            {relatedBlogPosts.length > 0 && (
+                <section className="border-t border-white/10 relative z-10">
+                    <div className="max-w-7xl mx-auto py-20 px-6">
+                        <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-10">
+                            Related Articles
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {relatedBlogPosts.map((blogPost) => (
+                                <Link
+                                    key={blogPost._id}
+                                    href={`/blog/${blogPost.slug.current}`}
+                                    className="group flex flex-col rounded-[20px] overflow-hidden border border-white/10 bg-white/5 transition-all duration-300 hover:border-brand-blue"
+                                >
+                                    {blogPost.featuredImage?.url && (
+                                        <div className="aspect-[16/9] overflow-hidden">
+                                            <img
+                                                src={blogPost.featuredImage.url}
+                                                alt={blogPost.featuredImage.alt || blogPost.title}
+                                                loading="lazy"
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                            />
+                                        </div>
+                                    )}
+                                    <div className="p-6">
+                                        {blogPost.categories && blogPost.categories.length > 0 && (
+                                            <span className="text-[0.75rem] text-brand-blue uppercase tracking-wider font-semibold">
+                                                {blogPost.categories[0].name}
+                                            </span>
+                                        )}
+                                        <h3 className="text-lg text-white mt-1 mb-2 group-hover:text-brand-blue transition-colors line-clamp-2">
+                                            {blogPost.title}
+                                        </h3>
+                                        {blogPost.excerpt && (
+                                            <p className="text-sm text-white/50 line-clamp-2">{blogPost.excerpt}</p>
+                                        )}
+                                        <time className="block text-xs text-white/30 mt-3">
+                                            {new Date(blogPost.publishedAt).toLocaleDateString('en-US', {
+                                                month: 'short',
+                                                day: 'numeric',
+                                                year: 'numeric',
+                                            })}
+                                        </time>
+                                    </div>
                                 </Link>
                             ))}
                         </div>

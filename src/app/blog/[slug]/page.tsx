@@ -6,6 +6,9 @@ import {
   blogPostBySlugQuery,
   blogPostSlugsQuery,
   recentBlogPostsQuery,
+  relatedCaseStudyForBlogQuery,
+  featuredCaseStudyFallbackQuery,
+  relatedBlogPostsByCategoryQuery,
 } from '@/sanity/lib/queries';
 import { urlForImage } from '@/sanity/lib/image';
 import BlogPostContent from './BlogPostContent';
@@ -80,6 +83,13 @@ interface BlogPost {
     metaTitle?: string;
     metaDescription?: string;
   };
+  relatedCaseStudies?: Array<{
+    title: string;
+    slug: string;
+    tag: string;
+    description: string;
+    metrics?: Array<{ value: string; label: string }>;
+  }>;
 }
 
 interface RecentPost {
@@ -165,6 +175,52 @@ export default async function BlogPostPage({
     notFound();
   }
 
+  // Use manually curated case study if set, otherwise fall back to category match, then featured
+  const categorySlugs = post.categories?.map((c) => c.slug.current) || [];
+  let relatedCaseStudy = post.relatedCaseStudies?.[0] || null;
+
+  if (!relatedCaseStudy) {
+    const BLOG_SLUG_TO_CASE_CATEGORY: Record<string, string[]> = {
+      'ai-automation': ['AI Automation'],
+      'marketing-automation': ['Marketing', 'AI Automation'],
+      'lead-nurture': ['AI Automation', 'Marketing'],
+      'crm': ['CRM & Operations'],
+      'go-high-level': ['CRM & Operations'],
+      'business-tools': ['CRM & Operations', 'Development'],
+      'google-reviews': ['Marketing'],
+      'reputation-management': ['Marketing'],
+      'sms-marketing': ['Marketing'],
+      'salons': ['Marketing'],
+      'restaurant': ['Marketing'],
+      'real-estate': ['Marketing'],
+      'home-services': ['CRM & Operations'],
+      'hvac': ['CRM & Operations'],
+      'contractors': ['CRM & Operations'],
+      'small-business': ['Marketing', 'AI Automation'],
+      'hair-stylists': ['Marketing'],
+    };
+    const categoryNames = [...new Set(categorySlugs.flatMap((s) => BLOG_SLUG_TO_CASE_CATEGORY[s] || []))];
+    if (categoryNames.length > 0) {
+      relatedCaseStudy = await client.fetch(relatedCaseStudyForBlogQuery, { categoryNames });
+    }
+  }
+  if (!relatedCaseStudy) {
+    relatedCaseStudy = await client.fetch(featuredCaseStudyFallbackQuery);
+  }
+
+  // Fetch topic-based sidebar posts (same category, excluding current)
+  let sidebarPosts: RecentPost[] = [];
+  if (categorySlugs.length > 0) {
+    sidebarPosts = await client.fetch<RecentPost[]>(relatedBlogPostsByCategoryQuery, {
+      currentId: post._id,
+      categorySlugs,
+    });
+  }
+  // Fall back to recent posts if no category matches
+  if (sidebarPosts.length === 0) {
+    sidebarPosts = recentPosts;
+  }
+
   // Transform data for client component (resolve image URLs on server)
   const transformedPost = {
     ...post,
@@ -185,7 +241,7 @@ export default async function BlogPostPage({
     },
   };
 
-  const transformedRecentPosts = recentPosts.map((p) => ({
+  const transformedSidebarPosts = sidebarPosts.map((p) => ({
     ...p,
     featuredImage: p.featuredImage?.asset
       ? {
@@ -219,8 +275,9 @@ export default async function BlogPostPage({
       {blogFAQs[slug] && <FAQSchema faqs={blogFAQs[slug]} />}
       <BlogPostContent
         post={transformedPost}
-        recentPosts={transformedRecentPosts}
+        recentPosts={transformedSidebarPosts}
         faqs={blogFAQs[slug]}
+        relatedCaseStudy={relatedCaseStudy}
       />
     </>
   );

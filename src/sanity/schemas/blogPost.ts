@@ -153,6 +153,14 @@ export const blogPost = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'relatedCaseStudies',
+      title: 'Related Case Studies',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'caseStudy' }] }],
+      description: 'Pick 1-2 case studies to link from this blog post',
+      validation: (Rule) => Rule.max(2),
+    }),
+    defineField({
       name: 'seo',
       title: 'SEO',
       type: 'object',

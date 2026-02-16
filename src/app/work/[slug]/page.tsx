@@ -2,7 +2,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
-import { caseStudyBySlugQuery, caseStudySlugsQuery, relatedCaseStudiesQuery } from '@/sanity/lib/queries';
+import { caseStudyBySlugQuery, caseStudySlugsQuery, relatedCaseStudiesQuery, relatedBlogPostsForCaseStudyQuery } from '@/sanity/lib/queries';
+import { urlForImage } from '@/sanity/lib/image';
 import CaseStudyContent from './CaseStudyContent';
 import { CaseStudySchema, BreadcrumbSchema, FAQSchema } from '@/components/JsonLd';
 
@@ -35,6 +36,18 @@ interface CaseStudy {
     resultsOutcome?: string;
     servicesUsed?: string[];
     relatedCases?: RelatedCaseStudy[];
+    relatedBlogPosts?: Array<{
+        _id: string;
+        title: string;
+        slug: { current: string };
+        excerpt?: string;
+        publishedAt: string;
+        featuredImage?: {
+            asset: { _ref: string; _type: string };
+            alt: string;
+        };
+        categories?: Array<{ name: string; slug: { current: string } }>;
+    }>;
 }
 
 interface RelatedCaseStudy {
@@ -109,6 +122,34 @@ export default async function CaseStudyPage({
         });
     }
 
+    // Use manually curated blog posts if set, otherwise fall back to category match
+    let relatedBlogPostsRaw = caseStudy.relatedBlogPosts || [];
+
+    if (relatedBlogPostsRaw.length === 0) {
+        const CATEGORY_TO_BLOG_SLUGS: Record<string, string[]> = {
+            'AI Automation': ['ai-automation', 'marketing-automation', 'lead-nurture'],
+            'Marketing': ['marketing-automation', 'google-reviews', 'reputation-management', 'sms-marketing', 'lead-nurture'],
+            'CRM & Operations': ['crm', 'go-high-level', 'marketing-automation', 'business-tools'],
+            'Development': ['ai-automation', 'business-tools'],
+        };
+        const categoryKeywords = caseStudy.category
+            ? CATEGORY_TO_BLOG_SLUGS[caseStudy.category] || []
+            : [];
+        relatedBlogPostsRaw = categoryKeywords.length > 0
+            ? await client.fetch(relatedBlogPostsForCaseStudyQuery, { categoryKeywords })
+            : [];
+    }
+
+    const relatedBlogPosts = (relatedBlogPostsRaw || []).map((p: any) => ({
+        ...p,
+        featuredImage: p.featuredImage?.asset
+            ? {
+                url: urlForImage(p.featuredImage.asset)?.width(400).height(225).url() || '',
+                alt: p.featuredImage.alt,
+            }
+            : undefined,
+    }));
+
     return (
         <>
             <CaseStudySchema
@@ -131,7 +172,7 @@ export default async function CaseStudyPage({
             {caseStudy.faqSchema && caseStudy.faqSchema.length > 0 && (
                 <FAQSchema faqs={caseStudy.faqSchema} />
             )}
-            <CaseStudyContent caseStudy={caseStudy} relatedCases={relatedCases || []} />
+            <CaseStudyContent caseStudy={caseStudy} relatedCases={relatedCases || []} relatedBlogPosts={relatedBlogPosts} />
         </>
     );
 }

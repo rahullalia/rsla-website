@@ -36,6 +36,14 @@ interface RecentPost {
   featuredImage?: { url: string; alt: string };
 }
 
+interface RelatedCaseStudy {
+  title: string;
+  slug: string;
+  tag: string;
+  description: string;
+  metrics?: Array<{ value: string; label: string }>;
+}
+
 interface FAQItem {
   question: string;
   answer: string;
@@ -45,9 +53,10 @@ interface BlogPostContentProps {
   post: BlogPost;
   recentPosts: RecentPost[];
   faqs?: FAQItem[];
+  relatedCaseStudy?: RelatedCaseStudy | null;
 }
 
-export default function BlogPostContent({ post, recentPosts, faqs }: BlogPostContentProps) {
+export default function BlogPostContent({ post, recentPosts, faqs, relatedCaseStudy }: BlogPostContentProps) {
   return (
     <main className="min-h-screen bg-brand-black text-white relative">
       <Navigation />
@@ -60,6 +69,17 @@ export default function BlogPostContent({ post, recentPosts, faqs }: BlogPostCon
       <div className="max-w-7xl mx-auto py-24 md:py-32 px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 items-start">
           <article>
+            {/* Visible Breadcrumbs */}
+            <nav aria-label="Breadcrumb" className="mb-6">
+              <ol className="flex items-center gap-2 text-sm text-white/40">
+                <li><Link href="/" className="hover:text-brand-blue transition-colors">Home</Link></li>
+                <li>/</li>
+                <li><Link href="/blog" className="hover:text-brand-blue transition-colors">Blog</Link></li>
+                <li>/</li>
+                <li className="text-white/60 truncate max-w-[300px]">{post.title}</li>
+              </ol>
+            </nav>
+
             <div>
               <Link href="/blog" className="inline-flex items-center gap-2 text-brand-blue hover:text-white mb-8 transition-colors">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -101,6 +121,45 @@ export default function BlogPostContent({ post, recentPosts, faqs }: BlogPostCon
             </div>
 
             {faqs && faqs.length > 0 && <FAQ faqs={faqs} />}
+
+            {/* Related Case Study CTA */}
+            {relatedCaseStudy && (
+              <div className="mt-16 p-8 bg-white/5 border border-white/10 rounded-2xl">
+                <h3 className="text-xs text-brand-blue font-bold uppercase tracking-widest mb-4">
+                  See It in Action
+                </h3>
+                <Link
+                  href={`/work/${relatedCaseStudy.slug}`}
+                  className="group block"
+                >
+                  <span className="text-[0.75rem] text-brand-blue/70 uppercase tracking-wider font-semibold">
+                    {relatedCaseStudy.tag}
+                  </span>
+                  <h4 className="text-xl text-white font-semibold mt-1 mb-2 group-hover:text-brand-blue transition-colors">
+                    {relatedCaseStudy.title}
+                  </h4>
+                  <p className="text-sm text-white/50 mb-4 line-clamp-2">
+                    {relatedCaseStudy.description}
+                  </p>
+                  {relatedCaseStudy.metrics && relatedCaseStudy.metrics.length > 0 && (
+                    <div className="flex gap-6 mb-4">
+                      {relatedCaseStudy.metrics.slice(0, 3).map((metric, idx) => (
+                        <div key={idx}>
+                          <strong className="block text-lg text-white">{metric.value}</strong>
+                          <span className="text-[0.7rem] text-brand-blue uppercase">{metric.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <span className="inline-flex items-center gap-2 text-sm text-brand-blue group-hover:text-white transition-colors">
+                    Read the case study
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                      <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                </Link>
+              </div>
+            )}
 
             {post.author.bio && (
               <div className="mt-16 p-8 bg-white/5 border border-white/10 rounded-2xl">
