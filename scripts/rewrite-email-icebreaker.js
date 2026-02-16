@@ -177,7 +177,7 @@ const content = [
     textBlock('The entire system is three modules in Make.com. It reads from a Google Sheet, generates a personalized icebreaker using GPT, and writes it back. That is it.'),
 
     caseStudyImage(
-        'image-9597e079f0e8da71beca02564b2a5c5b19cbeec1-665x623-webp',
+        'image-1cc547a7fbca001e3e8d03f04bb7b8bdde8d145a-1316x527-webp',
         'Make.com automation workflow showing three modules: Get Leads from Google Sheets, Generate Icebreaker with GPT, Update row with Icebreaker',
         'The full automation. Three modules. Google Sheets, GPT, Google Sheets.',
         'large'
