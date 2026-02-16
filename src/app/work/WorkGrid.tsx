@@ -46,7 +46,8 @@ export default function WorkGrid({ caseStudies }: { caseStudies: CaseStudy[] }) 
                                     onClick={() => setSelectedCategory(category)}
                                     className={`
                     px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider
-                    transition-all duration-300 hover:scale-105 active:scale-95
+                    transition-all duration-300 hover:scale-[1.02] active:scale-95
+                    focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:ring-offset-2 focus:ring-offset-black
                     ${selectedCategory === category
                                             ? "bg-brand-blue text-white"
                                             : "bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-brand-blue"
@@ -60,7 +61,7 @@ export default function WorkGrid({ caseStudies }: { caseStudies: CaseStudy[] }) 
 
                         {/* Sort Dropdown */}
                         <div className="flex items-center gap-3">
-                            <span className="text-gray-500 text-sm uppercase tracking-wider">Sort by:</span>
+                            <span className="text-gray-400 text-sm uppercase tracking-wider">Sort by:</span>
                             <div className="relative">
                                 <select
                                     value={sortBy}
@@ -93,9 +94,9 @@ export default function WorkGrid({ caseStudies }: { caseStudies: CaseStudy[] }) 
             </section>
 
             {/* Case Studies Grid */}
-            <section className="py-20 px-6 relative z-10">
+            <section className="py-16 md:py-24 lg:py-32 px-6 relative z-10">
                 <div className="container mx-auto max-w-7xl">
-                    <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
                         {filteredAndSortedStudies.map((study) => (
                             <CaseStudyCard
                                 key={study.slug}

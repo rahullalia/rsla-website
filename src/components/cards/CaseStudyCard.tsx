@@ -71,10 +71,10 @@ export default function CaseStudyCard({
                         <span className="text-[0.8rem] text-brand-blue uppercase tracking-[1.5px] mb-4 block font-bold">
                             {tag}
                         </span>
-                        <h3 className="text-[1.8rem] leading-[1.2] text-white mb-3 group-hover:text-brand-blue transition-colors line-clamp-3">
+                        <h3 className="text-[1.4rem] md:text-[1.8rem] leading-[1.2] text-white mb-3 group-hover:text-brand-blue transition-colors line-clamp-3">
                             {title}
                         </h3>
-                        <p className="text-base text-gray-400 mb-8 line-clamp-3">
+                        <p className="text-base text-gray-300 mb-8 line-clamp-3">
                             {description}
                         </p>
                     </div>

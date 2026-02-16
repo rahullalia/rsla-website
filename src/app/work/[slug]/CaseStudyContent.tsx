@@ -123,13 +123,13 @@ export default function CaseStudyContent({ caseStudy, relatedCases, relatedBlogP
             <div className="max-w-4xl mx-auto py-32 px-6 relative z-10">
                 <article>
                     {/* Visible Breadcrumbs */}
-                    <nav aria-label="Breadcrumb" className="mb-6">
-                        <ol className="flex items-center gap-2 text-sm text-white/40">
-                            <li><Link href="/" className="hover:text-brand-blue transition-colors">Home</Link></li>
-                            <li>/</li>
-                            <li><Link href="/work" className="hover:text-brand-blue transition-colors">Case Studies</Link></li>
-                            <li>/</li>
-                            <li className="text-white/60 truncate max-w-[300px]">{caseStudy.title}</li>
+                    <nav aria-label="Breadcrumb" className="mb-6 overflow-x-auto">
+                        <ol className="flex items-center gap-2 text-sm text-white/40 flex-nowrap">
+                            <li className="whitespace-nowrap"><Link href="/" className="hover:text-brand-blue transition-colors">Home</Link></li>
+                            <li className="whitespace-nowrap">/</li>
+                            <li className="whitespace-nowrap"><Link href="/work" className="hover:text-brand-blue transition-colors">Case Studies</Link></li>
+                            <li className="whitespace-nowrap">/</li>
+                            <li className="text-white/60 truncate max-w-[200px] md:max-w-[300px]">{caseStudy.title}</li>
                         </ol>
                     </nav>
 

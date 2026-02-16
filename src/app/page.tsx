@@ -88,7 +88,7 @@ export default async function Home() {
             <div className="flex flex-col sm:flex-row gap-4">
               <MagneticButton
                 href="/#contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-black text-lg font-bold rounded-full hover:bg-brand-blue hover:text-white transition-all group"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-black text-lg font-bold rounded-full hover:bg-brand-blue hover:text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,112,243,0.3)] group"
               >
                 Build My System
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -131,7 +131,7 @@ export default async function Home() {
       </div>
 
       {/* CORE DISCIPLINES */}
-      <section className="py-20 md:py-32 border-t border-white/5 relative">
+      <section className="py-16 md:py-24 lg:py-32 border-t border-white/5 relative">
         <ParallaxBackground />
         <div className="container mx-auto px-6">
           <FadeIn>
@@ -183,7 +183,7 @@ export default async function Home() {
       <ParallaxDivider />
 
       {/* RECENT WORK */}
-      <section className="py-20 md:py-32 bg-[#080808] relative">
+      <section className="py-16 md:py-24 lg:py-32 bg-[#080808] relative">
         <div className="container mx-auto px-6">
           <FadeIn>
             <div className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -200,7 +200,7 @@ export default async function Home() {
             </div>
           </FadeIn>
 
-          <FadeInStagger className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ perspective: "1000px" }}>
+          <FadeInStagger className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {caseStudies.map((study, index) => (
               <CaseStudyCard
                 key={index}
@@ -219,7 +219,7 @@ export default async function Home() {
       <ParallaxDivider />
 
       {/* TEAM SECTION - hidden on mobile */}
-      <section className="hidden md:block py-20 md:py-32 border-t border-white/5 relative">
+      <section className="hidden md:block py-16 md:py-24 lg:py-32 border-t border-white/5 relative">
         <ParallaxBackground />
         <div className="container mx-auto px-6">
           <FadeIn>
@@ -259,7 +259,7 @@ export default async function Home() {
       </section>
 
       {/* CONTACT / CALENDAR SECTION */}
-      <section id="contact" className="py-20 md:py-32 bg-[#080808]">
+      <section id="contact" className="py-16 md:py-24 lg:py-32 bg-[#080808]">
         <div className="container mx-auto px-6">
           <FadeIn>
             <div className="mb-16 text-center max-w-[600px] mx-auto">
@@ -283,7 +283,7 @@ export default async function Home() {
                 scrolling="no"
                 id="booking-calendar"
                 title="Booking Calendar"
-                className="h-[1300px]"
+                className="h-[90vh] md:h-[1300px]"
               />
             </div>
           </FadeIn>

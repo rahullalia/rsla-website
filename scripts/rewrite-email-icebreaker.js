@@ -228,7 +228,7 @@ const content = [
         { name: 'Make.com', url: 'https://www.make.com/en/register?pc=lalia', promo: 'Free tier available' },
         { name: 'Google Sheets', url: 'https://docs.google.com/' },
         { name: 'OpenAI GPT-4', url: 'https://chatgpt.com/' },
-        { name: 'Apollo.io', url: 'https://apollo.io/' },
+        { name: 'Apollo.io', url: 'https://get.apollo.io/rslmh' },
         { name: 'LinkedIn Sales Navigator', url: 'https://business.linkedin.com/' },
         { name: 'Clay', url: 'https://www.clay.com/' },
     ]),

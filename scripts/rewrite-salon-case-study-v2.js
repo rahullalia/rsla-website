@@ -378,7 +378,7 @@ const enhancedContent = [
         _key: generateKey(),
         tools: [
             { _key: generateKey(), name: 'Meta Ads (Facebook/Instagram)' },
-            { _key: generateKey(), name: 'GoHighLevel CRM' },
+            { _key: generateKey(), name: 'GoHighLevel CRM', url: 'https://www.gohighlevel.com/?fp_ref=rahul-lalia' },
             { _key: generateKey(), name: 'SMS Automation' },
             { _key: generateKey(), name: 'Email Sequences' },
             { _key: generateKey(), name: 'Calendar Booking' },
