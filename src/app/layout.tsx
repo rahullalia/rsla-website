@@ -71,6 +71,11 @@ export const metadata: Metadata = {
     follow: true,
   },
   manifest: '/manifest.json',
+  verification: {
+    other: {
+      'msvalidate.01': '84CC113E503AD83F2BC6716FA9D2FF59',
+    },
+  },
 };
 
 // JSON-LD Structured Data
