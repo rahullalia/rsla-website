@@ -569,6 +569,46 @@ export default defineType({
                         },
                     },
                 },
+                // Gated Resource Download
+                {
+                    type: 'object',
+                    name: 'gatedResource',
+                    title: 'Gated Resource',
+                    fields: [
+                        defineField({
+                            name: 'title',
+                            title: 'Resource Title',
+                            type: 'string',
+                            validation: (Rule) => Rule.required(),
+                            description: 'e.g., "Make.com Blueprint"',
+                        }),
+                        defineField({
+                            name: 'description',
+                            title: 'Description',
+                            type: 'string',
+                            description: 'Short description of what they get',
+                        }),
+                        defineField({
+                            name: 'downloadUrl',
+                            title: 'Download URL',
+                            type: 'string',
+                            validation: (Rule) => Rule.required(),
+                            description: 'Path to the downloadable file (e.g., /downloads/case-studies/email-ice-breaker/blueprint.json)',
+                        }),
+                        defineField({
+                            name: 'buttonText',
+                            title: 'Button Text',
+                            type: 'string',
+                            initialValue: 'Download Free Resource',
+                        }),
+                    ],
+                    preview: {
+                        select: { title: 'title' },
+                        prepare({ title }) {
+                            return { title: `📥 ${title}` };
+                        },
+                    },
+                },
                 // Tech Stack
                 {
                     type: 'object',

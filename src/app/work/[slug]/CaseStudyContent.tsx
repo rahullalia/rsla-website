@@ -5,7 +5,10 @@ import { PortableText, PortableTextBlock } from "@portabletext/react";
 import { PortableTextComponents } from "@/components/blog/PortableTextComponents";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import FadeInStagger from "@/components/FadeInStagger";
 import { AuroraBackground, NumberCounter } from "@/components/animations";
+import CaseStudyCard from "@/components/cards/CaseStudyCard";
+import BlogPostCard from "@/components/cards/BlogPostCard";
 
 interface Metric {
     value: string;
@@ -270,41 +273,18 @@ export default function CaseStudyContent({ caseStudy, relatedCases, relatedBlogP
                         <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-10">
                             More Case Studies
                         </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {relatedCases.map((related) => (
-                                <Link
+                                <CaseStudyCard
                                     key={related.slug}
-                                    href={`/work/${related.slug}`}
-                                    className="group flex flex-col justify-between rounded-[20px] overflow-hidden border border-white/10 bg-white/5 p-8 transition-all duration-300 hover:border-brand-blue"
-                                >
-                                    <div>
-                                        <span className="text-[0.8rem] text-brand-blue uppercase tracking-[1.5px] mb-4 block font-bold">
-                                            {related.tag}
-                                        </span>
-                                        <h3 className="text-xl leading-tight text-white mb-3 group-hover:text-brand-blue transition-colors line-clamp-2">
-                                            {related.title}
-                                        </h3>
-                                        <p className="text-sm text-gray-400 mb-6 line-clamp-2">
-                                            {related.description}
-                                        </p>
-                                    </div>
-                                    {related.metrics && related.metrics.length > 0 && (
-                                        <div className="pt-4 border-t border-white/10 flex justify-between gap-4">
-                                            {related.metrics.slice(0, 2).map((metric, idx) => (
-                                                <div key={idx} className="text-center flex-1">
-                                                    <strong className="block text-lg text-white">
-                                                        {metric.value}
-                                                    </strong>
-                                                    <span className="block text-[0.7rem] text-brand-blue uppercase mt-1">
-                                                        {metric.label}
-                                                    </span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </Link>
+                                    slug={related.slug}
+                                    tag={related.tag}
+                                    title={related.title}
+                                    description={related.description}
+                                    metrics={related.metrics || []}
+                                />
                             ))}
-                        </div>
+                        </FadeInStagger>
                     </div>
                 </section>
             )}
@@ -316,46 +296,22 @@ export default function CaseStudyContent({ caseStudy, relatedCases, relatedBlogP
                         <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-10">
                             Related Articles
                         </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {relatedBlogPosts.map((blogPost) => (
-                                <Link
+                                <BlogPostCard
                                     key={blogPost._id}
-                                    href={`/blog/${blogPost.slug.current}`}
-                                    className="group flex flex-col rounded-[20px] overflow-hidden border border-white/10 bg-white/5 transition-all duration-300 hover:border-brand-blue"
-                                >
-                                    {blogPost.featuredImage?.url && (
-                                        <div className="aspect-[16/9] overflow-hidden">
-                                            <img
-                                                src={blogPost.featuredImage.url}
-                                                alt={blogPost.featuredImage.alt || blogPost.title}
-                                                loading="lazy"
-                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                            />
-                                        </div>
-                                    )}
-                                    <div className="p-6">
-                                        {blogPost.categories && blogPost.categories.length > 0 && (
-                                            <span className="text-[0.75rem] text-brand-blue uppercase tracking-wider font-semibold">
-                                                {blogPost.categories[0].name}
-                                            </span>
-                                        )}
-                                        <h3 className="text-lg text-white mt-1 mb-2 group-hover:text-brand-blue transition-colors line-clamp-2">
-                                            {blogPost.title}
-                                        </h3>
-                                        {blogPost.excerpt && (
-                                            <p className="text-sm text-white/50 line-clamp-2">{blogPost.excerpt}</p>
-                                        )}
-                                        <time className="block text-xs text-white/30 mt-3">
-                                            {new Date(blogPost.publishedAt).toLocaleDateString('en-US', {
-                                                month: 'short',
-                                                day: 'numeric',
-                                                year: 'numeric',
-                                            })}
-                                        </time>
-                                    </div>
-                                </Link>
+                                    slug={blogPost.slug.current}
+                                    title={blogPost.title}
+                                    excerpt={blogPost.excerpt}
+                                    publishedAt={blogPost.publishedAt}
+                                    featuredImage={blogPost.featuredImage ? {
+                                        url: blogPost.featuredImage.url,
+                                        alt: blogPost.featuredImage.alt,
+                                    } : undefined}
+                                    categories={blogPost.categories}
+                                />
                             ))}
-                        </div>
+                        </FadeInStagger>
                     </div>
                 </section>
             )}

@@ -1,15 +1,13 @@
 "use client";
 
 import Link from 'next/link';
-import { urlForImage } from '@/sanity/lib/image';
 import FadeIn from '@/components/FadeIn';
 import FadeInStagger from '@/components/FadeInStagger';
 import {
-  Card3D,
   TextScramble,
   AuroraBackground,
-  SpotlightCard,
 } from '@/components/animations';
+import BlogPostCard from '@/components/cards/BlogPostCard';
 
 interface BlogPost {
   _id: string;
@@ -70,54 +68,19 @@ export default function BlogContent({ posts, currentPage, totalPages }: BlogCont
             <>
               <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {posts.map((post) => (
-                  <Card3D key={post._id} className="h-full">
-                    <SpotlightCard className="h-full">
-                      <article className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-brand-blue/30 transition-all h-full">
-                        <Link href={`/blog/${post.slug.current}`} className="flex flex-col h-full">
-                          {post.featuredImage?.asset && (
-                            <div className="relative aspect-video overflow-hidden">
-                              <img
-                                src={urlForImage(post.featuredImage.asset)?.width(600).height(340).url() || ''}
-                                alt={post.featuredImage.alt || post.title}
-                                loading="lazy"
-                                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                              />
-                            </div>
-                          )}
-                          <div className="p-6 flex flex-col flex-1">
-                            {post.categories && post.categories.length > 0 && (
-                              <div className="flex flex-wrap gap-2 mb-3">
-                                {post.categories.slice(0, 2).map((category) => (
-                                  <span
-                                    key={category.slug.current}
-                                    className="text-xs text-brand-blue border border-brand-blue/30 rounded-full px-2 py-0.5"
-                                  >
-                                    {category.name}
-                                  </span>
-                                ))}
-                              </div>
-                            )}
-                            <h2 className="text-xl font-bold text-white group-hover:text-brand-blue transition-colors mb-3 line-clamp-2">
-                              {post.title}
-                            </h2>
-                            <p className="text-white/50 text-sm line-clamp-2 mb-4 flex-1">
-                              {post.excerpt}
-                            </p>
-                            <div className="flex items-center justify-between text-xs text-white/40 mt-auto">
-                              <span>{post.author.name}</span>
-                              <time>
-                                {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                                  month: 'short',
-                                  day: 'numeric',
-                                  year: 'numeric',
-                                })}
-                              </time>
-                            </div>
-                          </div>
-                        </Link>
-                      </article>
-                    </SpotlightCard>
-                  </Card3D>
+                  <BlogPostCard
+                    key={post._id}
+                    slug={post.slug.current}
+                    title={post.title}
+                    excerpt={post.excerpt}
+                    publishedAt={post.publishedAt}
+                    featuredImage={post.featuredImage ? {
+                      asset: post.featuredImage.asset,
+                      alt: post.featuredImage.alt,
+                    } : undefined}
+                    author={post.author}
+                    categories={post.categories}
+                  />
                 ))}
               </FadeInStagger>
 

@@ -5,10 +5,8 @@ import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import FadeInStagger from "@/components/FadeInStagger";
 import {
-  Card3D,
   MagneticButton,
   TextScramble,
-  NumberCounter,
   ParallaxBackground,
   ParallaxDivider,
   HeroParallax,
@@ -18,6 +16,7 @@ import {
   InfiniteMarquee,
   LiquidText
 } from "@/components/animations";
+import CaseStudyCard from "@/components/cards/CaseStudyCard";
 import Link from "next/link";
 import { ArrowRight, Cpu, Globe, Rocket, Terminal } from "lucide-react";
 import { client } from "@/sanity/lib/client";
@@ -203,44 +202,14 @@ export default async function Home() {
 
           <FadeInStagger className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ perspective: "1000px" }}>
             {caseStudies.map((study, index) => (
-              <Card3D key={index} className="h-full">
-                <Link
-                  href={study.href}
-                  className="glass-card p-8 rounded-[20px] flex flex-col justify-between group hover:border-brand-blue transition-all duration-300 h-full"
-                >
-                  <div>
-                    <span className="text-[0.8rem] text-brand-blue uppercase tracking-[1.5px] mb-4 block font-bold">
-                      {study.tag}
-                    </span>
-                    <h4 className="text-[1.8rem] leading-[1.2] text-white mb-3">{study.title}</h4>
-                    <p className="text-base text-gray-400 mb-8">
-                      {study.description}
-                    </p>
-                  </div>
-
-                  {/* Results with Number Counter */}
-                  <div className="mt-5 pt-4 border-t border-white/10 flex justify-between gap-4">
-                    {study.metrics.map((metric, idx) => (
-                      <div key={idx} className="text-center flex-1">
-                        <strong className="block text-[1.6rem] text-white leading-[1.1]">
-                          {metric.value.startsWith('+') ? (
-                            <><span>+</span><NumberCounter value={parseInt(metric.value.replace(/[^0-9]/g, ''))} suffix="X" /></>
-                          ) : metric.value.startsWith('$') ? (
-                            <NumberCounter value={parseInt(metric.value.replace(/[^0-9]/g, ''))} prefix="$" suffix="K" />
-                          ) : metric.value.endsWith('%') ? (
-                            <NumberCounter value={parseInt(metric.value.replace(/[^0-9]/g, ''))} suffix="%" />
-                          ) : (
-                            metric.value
-                          )}
-                        </strong>
-                        <span className="block text-[0.75rem] text-brand-blue uppercase mt-1">
-                          {metric.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </Link>
-              </Card3D>
+              <CaseStudyCard
+                key={index}
+                slug={study.href.replace('/work/', '')}
+                tag={study.tag}
+                title={study.title}
+                description={study.description}
+                metrics={study.metrics}
+              />
             ))}
           </FadeInStagger>
         </div>

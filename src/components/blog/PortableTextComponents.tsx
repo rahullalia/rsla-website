@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { PortableTextComponents as PortableTextComponentsType } from '@portabletext/react';
 import { urlForImage } from '@/sanity/lib/image';
+import GatedDownload from '@/components/GatedDownload';
 
 // Helper function to generate slug from text
 function slugify(text: string): string {
@@ -241,6 +242,17 @@ export const PortableTextComponents: PortableTextComponentsType = {
 
       // Default: line
       return <hr className="my-12 border-t border-white/10" />;
+    },
+    gatedResource: ({ value }) => {
+      const { title, description, downloadUrl, buttonText } = value;
+      return (
+        <GatedDownload
+          title={title}
+          description={description}
+          downloadUrl={downloadUrl}
+          buttonText={buttonText}
+        />
+      );
     },
     techStack: ({ value }) => {
       const { tools } = value;
