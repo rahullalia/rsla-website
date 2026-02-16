@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import CookieBanner from "@/components/CookieBanner";
 import ChatWidget from "@/components/ChatWidget";
+import MobileProvider from "@/components/MobileProvider";
 
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -285,9 +286,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-        {children}
-        <CookieBanner />
-        <ChatWidget />
+        <MobileProvider>
+          {children}
+          <CookieBanner />
+          <ChatWidget />
+        </MobileProvider>
 
       </body>
     </html>

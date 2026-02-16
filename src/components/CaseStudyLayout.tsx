@@ -165,7 +165,7 @@ export default function CaseStudyLayout({ tag, title, description, subtitle, sta
                                                     stat.value
                                                 )}
                                             </span>
-                                            <span className="text-sm text-gray-500 uppercase tracking-[0.5px]">
+                                            <span className="text-sm text-gray-400 uppercase tracking-[0.5px]">
                                                 {stat.label}
                                             </span>
                                         </div>

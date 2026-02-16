@@ -167,7 +167,7 @@ export default function SmsConsentContent() {
                   name="name"
                   placeholder="John Doe"
                   required
-                  className="w-full px-3.5 py-3.5 bg-black/20 border border-white/10 rounded-md text-white text-base transition-all focus:outline-none focus:border-brand-blue focus:bg-black/10 placeholder:text-gray-500"
+                  className="w-full px-3.5 py-3.5 bg-black/20 border border-white/10 rounded-md text-white text-base transition-all focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:ring-offset-2 focus:ring-offset-black focus:border-brand-blue focus:bg-black/10 placeholder:text-gray-500"
                 />
               </div>
 
@@ -181,7 +181,7 @@ export default function SmsConsentContent() {
                   id="email"
                   name="email"
                   placeholder="you@company.com"
-                  className="w-full px-3.5 py-3.5 bg-black/20 border border-white/10 rounded-md text-white text-base transition-all focus:outline-none focus:border-brand-blue focus:bg-black/10 placeholder:text-gray-500"
+                  className="w-full px-3.5 py-3.5 bg-black/20 border border-white/10 rounded-md text-white text-base transition-all focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:ring-offset-2 focus:ring-offset-black focus:border-brand-blue focus:bg-black/10 placeholder:text-gray-500"
                 />
               </div>
 
@@ -196,7 +196,7 @@ export default function SmsConsentContent() {
                   id="phone-intl"
                   name="phone-intl"
                   placeholder="+1 (123) 456-7890"
-                  className="w-full px-3.5 py-3.5 pl-14.5 bg-black/20 border border-white/10 rounded-md text-white text-base transition-all focus:outline-none focus:border-brand-blue focus:bg-black/10 placeholder:text-gray-500"
+                  className="w-full px-3.5 py-3.5 pl-14.5 bg-black/20 border border-white/10 rounded-md text-white text-base transition-all focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:ring-offset-2 focus:ring-offset-black focus:border-brand-blue focus:bg-black/10 placeholder:text-gray-500"
                 />
               </div>
 
@@ -211,7 +211,7 @@ export default function SmsConsentContent() {
                     id="sms_service"
                     name="sms_service"
                     value="true"
-                    className="w-4 h-4 mt-1 mr-3 accent-brand-blue shrink-0"
+                    className="w-5 h-5 mt-0.5 mr-3 accent-brand-blue shrink-0"
                   />
                   <label htmlFor="sms_service" className="text-sm text-gray-400 leading-relaxed">
                     I agree to receive appointment reminders, service notifications, and follow-up messages via SMS from RSLA. Message frequency varies. Message and data rates may apply. Reply HELP for help, STOP to opt out.
@@ -225,7 +225,7 @@ export default function SmsConsentContent() {
                     id="sms_marketing"
                     name="sms_marketing"
                     value="true"
-                    className="w-4 h-4 mt-1 mr-3 accent-brand-blue shrink-0"
+                    className="w-5 h-5 mt-0.5 mr-3 accent-brand-blue shrink-0"
                   />
                   <label htmlFor="sms_marketing" className="text-sm text-gray-400 leading-relaxed">
                     I agree to receive promotional offers and marketing messages via SMS from RSLA. Message frequency varies. Message and data rates may apply. Reply HELP for help, STOP to opt out.
@@ -240,7 +240,7 @@ export default function SmsConsentContent() {
                   id="agree_terms"
                   name="agree_terms"
                   value="true"
-                  className="w-4 h-4 mt-1 mr-3 accent-brand-blue shrink-0"
+                  className="w-5 h-5 mt-0.5 mr-3 accent-brand-blue shrink-0"
                 />
                 <label htmlFor="agree_terms" className="text-sm text-gray-400 leading-relaxed">
                   I agree to the{' '}
@@ -259,7 +259,7 @@ export default function SmsConsentContent() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full inline-block bg-brand-blue text-white px-10 py-4 rounded-full text-lg font-semibold shadow-[0_0_20px_rgba(0,112,243,0.4)] border-none cursor-pointer transition-all duration-400 hover:shadow-[0_0_30px_rgba(0,112,243,0.6)] disabled:bg-gray-600 disabled:text-gray-400 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
+                  className="w-full inline-block bg-brand-blue text-white px-10 py-4 rounded-full text-lg font-semibold shadow-[0_0_20px_rgba(0,112,243,0.3)] border-none cursor-pointer transition-all duration-300 hover:bg-brand-blue/90 hover:shadow-[0_0_20px_rgba(0,112,243,0.3)] disabled:bg-gray-600 disabled:text-gray-400 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
                 >
                   {isSubmitting ? 'Saving...' : 'Save Preferences'}
                 </button>

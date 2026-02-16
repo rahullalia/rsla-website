@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { urlForImage } from "@/sanity/lib/image";
 import {
     Card3D,
@@ -47,11 +48,12 @@ export default function BlogPostCard({
                     <Link href={`/blog/${slug}`} className="flex flex-col h-full">
                         {imageUrl && (
                             <div className="relative aspect-video overflow-hidden">
-                                <img
+                                <Image
                                     src={imageUrl}
                                     alt={featuredImage?.alt || title}
-                                    loading="lazy"
-                                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                                    className="object-cover group-hover:scale-105 transition-transform duration-300"
                                 />
                             </div>
                         )}

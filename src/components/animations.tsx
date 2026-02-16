@@ -2,30 +2,20 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useScroll } from "framer-motion";
+import { useMobile } from "./MobileProvider";
 
 /**
  * ANIMATIONS - Desktop: framer-motion | Mobile: static fallbacks
  *
  * CRITICAL: iOS Safari crashes with next/image on React 19 + Next.js 16
- * All animations use useIsMobile() hook to return static content on mobile
+ * All animations use useMobile() context (single resize listener for entire app)
  *
  * Desktop gets full animations, mobile gets clean static HTML
  */
 
-// Hook to detect mobile - only runs on client
+// Backward-compatible alias for internal use
 function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(true); // Default to mobile (safer for SSR)
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  return isMobile;
+  return useMobile();
 }
 
 // 1. Card3D - Lift and highlight effect on hover (desktop only)
@@ -134,14 +124,13 @@ export function TextScramble({ text, className = "" }: { text: string; className
   return <span className={className}>{displayText}</span>;
 }
 
-// 4. NumberCounter - Animated counter that triggers when scrolled into view (desktop only)
+// 4. NumberCounter - Animated counter that triggers when scrolled into view
 export function NumberCounter({ value, suffix = "", prefix = "", formatWithCommas = false }: { value: number; suffix?: string; prefix?: string; formatWithCommas?: boolean }) {
   const isMobile = useIsMobile();
   const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const hasAnimatedRef = useRef(false);
   const ref = useRef<HTMLSpanElement>(null);
 
-  // Format number with commas (e.g., 40000 -> "40,000")
   const formatNumber = (num: number) => {
     if (formatWithCommas) {
       return num.toLocaleString('en-US');
@@ -150,19 +139,12 @@ export function NumberCounter({ value, suffix = "", prefix = "", formatWithComma
   };
 
   useEffect(() => {
-    if (isMobile) {
-      setCount(value);
-      return;
-    }
-
-    // Set up intersection observer to trigger animation when in view
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated) {
-            setHasAnimated(true);
-
-            const duration = 2000;
+          if (entry.isIntersecting && !hasAnimatedRef.current) {
+            hasAnimatedRef.current = true;
+            const duration = isMobile ? 1200 : 2000;
             const steps = 60;
             const increment = value / steps;
             let current = 0;
@@ -179,7 +161,7 @@ export function NumberCounter({ value, suffix = "", prefix = "", formatWithComma
           }
         });
       },
-      { threshold: 0.3 } // Trigger when 30% of element is visible
+      { threshold: 0.1 }
     );
 
     if (ref.current) {
@@ -187,7 +169,7 @@ export function NumberCounter({ value, suffix = "", prefix = "", formatWithComma
     }
 
     return () => observer.disconnect();
-  }, [value, isMobile, hasAnimated]);
+  }, [value, isMobile]);
 
   return (
     <span ref={ref} className="tabular-nums">

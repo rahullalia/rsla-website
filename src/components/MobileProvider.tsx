@@ -1,0 +1,26 @@
+"use client";
+
+import { createContext, useContext, useEffect, useState } from "react";
+
+const MobileContext = createContext(true); // Default to mobile for SSR
+
+export function useMobile() {
+  return useContext(MobileContext);
+}
+
+export default function MobileProvider({ children }: { children: React.ReactNode }) {
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  return (
+    <MobileContext.Provider value={isMobile}>
+      {children}
+    </MobileContext.Provider>
+  );
+}

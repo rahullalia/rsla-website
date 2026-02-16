@@ -40,7 +40,7 @@ export default function CookieBanner() {
         <>
             {/* Desktop Banner */}
             <div
-                className={`hidden md:block fixed bottom-6 left-6 right-6 z-[100] transition-all duration-500 ease-out ${
+                className={`hidden md:block fixed bottom-6 left-6 right-6 z-40 transition-all duration-300 ease-out ${
                     isClosing
                         ? "opacity-0 translate-y-4"
                         : "opacity-100 translate-y-0"
@@ -99,7 +99,7 @@ export default function CookieBanner() {
 
             {/* Mobile Bottom Banner - covers chat widget */}
             <div
-                className={`md:hidden fixed bottom-0 left-0 right-0 z-[100] transition-all duration-500 ease-out ${
+                className={`md:hidden fixed bottom-0 left-0 right-0 z-40 transition-all duration-300 ease-out ${
                     isClosing
                         ? "opacity-0 translate-y-full"
                         : "opacity-100 translate-y-0"

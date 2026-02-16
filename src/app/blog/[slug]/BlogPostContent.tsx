@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { PortableText, PortableTextBlock } from '@portabletext/react';
 import { PortableTextComponents } from '@/components/blog/PortableTextComponents';
 import TableOfContents from '@/components/blog/TableOfContents';
@@ -111,8 +112,8 @@ export default function BlogPostContent({ post, recentPosts, faqs, relatedCaseSt
             </div>
 
             {post.featuredImage?.url && (
-              <div className="my-12 rounded-2xl overflow-hidden">
-                <img src={post.featuredImage.url} alt={post.featuredImage.alt} loading="lazy" className="w-full h-auto" />
+              <div className="relative my-12 rounded-2xl overflow-hidden aspect-video">
+                <Image src={post.featuredImage.url} alt={post.featuredImage.alt} fill sizes="(max-width: 768px) 100vw, 800px" className="object-cover" />
               </div>
             )}
 
@@ -166,7 +167,7 @@ export default function BlogPostContent({ post, recentPosts, faqs, relatedCaseSt
                 <h3 className="text-xl text-white mb-4">About the Author</h3>
                 <div className="flex items-start gap-5">
                   {post.author.image?.url && (
-                    <img src={post.author.image.url} alt={post.author.image.alt} loading="lazy" className="rounded-full shrink-0" />
+                    <Image src={post.author.image.url} alt={post.author.image.alt} width={64} height={64} className="rounded-full shrink-0" />
                   )}
                   <div>
                     <p className="text-lg text-white font-semibold mb-1">{post.author.name}</p>

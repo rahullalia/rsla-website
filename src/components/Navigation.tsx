@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -13,21 +13,26 @@ const navLinks = [
 export default function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const [scrollProgress, setScrollProgress] = useState(0);
+    const progressRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
 
     useEffect(() => {
+        let ticking = false;
         const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-
-            // Calculate scroll progress
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-            setScrollProgress(scrolled);
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    setScrolled(window.scrollY > 20);
+                    const winScroll = document.documentElement.scrollTop;
+                    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    if (progressRef.current) {
+                        progressRef.current.style.transform = `scaleX(${height > 0 ? winScroll / height : 0})`;
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
 
-        // Check initial scroll position on mount (handles browser restore)
         handleScroll();
 
         window.addEventListener("scroll", handleScroll, { passive: true });
@@ -62,11 +67,9 @@ export default function Navigation() {
             >
                 {/* Scroll Progress Indicator */}
                 <div
+                    ref={progressRef}
                     className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-brand-blue via-[#7928ca] to-brand-blue will-change-transform origin-left"
-                    style={{
-                        transform: `scaleX(${scrollProgress / 100})`,
-                        transition: 'transform 50ms linear'
-                    }}
+                    style={{ transform: 'scaleX(0)' }}
                 />
 
                 <div className="container mx-auto px-6 flex items-center justify-between">
@@ -79,7 +82,7 @@ export default function Navigation() {
                     </Link>
 
                     {/* Desktop Menu - Center */}
-                    <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2 bg-white/[0.03] backdrop-blur-sm rounded-full px-2 py-1.5 border border-white/[0.05]">
+                    <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2 bg-white/[0.03] backdrop-blur-sm rounded-full px-2 py-1.5 border border-white/5">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
@@ -254,7 +257,7 @@ export default function Navigation() {
 
                                 {/* Link text with hover line */}
                                 <span className="relative">
-                                    <span className={`block text-[3rem] sm:text-[4rem] font-display font-bold leading-none tracking-tight transition-all duration-300 ${
+                                    <span className={`block text-[2rem] sm:text-[2.5rem] md:text-[3rem] font-display font-bold leading-none tracking-tight transition-all duration-300 ${
                                         isActive(link.href)
                                             ? "text-brand-blue"
                                             : "text-white group-hover:text-brand-blue"

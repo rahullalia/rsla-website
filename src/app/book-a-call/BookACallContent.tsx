@@ -25,7 +25,7 @@ export default function BookACallContent() {
               }}
               id="client-booking-calendar"
               title="Client Booking Calendar"
-              className="rounded-2xl h-[700px] md:h-[1100px]"
+              className="rounded-2xl h-[85vh] md:h-[1100px]"
             />
           </div>
         </div>

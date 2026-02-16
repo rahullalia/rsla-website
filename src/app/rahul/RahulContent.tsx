@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { AuroraBackground } from '@/components/animations';
 
 export default function RahulContent() {
@@ -28,7 +29,7 @@ export default function RahulContent() {
         <div className="bg-white/5 border border-white/10 rounded-[24px] p-8 text-center backdrop-blur-md">
           <div className="mb-6">
             <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-brand-blue/20">
-              <img src={contactInfo.photo} alt="Rahul Lalia, Founder & CEO of RSL/A" className="w-full h-full object-cover" />
+              <Image src={contactInfo.photo} alt="Rahul Lalia, Founder & CEO of RSL/A" fill className="object-cover" />
             </div>
           </div>
 

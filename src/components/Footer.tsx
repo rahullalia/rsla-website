@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -9,19 +10,21 @@ export default function Footer() {
                 {/* Desktop: Single row */}
                 <div className="hidden md:flex items-center justify-between">
                     <Link href="/" className="group">
-                        <img
+                        <Image
                             src="/lockup.png"
                             alt="RSL/A"
-                            loading="lazy"
+                            width={140}
+                            height={56}
                             className="h-14 w-auto opacity-60 group-hover:opacity-80 transition-opacity duration-300"
                         />
                     </Link>
 
                     <div className="bg-white/90 rounded-lg px-3 py-2">
-                        <img
+                        <Image
                             src="/images/designrush-badge.png"
                             alt="DesignRush"
-                            loading="lazy"
+                            width={96}
+                            height={48}
                             className="h-12 w-auto"
                         />
                     </div>
@@ -47,10 +50,11 @@ export default function Footer() {
                 {/* Mobile: Stacked, centered */}
                 <div className="md:hidden flex flex-col items-center gap-5">
                     <Link href="/" className="group">
-                        <img
+                        <Image
                             src="/lockup.png"
                             alt="RSL/A"
-                            loading="lazy"
+                            width={120}
+                            height={48}
                             className="h-12 w-auto opacity-60 group-hover:opacity-80 transition-opacity duration-300"
                         />
                     </Link>
@@ -72,10 +76,11 @@ export default function Footer() {
                     </div>
 
                     <div className="bg-white/90 rounded-lg px-3 py-2">
-                        <img
+                        <Image
                             src="/images/designrush-badge.png"
                             alt="DesignRush"
-                            loading="lazy"
+                            width={80}
+                            height={40}
                             className="h-10 w-auto"
                         />
                     </div>

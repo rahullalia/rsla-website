@@ -18,6 +18,7 @@ import {
 } from "@/components/animations";
 import CaseStudyCard from "@/components/cards/CaseStudyCard";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Cpu, Globe, Rocket, Terminal } from "lucide-react";
 import { client } from "@/sanity/lib/client";
 import { featuredCaseStudiesQuery } from "@/sanity/lib/queries";
@@ -105,9 +106,11 @@ export default async function Home() {
             <div className="mt-10 flex items-center gap-4">
               <span className="text-sm text-white/50 uppercase tracking-wider">Recognized by</span>
               <div className="bg-white rounded-lg px-4 py-3">
-                <img
+                <Image
                   src="/images/designrush-badge.png"
                   alt="DesignRush"
+                  width={120}
+                  height={64}
                   className="h-16 w-auto"
                 />
               </div>
@@ -236,13 +239,13 @@ export default async function Home() {
                 key={index}
                 className="glass-card rounded-2xl overflow-hidden group hover:border-brand-blue/50 transition-all"
               >
-                <div className="aspect-[4/5] overflow-hidden bg-[#1a1a1a]">
-                  {/* Using img tag to avoid next/image iOS crash */}
-                  <img
+                <div className="aspect-[4/5] overflow-hidden bg-[#1a1a1a] relative">
+                  <Image
                     src={member.image}
                     alt={`${member.name}, ${member.title} of RSL/A`}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 500px"
+                    className="object-cover transition-all duration-300 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-8">

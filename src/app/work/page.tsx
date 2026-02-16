@@ -65,7 +65,7 @@ export default async function WorkPage() {
       <WorkGrid caseStudies={caseStudies} />
 
       {/* CTA Section */}
-      <section className="py-20 px-6 border-t border-white/10 relative z-10">
+      <section className="py-16 md:py-24 lg:py-32 px-6 border-t border-white/10 relative z-10">
         <div className="container mx-auto max-w-4xl text-center">
           <FadeIn>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { PortableTextComponents as PortableTextComponentsType } from '@portabletext/react';
 import { urlForImage } from '@/sanity/lib/image';
 import GatedDownload from '@/components/GatedDownload';
@@ -30,15 +31,19 @@ export const PortableTextComponents: PortableTextComponentsType = {
       };
       const sizeClass = sizeClasses[value.size] || sizeClasses.full;
 
+      const imageUrl = urlForImage(asset)?.width(1200).fit('max').url() || '';
       return (
         <figure className={`my-8 ${sizeClass}`}>
-          <img
-            src={urlForImage(asset)?.width(1200).fit('max').url() || ''}
-            alt={value.alt || 'Case study image'}
-            title={value.alt}
-            loading="lazy"
-            className="rounded-xl w-full h-auto"
-          />
+          <div className="relative w-full aspect-video">
+            <Image
+              src={imageUrl}
+              alt={value.alt || 'Case study image'}
+              title={value.alt}
+              fill
+              sizes="(max-width: 768px) 100vw, 800px"
+              className="rounded-xl object-contain"
+            />
+          </div>
           {value.caption && (
             <figcaption className="text-center text-sm text-white/50 mt-3 italic">
               {value.caption}
@@ -57,15 +62,19 @@ export const PortableTextComponents: PortableTextComponentsType = {
       if (!value?.asset?._ref) {
         return null;
       }
+      const blogImageUrl = urlForImage(value.asset)?.width(1200).fit('max').url() || '';
       return (
         <figure className="my-8">
-          <img
-            src={urlForImage(value.asset)?.width(1200).fit('max').url() || ''}
-            alt={value.alt || 'Blog image'}
-            title={value.alt}
-            loading="lazy"
-            className="rounded-xl w-full h-auto"
-          />
+          <div className="relative w-full aspect-video">
+            <Image
+              src={blogImageUrl}
+              alt={value.alt || 'Blog image'}
+              title={value.alt}
+              fill
+              sizes="(max-width: 768px) 100vw, 800px"
+              className="rounded-xl object-contain"
+            />
+          </div>
           {value.caption && (
             <figcaption className="text-center text-sm text-white/50 mt-3 italic">
               {value.caption}

@@ -120,7 +120,7 @@ export default function GatedDownload({
                     </div>
                     <button
                         onClick={handleOpenForm}
-                        className="group relative flex-shrink-0 px-6 py-3 bg-brand-blue text-white font-semibold rounded-xl overflow-hidden hover:bg-brand-blue/90 transition-all hover:shadow-[0_0_30px_rgba(0,112,243,0.4)]"
+                        className="group relative flex-shrink-0 px-8 py-4 bg-brand-blue text-white font-semibold rounded-full overflow-hidden hover:bg-brand-blue/90 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,112,243,0.3)]"
                     >
                         <span className="relative z-10">{isUnlocked ? "Download Again" : buttonText}</span>
                         <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
@@ -133,13 +133,13 @@ export default function GatedDownload({
                 <>
                     {/* Backdrop */}
                     <div
-                        className={`fixed inset-0 z-[200] bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${isClosing ? "opacity-0" : "opacity-100"}`}
+                        className={`fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${isClosing ? "opacity-0" : "opacity-100"}`}
                         onClick={handleClose}
                     />
 
                     {/* Form */}
                     <div
-                        className={`fixed z-[201] transition-all duration-500 ease-out ${
+                        className={`fixed z-[61] transition-all duration-300 ease-out ${
                             isClosing ? "opacity-0 scale-95" : "opacity-100 scale-100"
                         } inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-md flex items-center justify-center md:block`}
                     >
@@ -200,7 +200,7 @@ export default function GatedDownload({
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="group relative w-full px-6 py-3.5 text-base font-semibold text-white rounded-xl overflow-hidden bg-brand-blue hover:bg-brand-blue/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:shadow-[0_0_30px_rgba(0,112,243,0.4)]"
+                                        className="group relative w-full px-8 py-4 text-base font-semibold text-white rounded-full overflow-hidden bg-brand-blue hover:bg-brand-blue/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,112,243,0.3)]"
                                     >
                                         <span className="relative z-10">
                                             {isSubmitting ? "Preparing download..." : "Get Instant Access"}
