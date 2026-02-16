@@ -264,13 +264,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
-        {/* Preconnect to Fontshare for faster font loading */}
-        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://api.fontshare.com" />
-        <link
-          href="https://api.fontshare.com/v2/css?f[]=satoshi@700,900&display=swap"
-          rel="stylesheet"
-        />
+        {/* Satoshi font self-hosted from /fonts/ — see globals.css @font-face */}
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0070f3" />
         <meta name="theme-color" content="#0a0a0a" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
