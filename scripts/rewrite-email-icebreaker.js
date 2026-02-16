@@ -178,7 +178,7 @@ const content = [
 
     caseStudyImage(
         'image-1cc547a7fbca001e3e8d03f04bb7b8bdde8d145a-1316x527-webp',
-        'Make.com automation workflow showing three modules: Get Leads from Google Sheets, Generate Icebreaker with GPT, Update row with Icebreaker',
+        'Make.com workflow: Get Leads, Generate Icebreaker with GPT, Update with Icebreaker',
         'The full automation. Three modules. Google Sheets, GPT, Google Sheets.',
         'large'
     ),
