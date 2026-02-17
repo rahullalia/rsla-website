@@ -36,18 +36,17 @@ export default function BlogPostCard({
     author,
     categories,
 }: BlogPostCardProps) {
-    const imageUrl = featuredImage?.url
-        || (featuredImage?.asset?._ref
-            ? urlForImage(featuredImage.asset)?.width(600).height(340).url() || ''
-            : '');
+    const imageUrl = featuredImage
+        ? urlForImage(featuredImage)?.width(600).height(340).url() || featuredImage?.asset?.url || ''
+        : '';
 
     return (
         <Card3D className="h-full">
             <SpotlightCard className="h-full">
-                <article className="group bg-white/5 border border-white/10 rounded-[20px] overflow-hidden hover:border-brand-blue/30 transition-all h-full">
+                <article className="group bg-white/5 border border-transparent rounded-[20px] overflow-hidden hover:border-brand-blue/30 transition-all h-full">
                     <Link href={`/blog/${slug}`} className="flex flex-col h-full">
                         {imageUrl && (
-                            <div className="relative aspect-video overflow-hidden">
+                            <div className="relative aspect-[4/3] overflow-hidden">
                                 <Image
                                     src={imageUrl}
                                     alt={featuredImage?.alt || title}
