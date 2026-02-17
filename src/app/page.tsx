@@ -3,6 +3,7 @@
 import Script from "next/script";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import BookingCalendar from "@/components/BookingCalendar";
 import FadeIn from "@/components/FadeIn";
 import FadeInStagger from "@/components/FadeInStagger";
 import {
@@ -277,16 +278,7 @@ export default async function Home() {
 
           <FadeIn delay={0.2}>
             <div className="max-w-[900px] mx-auto">
-              <iframe
-                src="https://api.leadconnectorhq.com/widget/booking/nKrQmOaliDo1haSUwgRS"
-                style={{
-                  width: '100%',
-                  border: 'none',
-                }}
-                id="booking-calendar"
-                title="Booking Calendar"
-                className="h-[85vh] md:h-[800px]"
-              />
+              <BookingCalendar />
             </div>
           </FadeIn>
         </div>
