@@ -37,7 +37,7 @@ export default function BlogPostCard({
     categories,
 }: BlogPostCardProps) {
     const imageUrl = featuredImage
-        ? urlForImage(featuredImage)?.width(600).height(340).url() || featuredImage?.asset?.url || ''
+        ? urlForImage(featuredImage)?.width(600).height(340).url() || (featuredImage?.asset as Record<string, unknown>)?.url as string || ''
         : '';
 
     return (
