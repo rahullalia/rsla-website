@@ -1,5 +1,6 @@
 // SSR Enabled
 
+import Script from "next/script";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
@@ -281,12 +282,10 @@ export default async function Home() {
                 style={{
                   width: '100%',
                   border: 'none',
-                  overflow: 'hidden',
                 }}
-                scrolling="no"
                 id="booking-calendar"
                 title="Booking Calendar"
-                className="h-[90vh] md:h-[1300px]"
+                className="h-[85vh] md:h-[800px]"
               />
             </div>
           </FadeIn>
@@ -295,6 +294,11 @@ export default async function Home() {
 
       {/* FOOTER */}
       <Footer />
+
+      <Script
+        src="https://link.msgsndr.com/js/form_embed.js"
+        strategy="afterInteractive"
+      />
     </main>
   );
 }
