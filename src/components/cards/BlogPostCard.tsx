@@ -36,9 +36,8 @@ export default function BlogPostCard({
     author,
     categories,
 }: BlogPostCardProps) {
-    const imageUrl = featuredImage
-        ? urlForImage(featuredImage)?.width(600).height(340).url() || (featuredImage?.asset as Record<string, unknown>)?.url as string || ''
-        : '';
+    const imageUrl = featuredImage?.url
+        || (featuredImage?.asset ? (urlForImage(featuredImage)?.width(600).height(340).url() || '') : '');
 
     return (
         <Card3D className="h-full">
