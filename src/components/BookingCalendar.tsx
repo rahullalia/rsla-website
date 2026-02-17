@@ -27,10 +27,11 @@ export default function BookingCalendar() {
   return (
     <iframe
       src="https://api.leadconnectorhq.com/widget/booking/nKrQmOaliDo1haSUwgRS"
-      style={{ width: '100%', border: 'none' }}
+      style={{ width: '100%', border: 'none', overflow: 'hidden' }}
+      scrolling="no"
       id="booking-calendar"
       title="Booking Calendar"
-      className="h-[800px]"
+      className="h-[950px]"
     />
   );
 }
