@@ -144,7 +144,7 @@ export default async function CaseStudyPage({
         ...p,
         featuredImage: p.featuredImage?.asset
             ? {
-                url: urlForImage(p.featuredImage.asset)?.width(400).height(225).url() || '',
+                url: p.featuredImage.asset.url || urlForImage(p.featuredImage.asset)?.width(400).height(225).url() || '',
                 alt: p.featuredImage.alt,
             }
             : undefined,
