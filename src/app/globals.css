@@ -159,6 +159,14 @@ h1, h2, h3, h4, h5, h6 {
   animation: gradient-x 3s ease infinite;
 }
 
+/* Disable heavy infinite animations on mobile to prevent Safari crashes */
+@media (max-width: 767px) {
+  .line-progress { animation: none; }
+  .animate-marquee { animation: none; }
+  .animate-pulse-slow { animation: none; }
+  .animate-gradient-x { animation: none; }
+}
+
 /* Lightbox animations */
 @keyframes fadeIn {
   from {

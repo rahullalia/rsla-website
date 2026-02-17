@@ -179,20 +179,10 @@ export function NumberCounter({ value, suffix = "", prefix = "", formatWithComma
 }
 
 // 5. ParallaxBackground - Parallax scrolling gradient blobs (desktop only)
-export function ParallaxBackground() {
-  const isMobile = useIsMobile();
+function ParallaxBackgroundDesktop() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, -150]);
   const y2 = useTransform(scrollY, [0, 1000], [0, -100]);
-
-  if (isMobile) {
-    return (
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-32 -right-32 w-[400px] h-[400px] rounded-full bg-[#0070f3]/10 blur-3xl opacity-30" />
-        <div className="absolute top-1/2 -left-32 w-[300px] h-[300px] rounded-full bg-[#00c6ff]/10 blur-3xl opacity-30" />
-      </div>
-    );
-  }
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -208,20 +198,25 @@ export function ParallaxBackground() {
   );
 }
 
-// 6. ParallaxDivider - Animated divider lines (desktop only)
-export function ParallaxDivider() {
+export function ParallaxBackground() {
   const isMobile = useIsMobile();
-  const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 200], [0.3, 1]);
 
   if (isMobile) {
     return (
-      <div className="relative h-32 overflow-hidden">
-        <div className="absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0070f3]/50 to-transparent" />
-        <div className="absolute bottom-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-32 -right-32 w-[400px] h-[400px] rounded-full bg-[#0070f3]/10 blur-3xl opacity-30" />
+        <div className="absolute top-1/2 -left-32 w-[300px] h-[300px] rounded-full bg-[#00c6ff]/10 blur-3xl opacity-30" />
       </div>
     );
   }
+
+  return <ParallaxBackgroundDesktop />;
+}
+
+// 6. ParallaxDivider - Animated divider lines (desktop only)
+function ParallaxDividerDesktop() {
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 200], [0.3, 1]);
 
   return (
     <div className="relative h-32 overflow-hidden">
@@ -237,26 +232,27 @@ export function ParallaxDivider() {
   );
 }
 
-// 7. HeroParallax - Parallax background for hero sections (desktop only)
-export function HeroParallax({ children }: { children: React.ReactNode }) {
+export function ParallaxDivider() {
   const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return (
+      <div className="relative h-32 overflow-hidden">
+        <div className="absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0070f3]/50 to-transparent" />
+        <div className="absolute bottom-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      </div>
+    );
+  }
+
+  return <ParallaxDividerDesktop />;
+}
+
+// 7. HeroParallax - Parallax background for hero sections (desktop only)
+function HeroParallaxDesktop({ children }: { children: React.ReactNode }) {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, -100]);
   const y2 = useTransform(scrollY, [0, 500], [0, -50]);
   const y3 = useTransform(scrollY, [0, 500], [0, -75]);
-
-  if (isMobile) {
-    return (
-      <div className="relative">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#0070f3]/15 blur-[80px]" />
-          <div className="absolute top-1/3 -left-24 w-[350px] h-[350px] rounded-full bg-[#00c6ff]/10 blur-[60px]" />
-          <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] rounded-full bg-[#7928ca]/8 blur-[60px]" />
-        </div>
-        <div className="relative z-10">{children}</div>
-      </div>
-    );
-  }
 
   return (
     <div className="relative">
@@ -279,12 +275,51 @@ export function HeroParallax({ children }: { children: React.ReactNode }) {
   );
 }
 
-// 8. AuroraBackground - Animated aurora effect (desktop only)
-export function AuroraBackground() {
+export function HeroParallax({ children }: { children: React.ReactNode }) {
   const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return (
+      <div className="relative">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#0070f3]/15 blur-[80px]" />
+          <div className="absolute top-1/3 -left-24 w-[350px] h-[350px] rounded-full bg-[#00c6ff]/10 blur-[60px]" />
+          <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] rounded-full bg-[#7928ca]/8 blur-[60px]" />
+        </div>
+        <div className="relative z-10">{children}</div>
+      </div>
+    );
+  }
+
+  return <HeroParallaxDesktop>{children}</HeroParallaxDesktop>;
+}
+
+// 8. AuroraBackground - Animated aurora effect (desktop only)
+function AuroraBackgroundDesktop() {
   const { scrollY } = useScroll();
   const rotate = useTransform(scrollY, [0, 2000], [0, 360]);
   const scale = useTransform(scrollY, [0, 1000], [1, 1.2]);
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <motion.div
+        className="absolute inset-[-50%] origin-center"
+        style={{
+          rotate,
+          scale,
+          background: `
+            radial-gradient(ellipse at 20% 50%, rgba(0,112,243,0.12) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 20%, rgba(121,40,202,0.08) 0%, transparent 40%),
+            radial-gradient(ellipse at 40% 80%, rgba(0,198,255,0.08) 0%, transparent 40%)
+          `,
+        }}
+      />
+    </div>
+  );
+}
+
+export function AuroraBackground() {
+  const isMobile = useIsMobile();
 
   if (isMobile) {
     return (
@@ -303,22 +338,7 @@ export function AuroraBackground() {
     );
   }
 
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <motion.div
-        className="absolute inset-[-50%] origin-center"
-        style={{
-          rotate,
-          scale,
-          background: `
-            radial-gradient(ellipse at 20% 50%, rgba(0,112,243,0.12) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 20%, rgba(121,40,202,0.08) 0%, transparent 40%),
-            radial-gradient(ellipse at 40% 80%, rgba(0,198,255,0.08) 0%, transparent 40%)
-          `,
-        }}
-      />
-    </div>
-  );
+  return <AuroraBackgroundDesktop />;
 }
 
 // 9. LiquidText - Animated text effect (desktop only)
@@ -415,6 +435,25 @@ export function SpotlightCard({ children, className = "" }: { children: React.Re
 }
 
 // 13. ParallaxLayer - Parallax scroll layer (desktop only)
+function ParallaxLayerDesktop({
+  children,
+  className = "",
+  speed = 0.5
+}: {
+  children: React.ReactNode;
+  speed?: number;
+  className?: string;
+}) {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1000], [0, -200 * speed]);
+
+  return (
+    <motion.div className={`relative ${className}`} style={{ y }}>
+      {children}
+    </motion.div>
+  );
+}
+
 export function ParallaxLayer({
   children,
   className = "",
@@ -425,18 +464,12 @@ export function ParallaxLayer({
   className?: string;
 }) {
   const isMobile = useIsMobile();
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1000], [0, -200 * speed]);
 
   if (isMobile) {
     return <div className={`relative ${className}`}>{children}</div>;
   }
 
-  return (
-    <motion.div className={`relative ${className}`} style={{ y }}>
-      {children}
-    </motion.div>
-  );
+  return <ParallaxLayerDesktop className={className} speed={speed}>{children}</ParallaxLayerDesktop>;
 }
 
 // 14. MorphingBlob - Animated morphing blob (desktop only)
@@ -559,18 +592,13 @@ export function ExplodeOnClick({ children, className = "" }: { children: React.R
 }
 
 // 19. PerspectiveSection - 3D perspective on scroll (desktop only)
-export function PerspectiveSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const isMobile = useIsMobile();
+function PerspectiveSectionDesktop({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
   });
   const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [5, 0, -5]);
-
-  if (isMobile) {
-    return <div className={className}>{children}</div>;
-  }
 
   return (
     <motion.div
@@ -585,6 +613,16 @@ export function PerspectiveSection({ children, className = "" }: { children: Rea
       {children}
     </motion.div>
   );
+}
+
+export function PerspectiveSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return <PerspectiveSectionDesktop className={className}>{children}</PerspectiveSectionDesktop>;
 }
 
 // 20. NeonButton - Neon glow button (works on both with CSS)

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useMobile } from "./MobileProvider";
 
 const navLinks = [
     { name: "Home", href: "/", number: "01" },
@@ -15,6 +16,7 @@ export default function Navigation() {
     const [scrolled, setScrolled] = useState(false);
     const progressRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
+    const isMobile = useMobile();
 
     useEffect(() => {
         let ticking = false;
@@ -22,9 +24,10 @@ export default function Navigation() {
             if (!ticking) {
                 requestAnimationFrame(() => {
                     setScrolled(window.scrollY > 20);
-                    const winScroll = document.documentElement.scrollTop;
-                    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                    if (progressRef.current) {
+                    // Skip progress bar calculation on mobile
+                    if (!isMobile && progressRef.current) {
+                        const winScroll = document.documentElement.scrollTop;
+                        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                         progressRef.current.style.transform = `scaleX(${height > 0 ? winScroll / height : 0})`;
                     }
                     ticking = false;
@@ -37,7 +40,7 @@ export default function Navigation() {
 
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [isMobile]);
 
     useEffect(() => {
         if (isOpen) {
@@ -65,12 +68,14 @@ export default function Navigation() {
                         : "bg-brand-black/40 md:bg-transparent backdrop-blur-md md:backdrop-blur-none py-5"
                 }`}
             >
-                {/* Scroll Progress Indicator */}
-                <div
-                    ref={progressRef}
-                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-brand-blue via-[#7928ca] to-brand-blue will-change-transform origin-left"
-                    style={{ transform: 'scaleX(0)' }}
-                />
+                {/* Scroll Progress Indicator - hidden on mobile */}
+                {!isMobile && (
+                    <div
+                        ref={progressRef}
+                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-brand-blue via-[#7928ca] to-brand-blue will-change-transform origin-left"
+                        style={{ transform: 'scaleX(0)' }}
+                    />
+                )}
 
                 <div className="container mx-auto px-6 flex items-center justify-between">
                     <Link href="/" className="z-50 relative group" onClick={() => setIsOpen(false)}>
