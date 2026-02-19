@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { Suspense, useEffect, useState, useRef } from "react";
 import dynamic from "next/dynamic";
 import { useMobile } from "./MobileProvider";
 
@@ -192,7 +192,11 @@ export function HeroParallax({ children }: { children: React.ReactNode }) {
       </div>
     );
   }
-  return <HeroParallaxDesktop>{children}</HeroParallaxDesktop>;
+  return (
+    <Suspense fallback={<div className="relative"><div className="relative z-10">{children}</div></div>}>
+      <HeroParallaxDesktop>{children}</HeroParallaxDesktop>
+    </Suspense>
+  );
 }
 
 // 8. AuroraBackground
@@ -378,7 +382,11 @@ export function FadeIn({
 }) {
   const isMobile = useMobile();
   if (isMobile !== false) return <div className={className}>{children}</div>;
-  return <FadeInDesktop className={className} delay={delay}>{children}</FadeInDesktop>;
+  return (
+    <Suspense fallback={<div className={className}>{children}</div>}>
+      <FadeInDesktop className={className} delay={delay}>{children}</FadeInDesktop>
+    </Suspense>
+  );
 }
 
 // 22. FadeInStagger
@@ -393,5 +401,9 @@ export function FadeInStagger({
 }) {
   const isMobile = useMobile();
   if (isMobile !== false) return <div className={className}>{children}</div>;
-  return <FadeInStaggerDesktop className={className} staggerDelay={staggerDelay}>{children}</FadeInStaggerDesktop>;
+  return (
+    <Suspense fallback={<div className={className}>{children}</div>}>
+      <FadeInStaggerDesktop className={className} staggerDelay={staggerDelay}>{children}</FadeInStaggerDesktop>
+    </Suspense>
+  );
 }
