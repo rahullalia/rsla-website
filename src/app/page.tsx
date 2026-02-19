@@ -197,6 +197,7 @@ export default async function Home() {
               </div>
               <Link
                 href="/work"
+                prefetch={false}
                 className="text-gray-400 border-b border-gray-600 pb-1 hover:text-white hover:border-white transition-all"
               >
                 View All Cases →

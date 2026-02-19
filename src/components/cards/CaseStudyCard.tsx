@@ -57,6 +57,7 @@ export default function CaseStudyCard({
             <SpotlightCard className="h-full">
                 <Link
                     href={`/work/${slug}`}
+                    prefetch={false}
                     className="group flex flex-col justify-between rounded-[20px] overflow-hidden border border-white/10 bg-white/5 p-8 transition-all duration-300 hover:border-brand-blue h-full"
                 >
                     <div>
