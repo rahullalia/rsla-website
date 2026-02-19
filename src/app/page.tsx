@@ -91,14 +91,17 @@ export default async function Home() {
             <div className="flex flex-col sm:flex-row gap-4">
               <MagneticButton
                 href="/#contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-black text-lg font-bold rounded-full hover:bg-brand-blue hover:text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,112,243,0.3)] group"
+                className="group relative overflow-hidden inline-flex items-center justify-center px-8 py-4 bg-white text-black text-lg font-bold rounded-full hover:bg-brand-blue hover:text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,112,243,0.3)]"
               >
-                Build My System
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                <span className="relative z-10 inline-flex items-center">
+                  Build My System
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
               </MagneticButton>
               <MagneticButton
                 href="/work"
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/20 text-white text-lg font-medium rounded-full hover:bg-white/10 transition-all"
+                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/20 text-white text-lg font-medium rounded-full hover:bg-white/10 transition-all duration-300"
               >
                 View Case Studies
               </MagneticButton>

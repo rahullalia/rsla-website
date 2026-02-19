@@ -41,7 +41,6 @@ src/
 │   ├── blog/              # Blog (Sanity-powered)
 │   ├── privacy-policy/    # Privacy policy
 │   ├── terms/             # Terms of service
-│   ├── thank-you/         # Calendar booking confirmation
 │   └── insider/           # Newsletter insider page
 ├── components/            # React components
 │   ├── Navigation.tsx     # Main navigation (Home/Work/Blog)

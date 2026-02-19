@@ -119,9 +119,10 @@ export default function InsiderContent() {
             <button
               type="submit"
               disabled={status === 'loading' || status === 'success'}
-              className="w-full px-6 py-4 rounded-2xl bg-brand-blue text-white font-semibold text-[1.05rem] shadow-[0_0_30px_rgba(0,112,243,0.4)] hover:shadow-[0_0_40px_rgba(0,112,243,0.6)] transition-all duration-400 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative overflow-hidden w-full px-6 py-4 rounded-full bg-brand-blue text-white font-semibold text-[1.05rem] shadow-[0_0_20px_rgba(0,112,243,0.3)] hover:shadow-[0_0_30px_rgba(0,112,243,0.5)] transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {status === 'loading' ? 'Sending...' : status === 'success' ? 'Sent! Check your inbox' : 'Get weekly insights'}
+              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              <span className="relative z-10">{status === 'loading' ? 'Sending...' : status === 'success' ? 'Sent! Check your inbox' : 'Get weekly insights'}</span>
             </button>
 
             {message && (

@@ -120,13 +120,13 @@ export default function CookieBanner() {
                         <div className="flex gap-3">
                             <button
                                 onClick={handleDecline}
-                                className="flex-1 px-4 py-3 text-sm font-medium text-gray-400 rounded-xl border border-white/10 active:bg-white/5 transition-all"
+                                className="flex-1 px-4 py-3 text-sm font-medium text-gray-400 rounded-full border border-white/10 active:bg-white/5 transition-all"
                             >
                                 Only Necessary
                             </button>
                             <button
                                 onClick={handleAccept}
-                                className="flex-1 px-4 py-3 text-sm font-medium text-white rounded-xl bg-brand-blue active:bg-brand-blue/80 transition-all"
+                                className="flex-1 px-4 py-3 text-sm font-medium text-white rounded-full bg-brand-blue active:bg-brand-blue/80 transition-all"
                             >
                                 Accept All
                             </button>

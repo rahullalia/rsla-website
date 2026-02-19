@@ -332,7 +332,7 @@ export default function Navigation() {
                             onClick={() => setIsOpen(false)}
                             className="group relative inline-flex items-center gap-3 w-full justify-center mb-10"
                         >
-                            <span className="relative px-10 py-5 bg-brand-blue text-white text-lg font-bold rounded-full overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_50px_rgba(0,112,243,0.5)]">
+                            <span className="relative px-10 py-5 bg-brand-blue text-white text-lg font-bold rounded-full overflow-hidden shadow-[0_0_20px_rgba(0,112,243,0.3)] transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(0,112,243,0.5)]">
                                 {/* Shimmer effect */}
                                 <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                                 <span className="relative flex items-center gap-3">

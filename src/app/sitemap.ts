@@ -5,7 +5,7 @@ import { blogPostSlugsQuery, caseStudySlugsQuery } from '@/sanity/lib/queries';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://rsla.io';
 
-  // Static pages (only indexable pages - excludes noindex pages like /privacy-policy, /terms, /insider, /rahul, /sid, /thank-you)
+  // Static pages (only indexable pages - excludes noindex pages like /privacy-policy, /terms, /insider, /rahul, /sid)
   const staticPages = [
     {
       url: baseUrl,

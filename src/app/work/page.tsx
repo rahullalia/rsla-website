@@ -76,9 +76,10 @@ export default async function WorkPage() {
             </p>
             <MagneticButton
               href="/#contact"
-              className="inline-flex items-center gap-2 bg-brand-blue text-white px-8 py-4 rounded-full font-semibold text-lg shadow-[0_0_30px_rgba(0,112,243,0.4)] hover:shadow-[0_0_50px_rgba(0,112,243,0.6)] hover:-translate-y-1 transition-all duration-300"
+              className="group relative overflow-hidden inline-flex items-center gap-2 bg-brand-blue text-white px-8 py-4 rounded-full font-semibold text-lg shadow-[0_0_20px_rgba(0,112,243,0.3)] hover:shadow-[0_0_30px_rgba(0,112,243,0.5)] transition-all duration-300"
             >
-              Start Your Project <ArrowRight size={20} />
+              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              <span className="relative z-10 inline-flex items-center gap-2">Start Your Project <ArrowRight size={20} /></span>
             </MagneticButton>
           </FadeIn>
         </div>

@@ -36,22 +36,22 @@ export default function SidContent() {
           <p className="text-gray-400 text-sm mb-8">Software Development & AI Systems Expert</p>
 
           <div className="space-y-4 mb-8">
-            <a href={contactInfo.vcardUrl} download="Siddharth-Rodrigues.vcf" className="block w-full bg-brand-blue text-white px-6 py-4 rounded-full text-[1.05rem] font-semibold shadow-[0_0_20px_rgba(0,112,243,0.4)] hover:shadow-[0_0_30px_rgba(0,112,243,0.6)] transition-all duration-400 flex items-center justify-center gap-3">
-              <span className="text-xl">📱</span>
-              <span>Save My Info</span>
+            <a href={contactInfo.vcardUrl} download="Siddharth-Rodrigues.vcf" className="group relative overflow-hidden block w-full bg-brand-blue text-white px-6 py-4 rounded-full text-[1.05rem] font-semibold shadow-[0_0_20px_rgba(0,112,243,0.3)] hover:shadow-[0_0_30px_rgba(0,112,243,0.5)] transition-all duration-300 flex items-center justify-center gap-3">
+              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              <span className="relative z-10 inline-flex items-center gap-3"><span className="text-xl">📱</span>Save My Info</span>
             </a>
 
-            <a href={`tel:${contactInfo.phone}`} className="block w-full bg-transparent border-2 border-brand-blue text-white px-6 py-4 rounded-full text-[1.05rem] font-semibold hover:bg-brand-blue transition-all duration-400 flex items-center justify-center gap-3">
+            <a href={`tel:${contactInfo.phone}`} className="block w-full bg-transparent border border-white/20 text-white px-6 py-4 rounded-full text-[1.05rem] font-medium hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3">
               <span className="text-xl">📞</span>
               <span>Let&apos;s Talk</span>
             </a>
 
-            <a href={smsLink} className="block w-full bg-transparent border-2 border-brand-blue text-white px-6 py-4 rounded-full text-[1.05rem] font-semibold hover:bg-brand-blue transition-all duration-400 flex items-center justify-center gap-3">
+            <a href={smsLink} className="block w-full bg-transparent border border-white/20 text-white px-6 py-4 rounded-full text-[1.05rem] font-medium hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3">
               <span className="text-xl">💬</span>
               <span>Text Me</span>
             </a>
 
-            <Link href={contactInfo.website} className="block w-full bg-transparent border-2 border-white/10 text-white px-6 py-4 rounded-full text-[1.05rem] font-semibold hover:border-brand-blue hover:bg-white/5 transition-all duration-400 flex items-center justify-center gap-3">
+            <Link href={contactInfo.website} className="block w-full bg-white/5 border border-white/10 text-white px-6 py-4 rounded-full text-[1.05rem] font-medium hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center gap-3">
               <span className="text-xl">🌐</span>
               <span>Visit Website</span>
             </Link>

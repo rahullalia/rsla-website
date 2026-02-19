@@ -353,13 +353,15 @@ h1, h2, h3, h4, h5, h6 {
 /* CTA Button */
 .btn-cta {
   display: inline-block;
+  position: relative;
+  overflow: hidden;
   background: #0070f3;
   color: white !important;
   padding: 14px 35px;
   border-radius: 50px;
   font-size: 1rem;
   font-weight: 600;
-  box-shadow: 0 0 20px rgba(0, 112, 243, 0.4);
+  box-shadow: 0 0 20px rgba(0, 112, 243, 0.3);
   transition: all 0.3s ease;
   text-decoration: none !important;
 }
@@ -367,8 +369,20 @@ h1, h2, h3, h4, h5, h6 {
 .btn-cta:hover {
   background: #0070f3;
   color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 0 40px rgba(0, 112, 243, 0.7);
+  box-shadow: 0 0 30px rgba(0, 112, 243, 0.5);
+}
+
+.btn-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+  transition: transform 0.7s;
+}
+
+.btn-cta:hover::after {
+  transform: translateX(100%);
 }
 
 /* Mobile responsive for case study content */
