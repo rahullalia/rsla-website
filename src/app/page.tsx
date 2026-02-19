@@ -17,6 +17,7 @@ import {
   InfiniteMarquee,
   LiquidText
 } from "@/components/animations";
+import MarqueeReveal from "@/components/MarqueeReveal";
 import CaseStudyCard from "@/components/cards/CaseStudyCard";
 import Link from "next/link";
 import Image from "next/image";
@@ -126,13 +127,13 @@ export default async function Home() {
       </HeroParallax>
 
       {/* Infinite Marquee */}
-      <div className="py-8 border-y border-white/5 bg-[#080808]" style={{ opacity: 0, animation: 'fadeIn 0.3s ease-out 0.2s forwards' }}>
+      <MarqueeReveal>
         <InfiniteMarquee speed={25}>
           <span className="text-4xl md:text-6xl font-display font-bold text-white/10 mx-8">
             AI AUTOMATION • PAID ADS • CRM SYSTEMS • LOCAL SEO • WEBSITE DEVELOPMENT •
           </span>
         </InfiniteMarquee>
-      </div>
+      </MarqueeReveal>
 
       {/* CORE DISCIPLINES */}
       <section className="py-16 md:py-24 lg:py-32 border-t border-white/5 relative">

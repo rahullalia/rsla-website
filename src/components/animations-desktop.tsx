@@ -108,30 +108,37 @@ export function ParallaxDividerDesktop() {
   );
 }
 
-// HeroParallax Desktop
+// HeroParallax Desktop (kept for backwards compat)
 export function HeroParallaxDesktop({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative">
+      <HeroParallaxDesktopEffects />
+      <div className="relative z-10">{children}</div>
+    </div>
+  );
+}
+
+// HeroParallax Desktop Effects — decorative blobs only, no children wrapper
+export function HeroParallaxDesktopEffects() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, -100]);
   const y2 = useTransform(scrollY, [0, 500], [0, -50]);
   const y3 = useTransform(scrollY, [0, 500], [0, -75]);
 
   return (
-    <div className="relative">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#0070f3]/15 blur-[80px]"
-          style={{ y: y1 }}
-        />
-        <motion.div
-          className="absolute top-1/3 -left-24 w-[350px] h-[350px] rounded-full bg-[#00c6ff]/10 blur-[60px]"
-          style={{ y: y2 }}
-        />
-        <motion.div
-          className="absolute bottom-0 right-1/4 w-[300px] h-[300px] rounded-full bg-[#7928ca]/8 blur-[60px]"
-          style={{ y: y3 }}
-        />
-      </div>
-      <div className="relative z-10">{children}</div>
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <motion.div
+        className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#0070f3]/15 blur-[80px]"
+        style={{ y: y1 }}
+      />
+      <motion.div
+        className="absolute top-1/3 -left-24 w-[350px] h-[350px] rounded-full bg-[#00c6ff]/10 blur-[60px]"
+        style={{ y: y2 }}
+      />
+      <motion.div
+        className="absolute bottom-0 right-1/4 w-[300px] h-[300px] rounded-full bg-[#7928ca]/8 blur-[60px]"
+        style={{ y: y3 }}
+      />
     </div>
   );
 }

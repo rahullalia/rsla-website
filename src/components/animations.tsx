@@ -25,6 +25,7 @@ const MagneticButtonDesktopDyn = dynamic(() => import("./animations-desktop").th
 const ParallaxBackgroundDesktop = dynamic(() => import("./animations-desktop").then(m => ({ default: m.ParallaxBackgroundDesktop })), { ssr: false });
 const ParallaxDividerDesktop = dynamic(() => import("./animations-desktop").then(m => ({ default: m.ParallaxDividerDesktop })), { ssr: false });
 const HeroParallaxDesktop = dynamic(() => import("./animations-desktop").then(m => ({ default: m.HeroParallaxDesktop })), { ssr: false });
+const HeroParallaxDesktopEffects = dynamic(() => import("./animations-desktop").then(m => ({ default: m.HeroParallaxDesktopEffects })), { ssr: false });
 const AuroraBackgroundDesktop = dynamic(() => import("./animations-desktop").then(m => ({ default: m.AuroraBackgroundDesktop })), { ssr: false });
 const LiquidTextDesktop = dynamic(() => import("./animations-desktop").then(m => ({ default: m.LiquidTextDesktop })), { ssr: false });
 const GlitchTextDesktop = dynamic(() => import("./animations-desktop").then(m => ({ default: m.GlitchTextDesktop })), { ssr: false });
@@ -179,23 +180,29 @@ export function ParallaxDivider() {
 }
 
 // 7. HeroParallax
+// Children stay in the same tree position always. Only the decorative blob
+// layer swaps between a static mobile version and the framer-motion desktop
+// version. This prevents unmount/remount of children during hydration, which
+// was causing the hero to briefly collapse and flash the marquee.
 export function HeroParallax({ children }: { children: React.ReactNode }) {
   const isMobile = useMobile();
-  if (isMobile !== false) {
-    return (
-      <div className="relative">
+
+  return (
+    <div className="relative">
+      {/* Decorative layer — swaps, but children below never unmount */}
+      {isMobile !== false ? (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-16 -right-16 w-[300px] h-[300px] rounded-full bg-[#0070f3]/10 blur-[60px]" />
           <div className="absolute top-1/3 -left-12 w-[200px] h-[200px] rounded-full bg-[#00c6ff]/8 blur-[40px]" />
         </div>
-        <div className="relative z-10">{children}</div>
-      </div>
-    );
-  }
-  return (
-    <Suspense fallback={<div className="relative"><div className="relative z-10">{children}</div></div>}>
-      <HeroParallaxDesktop>{children}</HeroParallaxDesktop>
-    </Suspense>
+      ) : (
+        <Suspense fallback={null}>
+          <HeroParallaxDesktopEffects />
+        </Suspense>
+      )}
+      {/* Children always in same position — no unmount/remount */}
+      <div className="relative z-10">{children}</div>
+    </div>
   );
 }
 
