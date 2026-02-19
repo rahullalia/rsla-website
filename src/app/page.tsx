@@ -62,7 +62,7 @@ export default async function Home() {
 
       {/* HERO SECTION with Parallax */}
       <HeroParallax>
-        <section className="min-h-[75vh] flex flex-col justify-center px-6 md:px-12 pt-32 pb-16 relative overflow-hidden z-10">
+        <section className="min-h-[100svh] flex flex-col justify-center px-6 md:px-12 pt-32 pb-16 relative overflow-hidden z-10">
           {/* Aurora Background */}
           <AuroraBackground />
 
