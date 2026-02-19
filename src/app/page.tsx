@@ -1,6 +1,5 @@
 // SSR Enabled
 
-import Script from "next/script";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BookingCalendar from "@/components/BookingCalendar";
@@ -287,10 +286,6 @@ export default async function Home() {
       {/* FOOTER */}
       <Footer />
 
-      <Script
-        src="https://link.msgsndr.com/js/form_embed.js"
-        strategy="afterInteractive"
-      />
     </main>
   );
 }
