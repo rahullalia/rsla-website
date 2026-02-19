@@ -18,14 +18,34 @@ export default function Navigation() {
     const pathname = usePathname();
     const isMobile = useMobile();
 
+    const scrolledRef = useRef(false);
+
     useEffect(() => {
+        if (isMobile) {
+            // Mobile: simple scroll check, no RAF overhead
+            const handleScroll = () => {
+                const isScrolled = window.scrollY > 20;
+                if (isScrolled !== scrolledRef.current) {
+                    scrolledRef.current = isScrolled;
+                    setScrolled(isScrolled);
+                }
+            };
+            handleScroll();
+            window.addEventListener("scroll", handleScroll, { passive: true });
+            return () => window.removeEventListener("scroll", handleScroll);
+        }
+
+        // Desktop: RAF-throttled scroll with progress bar
         let ticking = false;
         const handleScroll = () => {
             if (!ticking) {
                 requestAnimationFrame(() => {
-                    setScrolled(window.scrollY > 20);
-                    // Skip progress bar calculation on mobile
-                    if (!isMobile && progressRef.current) {
+                    const isScrolled = window.scrollY > 20;
+                    if (isScrolled !== scrolledRef.current) {
+                        scrolledRef.current = isScrolled;
+                        setScrolled(isScrolled);
+                    }
+                    if (progressRef.current) {
                         const winScroll = document.documentElement.scrollTop;
                         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                         progressRef.current.style.transform = `scaleX(${height > 0 ? winScroll / height : 0})`;
@@ -37,7 +57,6 @@ export default function Navigation() {
         };
 
         handleScroll();
-
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, [isMobile]);
@@ -64,8 +83,8 @@ export default function Navigation() {
             <nav
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
                     scrolled || isOpen
-                        ? "bg-[#0a0a0a]/80 backdrop-blur-2xl shadow-[0_1px_0_0_rgba(255,255,255,0.05),0_4px_30px_rgba(0,0,0,0.3)] py-3"
-                        : "bg-brand-black/40 md:bg-transparent backdrop-blur-md md:backdrop-blur-none py-5"
+                        ? "bg-[#0a0a0a] md:bg-[#0a0a0a]/80 md:backdrop-blur-2xl shadow-[0_1px_0_0_rgba(255,255,255,0.05),0_4px_30px_rgba(0,0,0,0.3)] py-3"
+                        : "bg-brand-black md:bg-transparent md:backdrop-blur-none py-5"
                 }`}
             >
                 {/* Scroll Progress Indicator - hidden on mobile */}
