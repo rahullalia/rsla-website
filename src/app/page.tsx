@@ -126,7 +126,7 @@ export default async function Home() {
       </HeroParallax>
 
       {/* Infinite Marquee */}
-      <div className="py-8 border-y border-white/5 bg-[#080808]">
+      <div className="py-8 border-y border-white/5 bg-[#080808]" style={{ opacity: 0, animation: 'fadeIn 0.3s ease-out 0.2s forwards' }}>
         <InfiniteMarquee speed={25}>
           <span className="text-4xl md:text-6xl font-display font-bold text-white/10 mx-8">
             AI AUTOMATION • PAID ADS • CRM SYSTEMS • LOCAL SEO • WEBSITE DEVELOPMENT •
