@@ -159,14 +159,9 @@ h1, h2, h3, h4, h5, h6 {
   animation: gradient-x 3s ease infinite;
 }
 
-/* Mobile: disable heavy animations and GPU layers to prevent crashes */
+/* Mobile: hide fixed gradient overlay (GPU layer) */
 @media (max-width: 767px) {
   .gradient-overlay { display: none; }
-  .line-progress { animation: none; }
-  .animate-marquee { animation: none; }
-  .animate-pulse-slow { animation: none; }
-  .animate-gradient-x { animation: none; }
-  .glass-card { backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
 
 /* Lightbox animations */

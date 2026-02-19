@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useMobile } from "./MobileProvider";
 
@@ -98,9 +99,12 @@ export default function Navigation() {
 
                 <div className="container mx-auto px-6 flex items-center justify-between">
                     <Link href="/" className="z-50 relative group" onClick={() => setIsOpen(false)}>
-                        <img
+                        <Image
                             src="/lockup.png"
                             alt="RSL/A"
+                            width={184}
+                            height={96}
+                            priority
                             className="h-[4.5rem] sm:h-20 md:h-20 lg:h-24 w-auto transition-all duration-300 group-hover:opacity-90"
                         />
                     </Link>

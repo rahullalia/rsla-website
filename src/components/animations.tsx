@@ -13,6 +13,10 @@ import { useMobile } from "./MobileProvider";
  * preventing memory-pressure crashes.
  *
  * Desktop components are loaded with { ssr: false } so they only hydrate on client.
+ *
+ * useMobile() returns null before hydration. All checks use `isMobile !== false`
+ * so that null (unknown) renders the plain fallback, preventing a flash where
+ * content disappears while desktop dynamic imports load.
  */
 
 // Dynamic imports — framer-motion only loads when these render (desktop only)
@@ -33,15 +37,10 @@ const PerspectiveSectionDesktop = dynamic(() => import("./animations-desktop").t
 const FadeInDesktop = dynamic(() => import("./animations-desktop").then(m => ({ default: m.FadeInDesktop })), { ssr: false });
 const FadeInStaggerDesktop = dynamic(() => import("./animations-desktop").then(m => ({ default: m.FadeInStaggerDesktop })), { ssr: false });
 
-// Backward-compatible alias
-function useIsMobile() {
-  return useMobile();
-}
-
 // 1. Card3D
 export function Card3D({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const isMobile = useIsMobile();
-  if (isMobile) return <div className={`relative ${className}`}>{children}</div>;
+  const isMobile = useMobile();
+  if (isMobile !== false) return <div className={`relative ${className}`}>{children}</div>;
   return <Card3DDesktop className={className}>{children}</Card3DDesktop>;
 }
 
@@ -55,8 +54,8 @@ export function MagneticButton({
   className?: string;
   href?: string;
 }) {
-  const isMobile = useIsMobile();
-  if (isMobile) {
+  const isMobile = useMobile();
+  if (isMobile !== false) {
     const content = <div className={className}>{children}</div>;
     return href ? <a href={href}>{content}</a> : content;
   }
@@ -65,12 +64,12 @@ export function MagneticButton({
 
 // 3. TextScramble - No framer-motion needed (pure JS animation)
 export function TextScramble({ text, className = "" }: { text: string; className?: string }) {
-  const isMobile = useIsMobile();
+  const isMobile = useMobile();
   const [displayText, setDisplayText] = useState(text);
   const chars = "!<>-_\\/[]{}—=+*^?#________";
 
   useEffect(() => {
-    if (isMobile) {
+    if (isMobile !== false) {
       setDisplayText(text);
       return;
     }
@@ -98,7 +97,7 @@ export function TextScramble({ text, className = "" }: { text: string; className
 
 // 4. NumberCounter - No framer-motion needed (IntersectionObserver + setInterval)
 export function NumberCounter({ value, suffix = "", prefix = "", formatWithCommas = false }: { value: number; suffix?: string; prefix?: string; formatWithCommas?: boolean }) {
-  const isMobile = useIsMobile();
+  const isMobile = useMobile();
   const [count, setCount] = useState(0);
   const hasAnimatedRef = useRef(false);
   const ref = useRef<HTMLSpanElement>(null);
@@ -109,8 +108,8 @@ export function NumberCounter({ value, suffix = "", prefix = "", formatWithComma
   };
 
   useEffect(() => {
-    // Mobile: skip animation entirely, just show final value
-    if (isMobile) {
+    // Pre-hydration: show final value immediately
+    if (isMobile === null) {
       setCount(value);
       return;
     }
@@ -153,8 +152,8 @@ export function NumberCounter({ value, suffix = "", prefix = "", formatWithComma
 
 // 5. ParallaxBackground
 export function ParallaxBackground() {
-  const isMobile = useIsMobile();
-  if (isMobile) {
+  const isMobile = useMobile();
+  if (isMobile !== false) {
     return (
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-32 -right-32 w-[300px] h-[300px] rounded-full bg-[#0070f3]/8 blur-3xl opacity-20" />
@@ -167,8 +166,8 @@ export function ParallaxBackground() {
 
 // 6. ParallaxDivider
 export function ParallaxDivider() {
-  const isMobile = useIsMobile();
-  if (isMobile) {
+  const isMobile = useMobile();
+  if (isMobile !== false) {
     return (
       <div className="relative h-32 overflow-hidden">
         <div className="absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0070f3]/50 to-transparent" />
@@ -181,8 +180,8 @@ export function ParallaxDivider() {
 
 // 7. HeroParallax
 export function HeroParallax({ children }: { children: React.ReactNode }) {
-  const isMobile = useIsMobile();
-  if (isMobile) {
+  const isMobile = useMobile();
+  if (isMobile !== false) {
     return (
       <div className="relative">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -198,8 +197,8 @@ export function HeroParallax({ children }: { children: React.ReactNode }) {
 
 // 8. AuroraBackground
 export function AuroraBackground() {
-  const isMobile = useIsMobile();
-  if (isMobile) {
+  const isMobile = useMobile();
+  if (isMobile !== false) {
     return (
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
@@ -219,15 +218,15 @@ export function AuroraBackground() {
 
 // 9. LiquidText
 export function LiquidText({ text, className = "" }: { text: string; className?: string }) {
-  const isMobile = useIsMobile();
-  if (isMobile) return <span className={`inline-block ${className}`}>{text}</span>;
+  const isMobile = useMobile();
+  if (isMobile !== false) return <span className={`inline-block ${className}`}>{text}</span>;
   return <LiquidTextDesktop text={text} className={className} />;
 }
 
 // 10. GlitchText
 export function GlitchText({ text, className = "" }: { text: string; className?: string }) {
-  const isMobile = useIsMobile();
-  if (isMobile) return <span className={`inline-block ${className}`}>{text}</span>;
+  const isMobile = useMobile();
+  if (isMobile !== false) return <span className={`inline-block ${className}`}>{text}</span>;
   return <GlitchTextDesktop text={text} className={className} />;
 }
 
@@ -251,8 +250,8 @@ export function InfiniteMarquee({
 
 // 12. SpotlightCard
 export function SpotlightCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const isMobile = useIsMobile();
-  if (isMobile) return <div className={`relative overflow-hidden ${className}`}>{children}</div>;
+  const isMobile = useMobile();
+  if (isMobile !== false) return <div className={`relative overflow-hidden ${className}`}>{children}</div>;
   return <SpotlightCardDesktop className={className}>{children}</SpotlightCardDesktop>;
 }
 
@@ -266,15 +265,15 @@ export function ParallaxLayer({
   speed?: number;
   className?: string;
 }) {
-  const isMobile = useIsMobile();
-  if (isMobile) return <div className={`relative ${className}`}>{children}</div>;
+  const isMobile = useMobile();
+  if (isMobile !== false) return <div className={`relative ${className}`}>{children}</div>;
   return <ParallaxLayerDesktop className={className} speed={speed}>{children}</ParallaxLayerDesktop>;
 }
 
 // 14. MorphingBlob
 export function MorphingBlob({ className = "" }: { className?: string }) {
-  const isMobile = useIsMobile();
-  if (isMobile) {
+  const isMobile = useMobile();
+  if (isMobile !== false) {
     return <div className={`absolute bg-gradient-to-r from-[#0070f3] to-[#00c6ff] opacity-30 blur-3xl rounded-full ${className}`} />;
   }
   return <MorphingBlobDesktop className={className} />;
@@ -282,8 +281,8 @@ export function MorphingBlob({ className = "" }: { className?: string }) {
 
 // 15. FloatingGrid - CSS only, desktop only
 export function FloatingGrid() {
-  const isMobile = useIsMobile();
-  if (isMobile) return null;
+  const isMobile = useMobile();
+  if (isMobile !== false) return null;
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
       <div
@@ -302,18 +301,18 @@ export function FloatingGrid() {
 
 // 16. RevealText
 export function RevealText({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const isMobile = useIsMobile();
-  if (isMobile) return <div className={className}>{children}</div>;
+  const isMobile = useMobile();
+  if (isMobile !== false) return <div className={className}>{children}</div>;
   return <RevealTextDesktop className={className}>{children}</RevealTextDesktop>;
 }
 
 // 17. TypewriterText - No framer-motion needed (pure JS)
 export function TypewriterText({ text, className = "", speed = 50, delay = 0 }: { text: string; className?: string; speed?: number; delay?: number }) {
-  const isMobile = useIsMobile();
+  const isMobile = useMobile();
   const [displayText, setDisplayText] = useState("");
 
   useEffect(() => {
-    if (isMobile) {
+    if (isMobile !== false) {
       setDisplayText(text);
       return;
     }
@@ -336,15 +335,15 @@ export function TypewriterText({ text, className = "", speed = 50, delay = 0 }: 
 
 // 18. ExplodeOnClick
 export function ExplodeOnClick({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const isMobile = useIsMobile();
-  if (isMobile) return <div className={`relative ${className}`}>{children}</div>;
+  const isMobile = useMobile();
+  if (isMobile !== false) return <div className={`relative ${className}`}>{children}</div>;
   return <ExplodeOnClickDesktop className={className}>{children}</ExplodeOnClickDesktop>;
 }
 
 // 19. PerspectiveSection
 export function PerspectiveSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const isMobile = useIsMobile();
-  if (isMobile) return <div className={className}>{children}</div>;
+  const isMobile = useMobile();
+  if (isMobile !== false) return <div className={className}>{children}</div>;
   return <PerspectiveSectionDesktop className={className}>{children}</PerspectiveSectionDesktop>;
 }
 
@@ -377,8 +376,8 @@ export function FadeIn({
   className?: string;
   delay?: number;
 }) {
-  const isMobile = useIsMobile();
-  if (isMobile) return <div className={className}>{children}</div>;
+  const isMobile = useMobile();
+  if (isMobile !== false) return <div className={className}>{children}</div>;
   return <FadeInDesktop className={className} delay={delay}>{children}</FadeInDesktop>;
 }
 
@@ -392,7 +391,7 @@ export function FadeInStagger({
   className?: string;
   staggerDelay?: number;
 }) {
-  const isMobile = useIsMobile();
-  if (isMobile) return <div className={className}>{children}</div>;
+  const isMobile = useMobile();
+  if (isMobile !== false) return <div className={className}>{children}</div>;
   return <FadeInStaggerDesktop className={className} staggerDelay={staggerDelay}>{children}</FadeInStaggerDesktop>;
 }

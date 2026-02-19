@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import CookieBanner from "@/components/CookieBanner";
+import ChatWidget from "@/components/ChatWidget";
 import MobileProvider from "@/components/MobileProvider";
 import GTMLoader from "@/components/GTMLoader";
 
@@ -274,6 +275,7 @@ export default function RootLayout({
         <MobileProvider>
           {children}
           <CookieBanner />
+          <ChatWidget />
         </MobileProvider>
 
       </body>

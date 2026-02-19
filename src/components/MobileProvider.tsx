@@ -2,14 +2,15 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 
-const MobileContext = createContext(true); // Default to mobile for SSR
+// null = not yet determined (SSR / pre-hydration)
+const MobileContext = createContext<boolean | null>(null);
 
-export function useMobile() {
+export function useMobile(): boolean | null {
   return useContext(MobileContext);
 }
 
 export default function MobileProvider({ children }: { children: React.ReactNode }) {
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
