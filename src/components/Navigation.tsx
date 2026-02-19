@@ -15,6 +15,7 @@ const navLinks = [
 export default function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [hydrated, setHydrated] = useState(false);
     const progressRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
     const isMobile = useMobile();
@@ -62,6 +63,8 @@ export default function Navigation() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [isMobile]);
 
+    useEffect(() => setHydrated(true), []);
+
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -87,6 +90,7 @@ export default function Navigation() {
                         ? "bg-[#0a0a0a] md:bg-[#0a0a0a]/80 md:backdrop-blur-2xl shadow-[0_1px_0_0_rgba(255,255,255,0.05),0_4px_30px_rgba(0,0,0,0.3)] py-3"
                         : "bg-brand-black md:bg-transparent md:backdrop-blur-none py-5"
                 }`}
+                style={!hydrated ? { backgroundColor: '#0a0a0a' } : undefined}
             >
                 {/* Scroll Progress Indicator - hidden on mobile */}
                 {!isMobile && (
