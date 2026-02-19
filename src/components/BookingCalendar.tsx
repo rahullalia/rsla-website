@@ -6,7 +6,7 @@ export default function BookingCalendar() {
   return (
     <div className="overflow-hidden rounded-xl">
       <iframe
-        src="https://api.leadconnectorhq.com/widget/booking/nKrQmOaliDo1haSUwgRS"
+        src="https://api.leadconnectorhq.com/widget/booking/GHDT7fcZ1a6Yj4t3FCx7"
         style={{ width: '100%', border: 'none' }}
         scrolling="no"
         id="booking-calendar"
