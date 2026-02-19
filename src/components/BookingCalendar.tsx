@@ -1,24 +1,31 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import Script from 'next/script';
+import { useEffect, useRef } from 'react';
 
 export default function BookingCalendar() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [height, setHeight] = useState<number | null>(null);
 
   useEffect(() => {
     function handleMessage(e: MessageEvent) {
       if (typeof e.data !== 'string' || !e.data.startsWith('[iFrameSizer]')) return;
-      // Format: [iFrameSizer]ID:HEIGHT:WIDTH:TYPE
       const parts = e.data.replace('[iFrameSizer]', '').split(':');
       const h = parseFloat(parts[1]);
-      if (!isNaN(h) && h > 0) {
-        setHeight(h);
+      if (!isNaN(h) && h > 0 && iframeRef.current) {
+        iframeRef.current.style.height = `${h}px`;
+        iframeRef.current.style.minHeight = `${h}px`;
       }
     }
 
     window.addEventListener('message', handleMessage);
+
+    // Load form_embed.js AFTER iframe is in the DOM so iFrameResizer finds it
+    if (!document.querySelector('script[src*="form_embed.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://link.msgsndr.com/js/form_embed.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
     return () => window.removeEventListener('message', handleMessage);
   }, []);
 
@@ -27,19 +34,9 @@ export default function BookingCalendar() {
       <iframe
         ref={iframeRef}
         src="https://api.leadconnectorhq.com/widget/booking/nKrQmOaliDo1haSUwgRS"
-        style={{
-          width: '100%',
-          border: 'none',
-          height: height ? `${height}px` : undefined,
-        }}
-        scrolling="no"
         id="booking-calendar"
         title="Booking Calendar"
-        className={`min-h-[750px] md:min-h-[950px] transition-[height] duration-300 ease-in-out`}
-      />
-      <Script
-        src="https://link.msgsndr.com/js/form_embed.js"
-        strategy="afterInteractive"
+        className="w-full border-none min-h-[750px] md:min-h-[950px]"
       />
     </div>
   );
